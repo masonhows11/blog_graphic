@@ -1,6 +1,9 @@
 
-@include('front.include.header')
-@include('front.include.navbar')
+@extends('front.include.master_auth')
+@section('page-title')
+ورود کاربر
+@endsection
+@section('content')
    {{-- <div class="row">
         <div class="offset-lg-3 offset-md-3 offset-sm-6 col-lg-6 col-md-6 col-sm-6 mb-3 mt-3 login-msg-wrapper">
             @if(session('error'))
@@ -85,4 +88,5 @@
 
    </div>
 </div>
-@include('front.include.footer')
+@endsection
+
