@@ -1,4 +1,4 @@
-@extends('front.include.master')
+@extends('front.include.master_auth')
 @section('page-title')
     تغییر رمز عبور
 @endsection
