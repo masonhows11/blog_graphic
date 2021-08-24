@@ -1,0 +1,89 @@
+.alert-messages-row,
+.add-role-row,
+.list-role-row,
+.list-users-row,
+.category-form,
+.list-tips-row,
+.new-tip-row,
+.tip-create-row,
+.sample-create-row,
+.category-index-sample,
+.label-select-image,
+.btn-save-lesson,
+.btn-cancel-lesson {
+    margin-top: 30px;
+}
+.btn-cancel-tip,
+.btn-save-tip,
+.course-banner-detail,
+.btn-return,
+.row-add-lesson,
+.btn-edit-course-price{
+    margin-top: 15px;
+}
+.alert-messages-row {
+    height: 50px;
+}
+.container .row .alert-war-margi {
+    margin-top: 10px;
+}
+.child li,
+.category-index-tree ul li,
+.category-index-sample ul,
+.category-index-sample-ul {
+    list-style: none;
+}
+.category-index-tree {
+    height: auto;
+    border: darkgray solid;
+    border-radius: 5px;
+}
+.category-index-col {
+    height: 650px;
+    border: 2px solid darkgray;
+    border-radius: 5px;
+}
+.category-index-sample-ul {
+    padding-right: 50px;
+}
+.category-index-sample .list-group .list-group-item :first-child {
+    background-color: lightgray;
+}
+.category-index-sample-ul {
+    background-color: #F4F4F4;
+    border: 1px lightgrey solid;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.input-group {
+    margin-top: 25px;
+}
+.list-courses-row {
+    margin-top: 20px;
+}
+.table-course .fa-list-alt,
+.fa-edit,
+.fa-remove,
+.fa-save {
+    font-size: 34px;
+    color: deepskyblue;
+}
+.fa-remove {
+    color: tomato;
+    margin-right: 12px;
+}
+.new-lesson {
+    height: 38px;
+    width: 38px;
+}
+.hr-row {
+    border-bottom: 2px solid deepskyblue;
+    margin-bottom: 30px;
+}
+.page-header-course-details .page-header {
+    border-bottom: 1px solid dodgerblue;
+}
+.details-textarea {
+    direction: rtl;
+    white-space: normal
+}

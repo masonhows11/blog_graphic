@@ -1,0 +1,305 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+
+    font-family: 'iransansdn', sans-serif;
+    font-size: medium;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+
+/******* home page ********/
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.wrapper .navbar-light {
+    background-color: #6D68DE;
+}
+
+.navbar-collapse .navbar-nav .nav-item .navbar-text,
+.navbar-collapse .navbar-nav .nav-item .nav-link {
+    font-family: 'iransansdn', sans-serif;
+    font-size: 1.2em;
+}
+
+.carousel {
+    border: 3px solid #BE9DE2;
+    border-radius: 6px
+}
+
+.navbar {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.search-box-content {
+
+    background-image: url("../../images/template/Bg_Search5.jpg");
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.input-group {
+    border: 1px solid #3A3F9D;
+}
+
+.search-box input {
+    border-bottom-color: #3A3F9D;
+    border-top-color: #3A3F9D;
+    border-left-color: #3A3F9D;
+}
+
+.input-group-text {
+    color: #ffffff;
+    border-color: #7A3178;
+    background-color: #3A3F9D;
+}
+
+.search-box-content {
+    border-radius: 5px;
+}
+
+.search-box .search-input {
+    font-size: 1.1em;
+}
+
+
+.main-menu {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.main-menu .menu_item {
+    background-color: #BE9DE2;
+    height: 80px;
+    margin-top: 5px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px grey;
+
+}
+
+.main-menu .menu_item {
+    text-decoration: none;
+    font-size: 1.1em;
+    color: #000000;
+}
+
+.carousel-inner .carousel-item img {
+    height: 640px;
+}
+
+.site-introducing .site-introducing-content {
+    border: 2px solid #42387F;
+    height: auto;
+}
+
+
+.site-introducing .site-introducing-content p {
+    text-align: center;
+}
+
+.latest-gold-tips .latest-gold-tips-content {
+    border: 5px solid #AFEEF9;
+    height: auto;
+}
+
+.latest-gold-tips-item {
+    border: 3px solid transparent;
+    height: auto;
+}
+
+.animate-div {
+    height: 300px;
+
+}
+
+.latest-creativity .latest-creativity-content {
+    border: 5px solid #AFEEF9;
+    height: 250px;
+}
+
+.tips-summary {
+    margin-top: 2rem;
+    line-height: 25px;
+}
+
+.continue-post {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+}
+
+.continue-post:hover {
+    color: #FC9D9D;
+}
+
+.bottom-nav .bottom-nav-item {
+    height: auto;
+    border-bottom: 4px solid #F4AABB;
+}
+
+.bottom-nav .bottom-nav-item a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.3em;
+}
+
+.title-section {
+    font-weight: bold;
+}
+
+.footer {
+
+    border-top-left-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+}
+
+.footer .footer-about,
+.footer .footer-links,
+.footer .footer-copy-right {
+    border: 2px solid silver;
+    border-radius: 5px;
+}
+
+.footer-links .whatsapp-link {
+    height: 46px;
+}
+
+.footer-about div a {
+    color: #000000;
+    text-decoration: none;
+    font-size: large;
+    font-weight: lighter;
+}
+
+.footer-section {
+    margin-top: auto;
+}
+
+.key-name-site {
+    color: tomato;
+}
+
+/************* about us page *****************/
+
+
+.about-us .about-us-description {
+    height: 400px;
+    background-color: #ECF0F1;
+    border: 3px solid #BDC3C7;
+    border-radius: 5px;
+}
+
+/************* contact us page *****************/
+.login .login-form input,
+.register .register-form input,
+.contact-us .contact-us-form input {
+    direction: rtl;
+}
+
+/*************** register page ****************/
+
+/************** samples page **************/
+
+
+.main-section .right-category {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    height: auto;
+}
+
+.main-section .list-samples-left {
+
+    height: auto;
+}
+
+.articles-creativity-item .card,
+.samples-item .card {
+
+    border-radius:20px;
+    max-height: 800px;
+}
+.articles-creativity-item .card-img-top,
+.samples-item .card-img-top{
+    border-radius:20px;
+}
+.articles-creativity-item .card-footer,
+.samples-item .card-footer{
+    background-color: rgba(0, 0, 0, 0);
+    border-top:none;
+}
+.articles-creativity-item .card-footer a,
+.samples-item .card-footer a{
+    text-decoration:none;
+    color:#000000;
+}
+/************** filter courses ***********/
+.filter-courses{
+    max-height:60px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.filter-courses-item .nav-link{
+    color: #000000;
+}
+/************ media query ****************/
+
+@media screen and (max-width: 768px) {
+    .footer .footer-copy-right {
+        flex-direction: column;
+    }
+
+    [data-aos] {
+        visibility: hidden;
+    }
+
+    .menu_item .menu_item {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .bottom-nav .bottom-nav-item {
+        border-bottom: none;
+    }
+
+    [data-aos] {
+        visibility: hidden;
+    }
+
+    .menu_item .menu_item {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .menu_item .menu_item {
+        font-size: 1em;
+    }
+}
