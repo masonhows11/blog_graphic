@@ -34,8 +34,8 @@
                                     {{ \Illuminate\Support\Facades\Auth::user()->user_name }}
                                 </a>
                                 <ul class="dropdown dropdown-menu" aria-labelledby="navbarDropdownLink">
-                                    <li><a class="dropdown-item" href="/profile">پروفایل</a></li>
-                                    <li><a class="dropdown-item" href="/logout">خروج</a></li>
+                                    <li><a class="dropdown-item text-center" href="/profile">پروفایل</a></li>
+                                    <li><a class="dropdown-item text-center" href="/logout">خروج</a></li>
                                 </ul>
                             </li>
                              @else
