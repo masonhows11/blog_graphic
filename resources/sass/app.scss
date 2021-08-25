@@ -10,7 +10,7 @@
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 // aos animation
-@import 'aos/dist/aos';
+@import '~aos/dist/aos';
 .w3-flat-turquoise {
     color: #fff;
     background-color: #1abc9c
@@ -412,4 +412,25 @@ body {
     .menu_item .menu_item {
         font-size: 1em;
     }
+}
+
+/************ category style in samples page **************/
+.vertical-menu{
+    width: 200px;
+}
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+.vertical-menu a.cu-active {
+    background-color: #04AA6D;
+    color: white;
 }

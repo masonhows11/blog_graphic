@@ -6,7 +6,13 @@
     <div class="row">
         <div class="col-md-3 right-category">
             <h5 class="mt-4">دسته بندی ها</h5>
-            
+            <div class="vertical-menu">
+                <a href="#" class="">link1</a>
+                <a href="#" class="">link2</a>
+                <a href="#" class="">link3</a>
+                <a href="#" class="">link4</a>
+                <a href="#" class="">link5</a>
+            </div>
         </div>
 
         <div class="col-md-9  list-samples-left">
