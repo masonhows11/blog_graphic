@@ -21,22 +21,22 @@ class Category extends Model
             ]
         ];
     }
-    public  function  subCategory(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public  function  subCategory()
     {
         return $this->HasMany(Category::class,'parent_id');
     }
 
-    public function posts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function posts()
     {
         return $this->belongsToMany(Post::class);
     }
 
-    public function samples(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function samples()
     {
         return $this->belongsToMany(Sample::class);
     }
 
-    public function courses(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function courses()
     {
         return $this->belongsToMany(TrainingCourse::class);
     }
