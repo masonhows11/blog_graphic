@@ -23,14 +23,30 @@
 
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    
-                        <li class="nav-item nav-login">
-                            <a class="nav-link text-white" href="/loginForm">ورود</a>
-                        </li>
+                            @auth
+                            <li class="nav-item dropdown nav-login">
+                                <a class="nav-link text-white"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false"
+                                   id="navbarDropdownLink">
+                                    {{ \Illuminate\Support\Facades\Auth::user()->user_name }}
+                                </a>
+                                <ul class="dropdown dropdown-menu" aria-labelledby="navbarDropdownLink">
+                                    <li><a class="dropdown-item" href="/profile">پروفایل</a></li>
+                                    <li><a class="dropdown-item" href="/logout">خروج</a></li>
+                                </ul>
+                            </li>
+                             @else
+                            <li class="nav-item nav-login">
+                                <a class="nav-link text-white" href="/loginForm">ورود</a>
+                            </li>
 
-                        <li class="nav-item nav-register">
-                            <a class="nav-link text-white" href="/registerForm">ثبت نام</a>
-                        </li>
+                            <li class="nav-item nav-register">
+                                <a class="nav-link text-white" href="/registerForm">ثبت نام</a>
+                            </li>
+                            @endauth
 
                     </ul>
                 </div>
