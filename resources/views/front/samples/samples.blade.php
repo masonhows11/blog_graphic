@@ -6,14 +6,15 @@
     <div class="row">
         <div class="col-md-3 right-category">
             <h5 class="mt-4">دسته بندی ها</h5>
-            <div class="vertical-menu">
+            <ul class="list-group samples-category">
                 @foreach($categories as $category)
-                    <a href="#" class="">{{$category->title}}</a>
-                    @if(count($category->subCategory)!= 0)
-                       
+                    <li class="list-group-item mt-2 parent"><a href="#" class="">{{$category->title}}</a></li>
+                    @if(count($category->subCategory) > 0)
+                        @include('front.samples.sub_category',
+                        ['sub_category'=>$category->subCategory])
                     @endif
                 @endforeach
-            </div>
+            </ul>
         </div>
 
         <div class="col-md-9  list-samples-left">

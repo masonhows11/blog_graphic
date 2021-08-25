@@ -11,6 +11,7 @@
 @import "~@fortawesome/fontawesome-free/scss/brands";
 // aos animation
 @import '~aos/dist/aos';
+
 .w3-flat-turquoise {
     color: #fff;
     background-color: #1abc9c
@@ -415,22 +416,27 @@ body {
 }
 
 /************ category style in samples page **************/
-.vertical-menu{
-    width: 200px;
+.samples-category li,
+.samples-category ul {
+
+    list-style: none;
 }
-.vertical-menu a {
-    background-color: #eee;
-    color: black;
-    display: block;
-    padding: 12px;
+
+.samples-category li a {
     text-decoration: none;
+    color: #0a0a0a;
 }
 
-.vertical-menu a:hover {
-    background-color: #ccc;
+.samples-category li:hover {
+    background-color: #C09FE3;
+    text-align:center;
+    border-radius: 5px;
 }
 
-.vertical-menu a.cu-active {
-    background-color: #04AA6D;
-    color: white;
+.samples-category li a:hover {
+    color: #ffffff;
+}
+
+.samples-category li a {
+    margin-right: 10px;
 }
