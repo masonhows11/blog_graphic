@@ -3,15 +3,15 @@
     <div class="row d-flex justify-content-evenly bottom-nav mt-5">
 
         <div class="col-lg-2 col-md-2 mt-2 col-sm-3 bottom-nav-item text-center">
-            <img src="{{'/images/template/vector-contact-us_resized.jpg'}}" class="img-thumbnail" alt="contact_us_image">
-            <a href="./contact_us.html"><p>ارتباط با ما</p></a>
+            <img src="{{'/images/template/vector-contact-us-resized.jpg'}}" class="img-thumbnail" alt="contact_us_image">
+            <a href="#"><p>ارتباط با ما</p></a>
         </div>
         <div class="col-lg-2 col-md-2 mt-2 col-sm-3  bottom-nav-item text-center">
-            <img src="{{'images/template/vector-store2_resized.jpg'}}" class="img-thumbnail" alt="store_image">
+            <img src="{{'/images/template/vector-store2_resized.jpg'}}" class="img-thumbnail" alt="store_image">
             <a href="#"><p>فروشگاه</p></a>
         </div>
         <div class="col-lg-2 col-md-2 mt-2 col-sm-3 bottom-nav-item text-center">
-            <img src="{{'images/template/vector-question.jpg'}}" class="img-thumbnail" alt="ask_question_image">
+            <img src="{{'/images/template/vector-question.jpg'}}" class="img-thumbnail" alt="ask_question_image">
             <a href="#"><p>پرسش و پاسخ</p></a>
         </div>
 

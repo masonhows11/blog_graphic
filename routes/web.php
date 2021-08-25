@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\SampleFController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\AuthController;
@@ -167,27 +168,26 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 
 });
 
-Route::group(['prefix'=>'admin/samples','middleware'=>'role:admin'],function (){
+Route::group(['prefix'=>'samples'],function (){
 
+    Route::get('/index',[SampleFController::class,'index']);
+
+});
+
+Route::group(['prefix'=>'creative'],function (){
 
 
 
 });
 
-Route::group(['prefix'=>'admin/creative','middleware'=>'role:admin'],function (){
-
-
-
-});
-
-Route::group(['prefix'=>'admin/tips','middleware'=>'role:admin'],function (){
+Route::group(['prefix'=>'tips'],function (){
 
 
 });
 
-Route::group(['prefix'=>'admin/store','middleware'=>'role:admin'],function (){
+Route::group(['prefix'=>'store'],function (){
 
 
 
-    
+
 });

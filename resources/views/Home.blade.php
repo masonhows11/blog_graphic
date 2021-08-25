@@ -3,6 +3,7 @@
     خانه
 @endsection
 @section('content')
+    @include('front.include.slider')
     <!-- start latest-gold-tips   -->
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
