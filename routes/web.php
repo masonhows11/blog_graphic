@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Front\SampleFController;
+use App\Http\Controllers\Front\SampleFrontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\AuthController;
@@ -170,7 +170,7 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 
 Route::group(['prefix'=>'samples'],function (){
 
-    Route::get('/index',[SampleFController::class,'index']);
+    Route::get('/index',[SampleFrontController::class,'index']);
 
 });
 
