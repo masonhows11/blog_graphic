@@ -3,7 +3,7 @@
     <div class="row">
         <nav class="navbar navbar-light  navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand text-white" href="./index.html">BARD GRAPH</a>
+                <a class="navbar-brand text-white" href="/">BARD GRAPH</a>
                 <button class="navbar-toggler" type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#navbarToggler"

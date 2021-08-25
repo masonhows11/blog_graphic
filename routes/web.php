@@ -166,3 +166,28 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
     Route::get('/active',[CourseController::class,'changeStatus']);
 
 });
+
+Route::group(['prefix'=>'admin/samples','middleware'=>'role:admin'],function (){
+
+
+
+
+});
+
+Route::group(['prefix'=>'admin/creative','middleware'=>'role:admin'],function (){
+
+
+
+});
+
+Route::group(['prefix'=>'admin/tips','middleware'=>'role:admin'],function (){
+
+
+});
+
+Route::group(['prefix'=>'admin/store','middleware'=>'role:admin'],function (){
+
+
+
+    
+});
