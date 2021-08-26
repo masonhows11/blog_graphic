@@ -6,7 +6,7 @@
     <div class="container">
 
         <div class="row sample-create-row">
-            <form action="/admin/sample/store" class="" method="post">
+            <form action="/admin/sample/store"  class="" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">عنوان:</label>

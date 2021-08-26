@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Sample;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 
 class SampleController extends Controller
 {
@@ -26,6 +28,10 @@ class SampleController extends Controller
 
     public function store(Request $request)
     {
+
+
+
+
         $validated = $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:2000',
@@ -44,13 +50,34 @@ class SampleController extends Controller
             'image4.required' => 'یک تصویر انتخاب کنید.',
             'cat.required' => 'یک دسته بندی انتخاب کنید.',
         ]);
+
+
+        $img_array=[];
+        if($request->has(['image1','image2','image3','image4'])){
+
+            array_push($img_array,$request->input('image1'),
+                $request->input('image2'),
+                $request->input('image3'),
+                $request->input('image4'));
+        }
+        $img_name_array=[];
+        $array_count = count($img_array);
+        for ($i = 0 ; $i < $array_count ; $i++ )
+        {
+        array_push($img_name_array,str_replace('http://localhost/template/samples/','',$img_array[$i]));
+        }
+        dd($img_array,$img_name_array);
+
+
+
+
         $sample = Sample::create([
             'title' => $request->title,
             'description' => $request->description,
             'image1' => $request->image1,
             'image2' => $request->image2,
-             'image3' => $request->image3,
-             'image4' => $request->image4,
+            'image3' => $request->image3,
+            'image4' => $request->image4,
         ]);
         $sample->categories()->sync($request->cat);
         return redirect('/admin/sample/index')
@@ -122,7 +149,7 @@ class SampleController extends Controller
     {
        Sample::destroy($request->sample);
         return redirect('admin/sample/index')
-            ->with('success','نکته طلایی با موفقیت حذف شد.');
+            ->with('success','نمونه کار با موفقیت حذف شد.');
     }
 
 }
