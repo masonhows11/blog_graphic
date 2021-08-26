@@ -17,4 +17,9 @@ class SampleFrontController extends Controller
             ->with('categories',$categories);
     }
 
+    public function samplesCategory(Request $request)
+    {
+        return $request;
+    }
+
 }

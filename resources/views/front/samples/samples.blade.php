@@ -8,7 +8,7 @@
             <h5 class="mt-4">دسته بندی ها</h5>
             <ul class="list-group samples-category">
                 @foreach($categories as $category)
-                    <li class="list-group-item mt-2 parent"><a href="#" class="">{{$category->title}}</a></li>
+                    <li class="list-group-item mt-2 parent"><a href="/samples/samplesCategory?key={{$category->name}}" class="">{{$category->title}}</a></li>
                     @if(count($category->subCategory) > 0)
                         @include('front.samples.sub_category',
                         ['sub_category'=>$category->subCategory])
