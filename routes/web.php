@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front\SampleFrontController;
+use App\Http\Controllers\Front\StoreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\AuthController;
@@ -187,7 +188,6 @@ Route::group(['prefix'=>'tips'],function (){
 
 Route::group(['prefix'=>'store'],function (){
 
-
-
+    Route::get('/index',[StoreController::class,'index']);
 
 });
