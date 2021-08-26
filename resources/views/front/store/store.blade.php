@@ -19,7 +19,7 @@
 
         <div class="col-md-9  list-samples-left">
 
-            <div class="row  row-cols-lg-3 row-cols-md-1 row-cols-sm-1">
+            <div class="row  row-cols-lg-3 row-cols-md-1 row-cols-sm-1  row-cols-1">
 
                 <div class="col mt-2 samples-item">
                     <div class="card">
