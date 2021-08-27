@@ -65,13 +65,19 @@ class SampleController extends Controller
         array_push($img_name_array,str_replace('http://localhost/template/samples/','',$img_array[$i]));
         }
 
+        $main_image = '';
+       if ($request->has('image_title')){
 
+           $main_image = str_ireplace('http://localhost/template/samples/','',$request->image_title);
+       }
+       dd($main_image);
 
 
 
         $sample = Sample::create([
             'title' => $request->title,
             'description' => $request->description,
+            'image_title' => $main_image,
             'image1'=>$img_name_array[0],
             'image2'=>$img_name_array[1],
             'image3'=>$img_name_array[2],

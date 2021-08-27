@@ -26,14 +26,14 @@
                     @enderror
                 </div>
 
-                <label for="" class="label-select-image">انتخاب یک تصویر به عنوان تصویر اصلی:</label>
+                <label for="" class="label-select-image">انتخاب  یک تصویر به عنوان  تصویر اصلی:</label>
                 <!-- input file type button image_title               -->
                 <div class="input-group">
                     <input type="text" id="image_title" class="form-control @error('image_title') is-invalid @enderror"
                            name="image_title"
                            aria-label="Image" aria-describedby="button-image">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="button-image-title">آپلود عکس ۱</button>
+                        <button class="btn btn-default" type="button" id="button-image-title">آپلود عکس</button>
                     </div>
                 </div>
                 @error('image-1')
