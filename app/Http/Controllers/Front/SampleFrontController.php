@@ -16,7 +16,7 @@ class SampleFrontController extends Controller
         $categories = Category::where('parent_id',null)->get();
         $samples = Sample::all();
         return view('front.samples.samples')
-            ->with('categories',$categories);
+            ->with(['categories'=>$categories,'samples'=>$samples]);
     }
 
     public function samplesCategory(Request $category)

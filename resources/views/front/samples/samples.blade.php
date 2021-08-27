@@ -22,22 +22,23 @@
 
             <div class="row  row-cols-lg-3 row-cols-md-1 row-cols-sm-1 row-cols-1">
 
+                @foreach($samples as $sample)
                 <div class="col mt-2 samples-item">
                     <div class="card">
-                        <img src="/images/template/vector-sample-png.png" class="card-img-top" alt="...">
+                        <img src="{{ asset('/template/samples/'.$sample->image1) }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">عنوان نمونه کار</h5>
+                            <h5 class="card-title">{{ $sample->title }}</h5>
                             <p class="card-text">
-                                ورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
-                                فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با</p>
+                            {{ strip_tags($sample->description) }}
+                            </p>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
                             <a href="#" class="text-center">ادامه...</a>
                         </div>
                     </div>
                 </div>
-                <div class="col mt-2 samples-item">
+                @endforeach
+                {{--<div class="col mt-2 samples-item">
                     <div class="card">
                         <img src="/images/template/vector-sample-png.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -112,7 +113,7 @@
                             <a href="#" class="text-center">ادامه...</a>
                         </div>
                     </div>
-                </div>
+                </div>--}}
 
             </div>
 

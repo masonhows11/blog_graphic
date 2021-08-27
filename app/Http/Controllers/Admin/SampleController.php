@@ -28,8 +28,8 @@ class SampleController extends Controller
 
     public function store(Request $request)
     {
-        
-        $validated = $request->validate([
+
+          $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:2000',
             'image1' => 'required',
@@ -95,7 +95,7 @@ class SampleController extends Controller
     public function update(Request $request)
     {
 
-        $validated = $request->validate([
+             $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:2000',
             'image1' => 'required',
