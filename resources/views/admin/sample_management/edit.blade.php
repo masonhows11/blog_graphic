@@ -33,7 +33,7 @@
                 <div class="input-group">
                     <input type="text" id="image_title" class="form-control @error('image_title') is-invalid @enderror"
                            name="image_title"
-                           aria-label="Image" aria-describedby="button-image" value="{{ $sample->image_title }}">
+                           aria-label="Image" aria-describedby="button-image" value="{{ $sample->main_image }}">
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="button" id="button-image-title">آپلود عکس</button>
                     </div>

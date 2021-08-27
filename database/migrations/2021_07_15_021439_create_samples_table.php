@@ -19,7 +19,7 @@ class CreateSamplesTable extends Migration
             $table->text('description')->nullable();
             $table->string('title');
             $table->unsignedBigInteger('views')->default(0);
-            $table->string('image_title');
+            $table->string('main_image');
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();

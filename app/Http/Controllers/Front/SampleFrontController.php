@@ -14,7 +14,7 @@ class SampleFrontController extends Controller
     public function index()
     {
         $categories = Category::where('parent_id',null)->get();
-        $samples = Sample::all();
+        $samples = Sample::where('approved','=',1)->get();
         return view('front.samples.samples')
             ->with(['categories'=>$categories,'samples'=>$samples]);
     }

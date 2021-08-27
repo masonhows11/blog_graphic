@@ -13,7 +13,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-9 mt-2" style="border:1px solid tomato">
                         <div class="card">
-                            <img src="{{ asset('/template/samples/'.$sample->image_title) }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('/template/samples/'.$sample->main_image) }}" class="card-img-top" alt="...">
                             <div class="card-header">
                                 Featured
                             </div>

@@ -75,7 +75,7 @@ class SampleController extends Controller
         $sample = Sample::create([
             'title' => $request->title,
             'description' => $request->description,
-            'image_title' => $main_image,
+            'main_image' => $main_image,
             'image1'=>$img_name_array[0],
             'image2'=>$img_name_array[1],
             'image3'=>$img_name_array[2],
@@ -143,7 +143,7 @@ class SampleController extends Controller
         $sample = Sample::findOrFail($request->id);
         $sample->title = $request->title;
         $sample->description = $request->description;
-        $sample->image_title = $main_image;
+        $sample->main_image = $main_image;
         $sample->image1 = $img_name_array[0];
         $sample->image2 = $img_name_array[1];
         $sample->image3 = $img_name_array[2];
