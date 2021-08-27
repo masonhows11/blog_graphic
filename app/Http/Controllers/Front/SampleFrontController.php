@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class SampleFrontController extends Controller
 {
-    //
+
 
     public function index()
     {
