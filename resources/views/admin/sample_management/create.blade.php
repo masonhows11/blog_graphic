@@ -39,6 +39,7 @@
                 @error('image-1')
                 <div class="alert alert-danger fade-in">{{ $message }}</div>
                 @enderror
+
                 <!-- input file type button image 2                -->
                 <div class="input-group">
                     <input type="text" id="image2" class="form-control @error('image') is-invalid @enderror"
