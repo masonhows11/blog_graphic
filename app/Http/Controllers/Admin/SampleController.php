@@ -30,7 +30,7 @@ class SampleController extends Controller
 
           $request->validate([
             'title' => 'required|max:150',
-            'description' => 'required|max:1000',
+            'description' => 'required|max:500',
             'image_title' => 'required',
             'image1' => 'required',
             'image2' => 'required',
@@ -102,7 +102,7 @@ class SampleController extends Controller
 
              $request->validate([
             'title' => 'required|max:150',
-            'description' => 'required|max:1000',
+            'description' => 'required|max:500',
             'image1' => 'required',
             'image2' => 'required',
             'image3' => 'required',

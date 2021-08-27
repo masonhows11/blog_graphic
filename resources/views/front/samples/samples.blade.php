@@ -25,15 +25,15 @@
                 @foreach($samples as $sample)
                 <div class="col mt-2 samples-item">
                     <div class="card">
-                        <img src="{{ asset('/template/samples/'.$sample->image_title) }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('/template/samples/'.$sample->image_title) }}" class="card-img-top" alt="main_image_sample">
                         <div class="card-body">
                             <h5 class="card-title">{{ $sample->title }}</h5>
                             <p class="card-text">
-                            {{ strip_tags($sample->description) }}
+                            {{ strip_tags(\Illuminate\Support\Str::substr($sample->description,0,160)) }}
                             </p>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <a href="#" class="text-center">ادامه...</a>
+                            <a href="/samples/sample/{{$sample->slug}}" class="text-center">ادامه...</a>
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,11 @@ class SampleFrontController extends Controller
             ->with(['categories'=>$categories,'samples'=>$samples]);
     }
 
+    public function sample($sample)
+    {
+        $sample = Sample::where('slug','=',$sample)->first();
+        return view('front.samples.sample')->with(['sample'=>$sample]);
+    }
     public function samplesCategory(Request $category)
     {
         return $category;

@@ -18211,6 +18211,10 @@ body {
   height: auto;
 }
 
+.main-section .list-samples-left .samples-item .card {
+  min-height: 400px;
+}
+
 .articles-creativity-item .card,
 .samples-item .card {
   border-radius: 20px;

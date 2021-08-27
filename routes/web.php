@@ -172,6 +172,7 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 Route::group(['prefix'=>'samples'],function (){
 
     Route::get('/index',[SampleFrontController::class,'index']);
+    Route::get('/sample/{sample}',[SampleFrontController::class,'sample']);
     Route::get('/samplesCategory/{category}',[SampleFrontController::class,'samplesCategory']);
 
 });
