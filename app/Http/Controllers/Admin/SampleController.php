@@ -30,7 +30,7 @@ class SampleController extends Controller
 
           $request->validate([
             'title' => 'required|max:150',
-            'description' => 'required|max:2000',
+            'description' => 'required|max:1000',
             'image_title' => 'required',
             'image1' => 'required',
             'image2' => 'required',
@@ -70,8 +70,6 @@ class SampleController extends Controller
 
            $main_image = str_ireplace('http://localhost/template/samples/','',$request->image_title);
        }
-       dd($main_image);
-
 
 
         $sample = Sample::create([
@@ -104,7 +102,7 @@ class SampleController extends Controller
 
              $request->validate([
             'title' => 'required|max:150',
-            'description' => 'required|max:2000',
+            'description' => 'required|max:1000',
             'image1' => 'required',
             'image2' => 'required',
             'image3' => 'required',
@@ -136,9 +134,16 @@ class SampleController extends Controller
             array_push($img_name_array,str_replace('http://localhost/template/samples/','',$img_array[$i]));
         }
 
+        $main_image = '';
+        if ($request->has('image_title')){
+
+            $main_image = str_ireplace('http://localhost/template/samples/','',$request->image_title);
+        }
+
         $sample = Sample::findOrFail($request->id);
         $sample->title = $request->title;
         $sample->description = $request->description;
+        $sample->image_title = $main_image;
         $sample->image1 = $img_name_array[0];
         $sample->image2 = $img_name_array[1];
         $sample->image3 = $img_name_array[2];

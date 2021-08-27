@@ -128,7 +128,7 @@
     </div>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-            // for button-image-1
+            // for button-image-title
             document.getElementById('button-image-title').addEventListener('click', (event) => {
                 event.preventDefault();
                 inputId = 'image_title'
