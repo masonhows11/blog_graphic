@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-md-9  one-sample">
-                <div class="row d-flex justify-content-center">
+                <div class="row d-flex flex-column justify-content-center">
                     <div class="col-lg-9 mt-2">
                         <div class="card">
                             <img src="{{ asset('/template/samples/'.$sample->main_image) }}" class="card-img-top" alt="...">
@@ -27,6 +27,9 @@
                                 <div class="like_dislike"></div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-9" style="border:1px solid tomato;height:200px">
+
                     </div>
                 </div>
             </div>
