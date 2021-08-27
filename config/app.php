@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Alexusmai\LaravelFileManager\FileManagerServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        //Morilog\Jalali\JalaliServiceProvider::class,
 
 
         /*
@@ -231,7 +231,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        //'jDate' => Morilog\Jalali\Facades\jDate::class
 
     ],
 

@@ -22,6 +22,10 @@
                                 <p class="card-text">{{ strip_tags($sample->description) }}</p>
 {{--                                <a href="#" class="btn btn-primary">Go somewhere</a>--}}
                             </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <div class="created_date"><span>ایجاد شده در تاریخ : </span>{{ jdate($sample->created_at)->format('%d %B %Y') }}</div>
+                                <div class="like_dislike"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
