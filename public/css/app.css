@@ -18238,6 +18238,12 @@ body {
   color: #000000;
 }
 
+/**************** one sample *******************/
+.one-sample .card-header {
+  font-family: "Yekan-regular", Sans-Serif;
+  font-size: larger;
+}
+
 /************** filter courses ***********/
 .filter-courses {
   max-height: 60px;
