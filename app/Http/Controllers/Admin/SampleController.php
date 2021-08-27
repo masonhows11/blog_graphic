@@ -31,6 +31,7 @@ class SampleController extends Controller
           $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:2000',
+            'image_title' => 'required',
             'image1' => 'required',
             'image2' => 'required',
             'image3' => 'required',
@@ -40,10 +41,11 @@ class SampleController extends Controller
             'title.max' => 'حداکثر ۱۰۰ کاراکتر.',
             'description.required' => 'فیلد توضیحات الزامی است.',
             'description.max' => 'تعداد کاراکتر بیش از حد مجاز.',
-            'image1.required' => 'یک تصویر انتخاب کنید.',
-            'image2.required' => 'یک تصویر انتخاب کنید.',
-            'image3.required' => 'یک تصویر انتخاب کنید.',
-            'image4.required' => 'یک تصویر انتخاب کنید.',
+            'image_title.required' =>'عکس اصلی را انتخاب کنید.',
+            'image1.required' => 'یک عکس انتخاب کنید.',
+            'image2.required' => 'یک عکس انتخاب کنید.',
+            'image3.required' => 'یک عکس انتخاب کنید.',
+            'image4.required' => 'یک عکس انتخاب کنید.',
             'cat.required' => 'یک دسته بندی انتخاب کنید.',
         ]);
 
