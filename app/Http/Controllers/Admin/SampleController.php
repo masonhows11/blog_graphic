@@ -28,10 +28,7 @@ class SampleController extends Controller
 
     public function store(Request $request)
     {
-
-
-
-
+        
         $validated = $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:2000',
@@ -66,7 +63,7 @@ class SampleController extends Controller
         {
         array_push($img_name_array,str_replace('http://localhost/template/samples/','',$img_array[$i]));
         }
-        dd($img_array,$img_name_array);
+
 
 
 
@@ -74,10 +71,10 @@ class SampleController extends Controller
         $sample = Sample::create([
             'title' => $request->title,
             'description' => $request->description,
-            'image1' => $request->image1,
-            'image2' => $request->image2,
-            'image3' => $request->image3,
-            'image4' => $request->image4,
+            'image1'=>$img_name_array[0],
+            'image2'=>$img_name_array[1],
+            'image3'=>$img_name_array[2],
+            'image4'=>$img_name_array[3],
         ]);
         $sample->categories()->sync($request->cat);
         return redirect('/admin/sample/index')
@@ -97,7 +94,7 @@ class SampleController extends Controller
 
     public function update(Request $request)
     {
-       //return $request;
+
         $validated = $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:2000',
@@ -116,13 +113,29 @@ class SampleController extends Controller
             'image4.required' => 'یک تصویر انتخاب کنید.',
             'cat.required' => 'یک دسته بندی انتخاب کنید.',
         ]);
+
+        $img_array=[];
+        if($request->has(['image1','image2','image3','image4'])){
+
+            array_push($img_array,$request->input('image1'),
+                $request->input('image2'),
+                $request->input('image3'),
+                $request->input('image4'));
+        }
+        $img_name_array=[];
+        $array_count = count($img_array);
+        for ($i = 0 ; $i < $array_count ; $i++ )
+        {
+            array_push($img_name_array,str_replace('http://localhost/template/samples/','',$img_array[$i]));
+        }
+
         $sample = Sample::findOrFail($request->id);
         $sample->title = $request->title;
         $sample->description = $request->description;
-        $sample->image1 = $request->image1;
-        $sample->image2 = $request->image2;
-        $sample->image3 = $request->image3;
-        $sample->image4 = $request->image4;
+        $sample->image1 = $img_name_array[0];
+        $sample->image2 = $img_name_array[1];
+        $sample->image3 = $img_name_array[2];
+        $sample->image4 = $img_name_array[3];
         $sample->save();
 
         $sample->categories()->sync($request->cat);

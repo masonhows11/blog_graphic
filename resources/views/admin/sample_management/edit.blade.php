@@ -7,7 +7,7 @@
     <div class="container">
 
         <div class="row sample-create-row">
-            <form action="/admin/sample/update" class="" method="post">
+            <form action="/admin/sample/update" class="" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{ $sample->id }}">
                 <div class="form-group">
@@ -92,7 +92,7 @@
                                        value="{{ $cat->id }}" {{ in_array($cat->id,$sample->categories()->pluck('category_id')->toArray()) ? 'checked':''}}>
                                 <label for="cat_{{ $cat->id }}" class="">{{$cat->title}}</label>
                                 @if (count($cat->subCategory))
-                                    @include('admin.sample_management.sub_category_index',
+                                    @include('admin.sample_management.sub_category_edit',
                                        ['sub_category'=>$cat->subCategory])
                                 @endif
                             </li>
@@ -114,5 +114,46 @@
         </div>
 
     </div>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            // for button-image-1
+            document.getElementById('button-image-1').addEventListener('click', (event) => {
+                event.preventDefault();
+                inputId = 'image1'
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
+            // for button-image-2
+            document.getElementById('button-image-2').addEventListener('click', (event) => {
+                event.preventDefault();
+                inputId = 'image2'
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
+            // for button-image-3
+            document.getElementById('button-image-3').addEventListener('click', (event) => {
+                event.preventDefault();
+                inputId = 'image3'
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
+            // for button-image-4
+            document.getElementById('button-image-4').addEventListener('click', (event) => {
+                event.preventDefault();
+                inputId = 'image4'
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
+        });
+        // input
+        let inputId = '';
+        // set file link
+        function fmSetLink($url) {
+            document.getElementById(inputId).value = $url;
+        }
+    </script>
+    <script type="text/javascript" src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('editor-text', {
+            language: 'fa',
+            removePlugins: 'image',
+        });
+    </script>
 @endsection
 
