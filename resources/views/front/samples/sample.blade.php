@@ -38,9 +38,19 @@
                                     </div>
                             </div>
                             </div>
-                            <div class="card-footer d-flex justify-content-between">
-                                <div class="created_date"><span>ایجاد شده در تاریخ : </span>{{ jdate($sample->created_at)->format('%d %B %Y') }}</div>
-                                <div class="like_dislike">like</div>
+                            <div class="card-footer">
+                                <div class="row d-flex flex-row justify-content-evenly">
+                                    <div class="col-6">
+                                        <div class="created_date"><span>ایجاد شده در تاریخ : </span>{{ jdate($sample->created_at)->format('%d %B %Y') }}</div>
+                                    </div>
+                                   <div class="col-6 d-flex justify-content-end">
+                                        <div>
+
+                                            <i class="far fa-thumbs-down dislike"  id="dislike" onclick="dislike()">dislike</i>
+                                            <i class="far fa-thumbs-up like" id="like" onclick="like()">like</i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -49,5 +59,13 @@
             </div>
 
         </div>
+        <script>
+            function like() {
+                document.getElementById('like').style.color = 'green';
+            }
+            function dislike() {
+                document.getElementById('dislike').style.color = 'tomato';
+            }
 
+        </script>
 @endsection

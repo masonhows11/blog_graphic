@@ -371,7 +371,7 @@ body {
     text-decoration: none;
     color: #000000;
 }
-/**************** one sample *******************/
+/**************** one sample *************/
 .one-sample .card-header{
     font-family:'Yekan-regular',Sans-Serif;
     font-size: larger;
@@ -379,7 +379,14 @@ body {
 .one-sample .sample-images img{
     border-radius: 5px;
 }
-
+/**************like or dislike************/
+.one-sample .card .card-footer .dislike,
+.one-sample .card .card-footer .like{
+    font-size: 25px;
+}
+.one-sample .card .card-footer .dislike{
+margin-left: 15px;
+}
 /************** filter courses ***********/
 
 .filter-courses {
