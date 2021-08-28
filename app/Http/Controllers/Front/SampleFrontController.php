@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Sample;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SampleFrontController extends Controller
 {
@@ -28,6 +29,10 @@ class SampleFrontController extends Controller
     public function samplesCategory(Request $category)
     {
         // return $category;
+        $samples = DB::table('samples')->join('category_sample','samples.id','=','category_sample.category_id')
+                        ->join('categories','categories.id','=','category_sample.category_id')
+                        ->where('categories.slug','=',$category)->select('samples.*')->get();
+        return $samples;
 
     }
 
