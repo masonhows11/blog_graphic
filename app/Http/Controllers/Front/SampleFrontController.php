@@ -14,24 +14,27 @@ class SampleFrontController extends Controller
 
     public function index()
     {
-        $categories = Category::where('parent_id',null)->get();
-        $samples = Sample::where('approved','=',1)->get();
+        $categories = Category::where('parent_id', null)->get();
+        $samples = Sample::where('approved', '=', 1)->get();
         return view('front.samples.samples')
-            ->with(['categories'=>$categories,'samples'=>$samples]);
+            ->with(['categories' => $categories, 'samples' => $samples]);
     }
 
     public function sample($sample)
 
-    {   $categories = Category::where('parent_id',null)->get();
-        $sample = Sample::with('categories')->where('slug','=',$sample)->first();
-        return view('front.samples.sample')->with(['sample'=>$sample,'categories'=>$categories]);
+    {
+        $categories = Category::where('parent_id', null)->get();
+        $sample = Sample::with('categories')->where('slug', '=', $sample)->first();
+        return view('front.samples.sample')->with(['sample' => $sample, 'categories' => $categories]);
     }
-    public function samplesCategory(Request $category)
+
+    public function samplesCategory($category)
     {
         // return $category;
-        return DB::table('samples')->join('category_sample','samples.id','=','category_sample.category_id')
-                        ->join('categories','categories.id','=','category_sample.category_id')
-                        ->where('categories.slug','=',$category)->select('samples.*')->get();
+        return DB::table('samples')
+            ->join('category_sample', 'samples.id', '=', 'category_sample.sample_id')
+            ->join('categories', 'categories.id', '=', 'category_sample.category_id')
+            ->where('categories.name', '=', $category)->select('samples.*')->get();
 
     }
 
