@@ -40,7 +40,7 @@
                             </div>
                             <div class="card-footer d-flex justify-content-between">
                                 <div class="created_date"><span>ایجاد شده در تاریخ : </span>{{ jdate($sample->created_at)->format('%d %B %Y') }}</div>
-                                <div class="like_dislike"></div>
+                                <div class="like_dislike">like</div>
                             </div>
                         </div>
                     </div>
