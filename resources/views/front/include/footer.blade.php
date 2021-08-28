@@ -29,9 +29,9 @@
         </div>
         <div class="col-lg-3 footer-links">
             <div class="p-5 d-flex justify-content-around">
-                <div><a href="#"><img src="{{'/front/icons/telegram-icon48.png'}}" alt="telegram-link"></a></div>
-                <div><a href="#"><img src="{{'/front/icons/instagram-icon48.svg'}}" alt="instagram-link"></a><span></span></div>
-                <div><a href="#"><img src="{{'/front/icons/whatsapp-icon-40.png'}}" class="whatsapp-link" alt="whats'app-link"></a></div>
+                <div><a href="#"><img src="{{'/images/icons/telegram-icon48.png'}}" alt="telegram-link"></a></div>
+                <div><a href="#"><img src="{{'/images/icons/instagram-icon48.svg'}}" alt="instagram-link"></a><span></span></div>
+                <div><a href="#"><img src="{{'/images/icons/whatsapp-icon-40.png'}}" class="whatsapp-link" alt="whats'app-link"></a></div>
             </div>
         </div>
 
@@ -45,7 +45,19 @@
 <!-- end footer   -->
 
 <script src="{{ asset('js/app.js') }}"></script>
+{{--<script src="{{ asset('front/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>--}}
 <script src="{{ asset('js/http_unpkg.com_aos@2.3.1_dist_aos.js') }}"></script>
+<script src="{{ asset('js/alloy_finger.min.js') }}"></script>
+<script src="{{ asset('js/lc_lightbox.lite.min.js') }}"></script>
+<script>
+    lc_lightbox('.my_box',{
+        wrap_class: 'lcl_fade_oc',
+        gallery: true
+    });
+
+</script>
+
 <script>
     AOS.init({
         duration: 1200,

@@ -8,7 +8,8 @@
     <title>@yield('page-title')</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('front/font/font.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font/font.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lc_lightbox.min.css') }}">
 
 
 

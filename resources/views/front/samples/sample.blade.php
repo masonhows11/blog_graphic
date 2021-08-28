@@ -20,7 +20,23 @@
                             <div class="card-body">
 
                                 <p class="card-text">{{ strip_tags($sample->description) }}</p>
-{{--                                <a href="#" class="btn btn-primary">Go somewhere</a>--}}
+
+                            <div class="col-lg-12">
+                                    <div class="container mt-5 mb-5 sample-images">
+                                        <a class="my_box" href="{{ asset('/template/samples/'.$sample->image1) }}">
+                                            <img src="{{ asset('/template/samples/'.$sample->image1) }}" width="150" alt="image">
+                                        </a>
+                                        <a class="my_box" href="{{ asset('/template/samples/'.$sample->image2) }}">
+                                            <img src="{{ asset('/template/samples/'.$sample->image2) }}" width="150" alt="image">
+                                        </a>
+                                        <a class="my_box" href="{{ asset('/template/samples/'.$sample->image3) }}">
+                                            <img src="{{ asset('/template/samples/'.$sample->image3) }}" width="150"  alt="image">
+                                        </a>
+                                        <a class="my_box" href="{{ asset('/template/samples/'.$sample->image4) }}">
+                                            <img src="{{ asset('/template/samples/'.$sample->image4) }}" width="150"  alt="image">
+                                        </a>
+                                    </div>
+                            </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between">
                                 <div class="created_date"><span>ایجاد شده در تاریخ : </span>{{ jdate($sample->created_at)->format('%d %B %Y') }}</div>
@@ -28,11 +44,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-9" style="border:1px solid tomato;height:200px">
 
-                    </div>
                 </div>
             </div>
 
         </div>
+
 @endsection

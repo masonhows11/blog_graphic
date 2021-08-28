@@ -376,6 +376,9 @@ body {
     font-family:'Yekan-regular',Sans-Serif;
     font-size: larger;
 }
+.one-sample .sample-images img{
+    border-radius: 5px;
+}
 
 /************** filter courses ***********/
 
@@ -387,6 +390,8 @@ body {
 .filter-courses-item .nav-link {
     color: #000000;
 }
+
+/************** light box slideshow ***************/
 
 
 /************ media query ****************/
