@@ -29,10 +29,9 @@ class SampleFrontController extends Controller
     public function samplesCategory(Request $category)
     {
         // return $category;
-        $samples = DB::table('samples')->join('category_sample','samples.id','=','category_sample.category_id')
+        return DB::table('samples')->join('category_sample','samples.id','=','category_sample.category_id')
                         ->join('categories','categories.id','=','category_sample.category_id')
                         ->where('categories.slug','=',$category)->select('samples.*')->get();
-        return $samples;
 
     }
 
