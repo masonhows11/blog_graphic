@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\LikeController;
 use App\Http\Controllers\Front\SampleFrontController;
 use App\Http\Controllers\Front\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -179,6 +180,7 @@ Route::group(['prefix'=>'samples'],function (){
 
 Route::group(['prefix'=>'like'],function (){
 
+    Route::post('/addLike',[LikeController::class,'addLike'])->name('addLike');
 
 });
 

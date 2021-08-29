@@ -64,7 +64,15 @@
         let sampleId = document.getElementById('sampleId').value;
         let userId = document.getElementById('userId').value;
         let token = document.getElementById('token').value;
-        console.log(token);
+
+        $.ajax({
+             method: 'POST',
+             url:'{{ route('addLike') }}',
+             data:{_token: token , sampleId : sampleId , userId : userId }
+        }).done(function () {
+
+        })
+        //console.log(token);
 
 
     })
