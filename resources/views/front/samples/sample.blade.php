@@ -13,6 +13,9 @@
                 <div class="row d-flex flex-column justify-content-center">
                     <div class="col-lg-9 mt-2">
                         <div class="card">
+                             <input type="hidden" id="sampleId"  value="{{ $sample->id }}">
+                             <input type="hidden" id="userId" value="{{ \Illuminate\Support\Facades\Auth::id() }}">
+                            <input type="hidden" id="token" value="{{ csrf_token() }}">
                             <img src="{{ asset('/template/samples/'.$sample->main_image) }}" class="card-img-top" alt="...">
                             <div class="card-header">
                                 {{$sample->title}}
@@ -45,9 +48,8 @@
                                     </div>
                                    <div class="col-6 d-flex justify-content-end">
                                         <div>
-
-                                            <i class="far fa-thumbs-down dislike"  id="dislike" onclick="dislike()">dislike</i>
-                                            <i class="far fa-thumbs-up like" id="like" onclick="like()">like</i>
+                                            <i class="far fa-thumbs-down dislike"  id="dislike" >dislike</i>
+                                            <i class="far fa-thumbs-up like" id="like" >like</i>
                                         </div>
                                     </div>
                                 </div>
@@ -59,13 +61,5 @@
             </div>
 
         </div>
-        <script>
-            function like() {
-                document.getElementById('like').style.color = 'green';
-            }
-            function dislike() {
-                document.getElementById('dislike').style.color = 'tomato';
-            }
 
-        </script>
 @endsection

@@ -55,9 +55,25 @@
         wrap_class: 'lcl_fade_oc',
         gallery: true
     });
+</script>
+<script>
+     $('.like').on('click',function (event) {
+
+        event.preventDefault();
+
+        let sampleId = document.getElementById('sampleId').value;
+        let userId = document.getElementById('userId').value;
+        let token = document.getElementById('token').value;
+        console.log(token);
+
+
+    })
+    $('.dislike').on('click',function (event) {
+        console.log(event);
+    })
+
 
 </script>
-
 <script>
     AOS.init({
         duration: 1200,
