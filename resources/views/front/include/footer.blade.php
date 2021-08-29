@@ -63,10 +63,12 @@
 </script>
 <script type="text/javascript">
 
+   let isLike = null;
     $(document).ready(function () {
 
         $('.like').on('click', function () {
 
+            islike = true;
             // console.log(event);
             let sampleId = document.getElementById('sampleId').value;
             let userId = document.getElementById('userId').value;
@@ -79,7 +81,7 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('add_sample_Like') }}',
-                data: {sampleId: sampleId, userId: userId},
+                data: {islike:islike , sampleId: sampleId, userId: userId},
                 success: function (data) {
                     console.log(data);
                 }

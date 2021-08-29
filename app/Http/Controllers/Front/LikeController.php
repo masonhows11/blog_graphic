@@ -12,5 +12,6 @@ class LikeController extends Controller
     public function addLike(Request $request)
     {
         return $request;
+
     }
 }
