@@ -177,6 +177,11 @@ Route::group(['prefix'=>'samples'],function (){
 
 });
 
+Route::group(['prefix'=>'like'],function (){
+
+    
+});
+
 Route::group(['prefix'=>'creative'],function (){
 
 

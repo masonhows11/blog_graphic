@@ -19,11 +19,11 @@ class Like extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function sample()
     {
-        return $this->belongsToMany(Sample::class);
+        return $this->belongsTo(Sample::class);
     }
 }
