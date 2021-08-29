@@ -180,7 +180,7 @@ Route::group(['prefix'=>'samples'],function (){
 
 Route::group(['prefix'=>'like'],function (){
 
-    Route::post('/addLike',[LikeController::class,'addLike'])->name('addLike');
+    Route::post('/addLike',[LikeController::class,'addLike'])->name('add_sample_Like');
 
 });
 

@@ -3,7 +3,8 @@
     <div class="row d-flex justify-content-evenly bottom-nav mt-5">
 
         <div class="col-lg-2 col-md-2 mt-2 col-sm-3 bottom-nav-item text-center">
-            <img src="{{'/images/template/vector-contact-us-resized.jpg'}}" class="img-thumbnail" alt="contact_us_image">
+            <img src="{{'/images/template/vector-contact-us-resized.jpg'}}" class="img-thumbnail"
+                 alt="contact_us_image">
             <a href="#"><p>ارتباط با ما</p></a>
         </div>
         <div class="col-lg-2 col-md-2 mt-2 col-sm-3  bottom-nav-item text-center">
@@ -25,13 +26,17 @@
 
         <div class="col-lg-3 footer-about text-center">
             <strong>درباره :</strong>
-            <div class="p-2"><a href="about_us.html">هدف مجموعه <span class="key-name-site">بردگراف</span> آموزش تخصصی نرم افزارهای گرافیکی است و در تلاشیم نکات گرافیکی را در اختیار مخاطبان و علاقمندان قرار دهیم....</a></div>
+            <div class="p-2"><a href="about_us.html">هدف مجموعه <span class="key-name-site">بردگراف</span> آموزش تخصصی
+                    نرم افزارهای گرافیکی است و در تلاشیم نکات گرافیکی را در اختیار مخاطبان و علاقمندان قرار دهیم....</a>
+            </div>
         </div>
         <div class="col-lg-3 footer-links">
             <div class="p-5 d-flex justify-content-around">
                 <div><a href="#"><img src="{{'/images/icons/telegram-icon48.png'}}" alt="telegram-link"></a></div>
-                <div><a href="#"><img src="{{'/images/icons/instagram-icon48.svg'}}" alt="instagram-link"></a><span></span></div>
-                <div><a href="#"><img src="{{'/images/icons/whatsapp-icon-40.png'}}" class="whatsapp-link" alt="whats'app-link"></a></div>
+                <div><a href="#"><img src="{{'/images/icons/instagram-icon48.svg'}}"
+                                      alt="instagram-link"></a><span></span></div>
+                <div><a href="#"><img src="{{'/images/icons/whatsapp-icon-40.png'}}" class="whatsapp-link"
+                                      alt="whats'app-link"></a></div>
             </div>
         </div>
 
@@ -51,32 +56,41 @@
 <script src="{{ asset('js/alloy_finger.min.js') }}"></script>
 <script src="{{ asset('js/lc_lightbox.lite.min.js') }}"></script>
 <script>
-    lc_lightbox('.my_box',{
+    lc_lightbox('.my_box', {
         wrap_class: 'lcl_fade_oc',
         gallery: true
     });
 </script>
-<script>
-     $('.like').on('click',function (event) {
+<script type="text/javascript">
 
-        event.preventDefault();
+    $(document).ready(function () {
 
-        let sampleId = document.getElementById('sampleId').value;
-        let userId = document.getElementById('userId').value;
-        let token = document.getElementById('token').value;
+        $('.like').on('click', function () {
 
-        $.ajax({
-             method: 'POST',
-             url:'{{ route('addLike') }}',
-             data:{_token: token , sampleId : sampleId , userId : userId }
-        }).done(function () {
+            // console.log(event);
+            let sampleId = document.getElementById('sampleId').value;
+            let userId = document.getElementById('userId').value;
+            //let token = document.getElementById('token').value;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'POST',
+                url: '{{ route('add_sample_Like') }}',
+                data: {sampleId: sampleId, userId: userId},
+                success: function (data) {
+                    console.log(data);
+                }
+            });
 
-        })
-        //console.log(token);
+        });
+
+    });
 
 
-    })
-    $('.dislike').on('click',function (event) {
+    $('.dislike').on('click', function (event) {
         console.log(event);
     })
 

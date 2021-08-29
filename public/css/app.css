@@ -18258,6 +18258,10 @@ body {
   margin-left: 15px;
 }
 
+.one-sample .card .card-footer .fa-thumbs-up:hover {
+  cursor: pointer;
+}
+
 /************** filter courses ***********/
 .filter-courses {
   max-height: 60px;
@@ -18268,7 +18272,6 @@ body {
   color: #000000;
 }
 
-/************** light box slideshow ***************/
 /************ media query ****************/
 @media screen and (max-width: 768px) {
   .footer .footer-copy-right {

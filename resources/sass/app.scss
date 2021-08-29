@@ -387,6 +387,9 @@ body {
 .one-sample .card .card-footer .dislike{
 margin-left: 15px;
 }
+.one-sample .card .card-footer .fa-thumbs-up:hover{
+    cursor:pointer;
+}
 /************** filter courses ***********/
 
 .filter-courses {
@@ -398,7 +401,7 @@ margin-left: 15px;
     color: #000000;
 }
 
-/************** light box slideshow ***************/
+
 
 
 /************ media query ****************/
