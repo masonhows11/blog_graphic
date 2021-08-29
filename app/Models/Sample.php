@@ -12,7 +12,7 @@ class Sample extends Model
     protected $fillable = ['title','description','main_image','image1','image2','image3','image4'];
 
 
-    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
@@ -30,5 +30,10 @@ class Sample extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }
