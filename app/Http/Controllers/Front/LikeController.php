@@ -9,7 +9,7 @@ class LikeController extends Controller
 {
     //
 
-    public function addLike(Request $request)
+    public function updateLike(Request $request)
     {
         return $request;
 
