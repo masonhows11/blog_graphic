@@ -69,10 +69,7 @@
         $('.like').on('click', function (event) {
             event.preventDefault();
             let is_like = event.target.previousElementSibling == null;
-
             let sample_id = document.getElementById('sample_id').value;
-            let user_id = document.getElementById('user_id').value;
-
           $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -81,7 +78,7 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('add_sample_Like') }}',
-                data: {is_like:is_like,sample_id:sample_id, user_id:user_id},
+                data: {is_like:is_like,sample_id:sample_id},
             }).done(function () {
 
             });
