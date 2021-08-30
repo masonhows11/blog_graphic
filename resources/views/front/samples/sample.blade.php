@@ -48,6 +48,8 @@
                                     </div>
                                    <div class="col-6 d-flex justify-content-end">
                                         <div class="d-flex flex-row-reverse">
+                                            {{ Auth::user()->likes()->where('sample_id', $sample->id)->first() ?
+                                              Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 1 }}
                                             <i class="far fa-thumbs-up like" id="like">like</i>
                                             <i class="far fa-thumbs-down like"  id="dislike">dislike</i>
                                         </div>
