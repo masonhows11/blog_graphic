@@ -82,6 +82,12 @@
             }).done(function () {
                     event.target.style.color = is_like ? event.target.style.color === '' ? 'green' : ''
                     : event.target.style.color === '' ? 'tomato' : '';
+                    if(is_like)
+                    {
+                        event.target.nextElementSibling.style.color = '';
+                    }else{
+                        event.target.previousElementSibling.style.color = '';
+                    }
             });
 
         });
