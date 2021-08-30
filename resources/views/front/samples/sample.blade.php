@@ -47,9 +47,9 @@
                                         <div class="created_date"><span>ایجاد شده در تاریخ : </span>{{ jdate($sample->created_at)->format('%d %B %Y') }}</div>
                                     </div>
                                    <div class="col-6 d-flex justify-content-end">
-                                        <div>
-                                            <i class="far fa-thumbs-down like"  id="dislike" >dislike</i>
-                                            <i class="far fa-thumbs-up like" id="like" >like</i>
+                                        <div class="d-flex flex-row-reverse">
+                                            <i class="far fa-thumbs-up like" id="like">like</i>
+                                            <i class="far fa-thumbs-down like"  id="dislike">dislike</i>
                                         </div>
                                     </div>
                                 </div>

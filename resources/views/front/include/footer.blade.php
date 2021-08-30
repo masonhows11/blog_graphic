@@ -66,14 +66,14 @@
    let isLike = null;
     $(document).ready(function () {
 
-        $('.like').on('click', function () {
+        $('.like').on('click', function (event) {
 
             islike = true;
-            // console.log(islike);
+            console.log(event);
             let sample_id = document.getElementById('sample_id').value;
             let user_id = document.getElementById('user_id').value;
             //let token = document.getElementById('token').value;
-            $.ajaxSetup({
+           /* $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
@@ -85,7 +85,7 @@
                 success: function (data) {
                     console.log(data);
                 }
-            });
+            });*/
 
         });
 
