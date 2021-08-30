@@ -18,8 +18,12 @@ class LikeController extends Controller
         $like->sample_id = $request->sample_id;
         $like->user_id = $request->user_id;
         $like->like = $is_like;
-        $like->save();
-        return response()->json(['status'=>200]);
+        if( $like->save())
+        {
+            return response()->json(['status'=>200]);
+        }
+        else
+            return response()->json(['status'=>500]);
        // return redirect()->back();
 
     }
