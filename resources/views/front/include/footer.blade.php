@@ -69,9 +69,9 @@
         $('.like').on('click', function () {
 
             islike = true;
-            // console.log(event);
-            let sampleId = document.getElementById('sampleId').value;
-            let userId = document.getElementById('userId').value;
+            // console.log(islike);
+            let sample_id = document.getElementById('sample_id').value;
+            let user_id = document.getElementById('user_id').value;
             //let token = document.getElementById('token').value;
             $.ajaxSetup({
                 headers: {
@@ -81,7 +81,7 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('add_sample_Like') }}',
-                data: {islike:islike , sampleId: sampleId, userId: userId},
+                data: {islike:islike , sample_id:sample_id, user_id:user_id},
                 success: function (data) {
                     console.log(data);
                 }
@@ -89,9 +89,9 @@
 
         });
 
-        $('.dislike').on('click', function (event) {
+       /* $('.dislike').on('click', function (event) {
             console.log(event);
-        })
+        })*/
 
     });
 
