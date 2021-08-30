@@ -56,17 +56,17 @@
                                     <div class="d-flex flex-row-reverse">
                                         @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
                                             Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 1 )
-                                            <i class="far fa-thumbs-up like" id="like" style="color:green">like</i>
+                                            <i class="far fa-thumbs-up like" id="like" style="color:green"><span id="like_count"></span></i>
                                         @else
-                                            <i class="far fa-thumbs-up like" id="like">like</i>
+                                            <i class="far fa-thumbs-up like" id="like"><span id="like_count"></span></i>
                                         @endif
 
                                         @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
                                             Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 0 )
                                             <i class="far fa-thumbs-down like" id="dislike"
-                                               style="color:tomato">dislike</i>
+                                               style="color:tomato"><span id="dislike_Count"></span></i>
                                         @else
-                                            <i class="far fa-thumbs-down like" id="dislike">dislike</i>
+                                            <i class="far fa-thumbs-down like" id="dislike"><span id="dislike_Count"></span></i>
                                         @endif
 
 

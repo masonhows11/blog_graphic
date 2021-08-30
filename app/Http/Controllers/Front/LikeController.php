@@ -44,4 +44,9 @@ class LikeController extends Controller
         }
         return null;
     }
+
+    public function likeCount()
+    {
+
+    }
 }
