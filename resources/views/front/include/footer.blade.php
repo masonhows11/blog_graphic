@@ -89,12 +89,14 @@
 
         });
 
+        $('.dislike').on('click', function (event) {
+            console.log(event);
+        })
+
     });
 
 
-    $('.dislike').on('click', function (event) {
-        console.log(event);
-    })
+
 
 
 </script>
