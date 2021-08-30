@@ -80,7 +80,8 @@
                 url: '{{ route('add_sample_Like') }}',
                 data: {is_like:is_like,sample_id:sample_id},
             }).done(function () {
-
+                    event.target.style.color = is_like ? event.target.style.color === '' ? 'green' : ''
+                    : event.target.style.color === '' ? 'tomato' : '';
             });
 
         });
