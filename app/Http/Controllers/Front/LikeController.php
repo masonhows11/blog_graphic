@@ -13,11 +13,9 @@ class LikeController extends Controller
 
     public function updateLike(Request $request)
     {
-        //return $request;
-        $is_like = $request['is_like'] === true;
 
+        $is_like = $request['is_like'] === true;
         $already_like = Like::where('user_id',$request->user_id)->where('sample_id',$request->sample_id)->first();
-        //return $already_like;
         $like = new Like();
         $like->sample_id = $request->sample_id;
         $like->user_id = $request->user_id;

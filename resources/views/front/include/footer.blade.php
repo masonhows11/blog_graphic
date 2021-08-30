@@ -63,17 +63,17 @@
 </script>
 <script type="text/javascript">
 
-   let isLike = null;
+
     $(document).ready(function () {
 
         $('.like').on('click', function (event) {
+            event.preventDefault();
+            let is_like = event.target.previousElementSibling == null;
 
-            islike = true;
-            console.log(event);
             let sample_id = document.getElementById('sample_id').value;
             let user_id = document.getElementById('user_id').value;
-            //let token = document.getElementById('token').value;
-           /* $.ajaxSetup({
+
+          $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
@@ -81,17 +81,14 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('add_sample_Like') }}',
-                data: {islike:islike , sample_id:sample_id, user_id:user_id},
-                success: function (data) {
-                    console.log(data);
-                }
-            });*/
+                data: {is_like:is_like,sample_id:sample_id, user_id:user_id},
+            }).done(function () {
+
+            });
 
         });
 
-       /* $('.dislike').on('click', function (event) {
-            console.log(event);
-        })*/
+
 
     });
 
