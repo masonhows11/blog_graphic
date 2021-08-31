@@ -68,7 +68,15 @@
 
         $('.like').on('click', function (event) {
             event.preventDefault();
-            let is_like = event.target.previousElementSibling == null;
+            console.log(event)
+            if(event.target.id === 'dislike')
+            {
+                console.log('dislike clicked')
+            }else
+            {
+                console.log('like clicked')
+            }
+         
             let sample_id = document.getElementById('sample_id').value;
           $.ajaxSetup({
                 headers: {
@@ -78,22 +86,15 @@
             $.ajax({
                 method: 'POST',
                 url: '{{ route('add_sample_Like') }}',
-                data: {is_like:is_like,sample_id:sample_id},
+                data: {sample_id:sample_id},
             }).done(function () {
-                    event.target.style.color = is_like ? event.target.style.color === '' ? 'green' : ''
-                    : event.target.style.color === '' ? 'tomato' : '';
-                    if(is_like)
-                    {
-                        event.target.nextElementSibling.style.color = '';
-                    }else{
-                        event.target.previousElementSibling.style.color = '';
-                    }
+
 
             });
 
         });
 
-        $(window).on('load',function () {
+       /* $(window).on('load',function () {
 
             let sample_id = document.getElementById('sample_id').value;
             $.ajaxSetup({
@@ -109,7 +110,7 @@
                 document.getElementById('like_count').innerText = data['like_count'];
                 document.getElementById('dislike_Count').innerText = data['like_dis_count'];
             });
-        })
+        })*/
 
 
 

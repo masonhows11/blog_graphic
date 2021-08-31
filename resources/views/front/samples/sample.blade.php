@@ -55,20 +55,33 @@
                                 <div class="col-6 d-flex justify-content-end">
 
                                     <div class="d-flex flex-row-reverse">
-                                        @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
+
+                                        <div class="dislike_sec">
+                                            <span id="dislike_count">2</span>
+                                            <i class="far fa-thumbs-down like" id="dislike"></i>
+
+                                        </div>
+
+                                        <div class="like_sec mx-2">
+                                            <span id="like_count">5</span>
+                                            <i class="far fa-thumbs-up like" id="like"> </i>
+
+                                        </div>
+                                      {{--  @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
                                             Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 1 )
                                             <i class="far fa-thumbs-up like" id="like" style="color:green"></i>
                                         @else
                                             <i class="far fa-thumbs-up like" id="like"></i>
-                                        @endif
+                                        @endif--}}
 
 
-                                        @if( Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
+
+                                      {{--  @if( Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
                                             Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 0 )
                                             <i class="far fa-thumbs-down like" id="dislike" style="color:tomato"></i>
                                         @else
                                             <i class="far fa-thumbs-down like" id="dislike"></i>
-                                        @endif
+                                        @endif--}}
 
                                     </div>
                                 </div>

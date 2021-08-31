@@ -18254,10 +18254,6 @@ body {
   font-size: 25px;
 }
 
-.one-sample .card .card-footer .like {
-  margin-right: 15px;
-}
-
 .one-sample .card .card-footer .fa-thumbs-up:hover,
 .one-sample .card .card-footer .fa-thumbs-down:hover {
   cursor: pointer;
