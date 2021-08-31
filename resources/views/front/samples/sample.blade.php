@@ -56,17 +56,21 @@
                                     <div class="d-flex flex-row-reverse">
                                         @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
                                             Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 1 )
-                                            <i class="far fa-thumbs-up like" id="like" style="color:green"><span id="like_count"></span></i>
+                                            <i class="far fa-thumbs-up like" id="like" style="color:green"><span
+                                                    id="like_count">@foreach($sample->likes as $like){{ $like->like }}@endforeach</span></i>
                                         @else
-                                            <i class="far fa-thumbs-up like" id="like"><span id="like_count"></span></i>
+                                            <i class="far fa-thumbs-up like" id="like"><span
+                                                    id="like_count">{{ $sample->likes[0]->like }}</span></i>
                                         @endif
 
                                         @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
                                             Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 0 )
                                             <i class="far fa-thumbs-down like" id="dislike"
-                                               style="color:tomato"><span id="dislike_Count"></span></i>
+                                               style="color:tomato"><span
+                                                    id="dislike_Count">{{ $sample->likes[0]->like }}</span></i>
                                         @else
-                                            <i class="far fa-thumbs-down like" id="dislike"><span id="dislike_Count"></span></i>
+                                            <i class="far fa-thumbs-down like" id="dislike"><span
+                                                    id="dislike_Count">{{ $sample->likes[0]->like }}</span></i>
                                         @endif
 
 
@@ -74,6 +78,10 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- display category done--}}
+                        {{--  @foreach($sample->categories as $cat)
+                             {{ $cat->title }}
+                          @endforeach--}}
                     </div>
                 </div>
 

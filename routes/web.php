@@ -181,6 +181,7 @@ Route::group(['prefix'=>'samples'],function (){
 Route::group(['prefix'=>'like'],function (){
 
     Route::post('/addLike',[LikeController::class,'updateLike'])->name('add_sample_Like');
+    Route::get('/countLike',[LikeController::class,'likeCount'])->name('get_sample_like');
 
 });
 

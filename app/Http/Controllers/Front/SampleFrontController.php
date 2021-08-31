@@ -24,7 +24,8 @@ class SampleFrontController extends Controller
 
     {
         $categories = Category::where('parent_id', null)->get();
-        $sample = Sample::with('categories')->where('slug', '=', $sample)->first();
+        $sample = Sample::with('categories','likes')->where('slug', '=', $sample)->first();
+        //return  $sample;
         return view('front.samples.sample')->with(['sample' => $sample, 'categories' => $categories]);
     }
 
@@ -35,6 +36,7 @@ class SampleFrontController extends Controller
             ->join('category_sample', 'samples.id', '=', 'category_sample.sample_id')
             ->join('categories', 'categories.id', '=', 'category_sample.category_id')
             ->where('categories.name', '=', $category)->select('samples.*')->get();
+
           return view('front.samples.samples_base_category')
               ->with(['samples'=>$samples,'categories'=>$categories]);
 
