@@ -53,40 +53,27 @@
                                     </div>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
+
                                     <div class="d-flex flex-row-reverse">
-                                        <div class="like_sec">
-                                            @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
-                                                 Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 1 )
-                                                <i class="far fa-thumbs-up like" id="like" style="color:green"></i>
-                                            @else
-                                                <i class="far fa-thumbs-up like" id="like"><span id="like_count"></span>
-                                                </i>
-                                            @endif
-                                        </div>
-
-                                        <span id="like_count"></span>
+                                        @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
+                                            Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 1 )
+                                            <i class="far fa-thumbs-up like" id="like" style="color:green"></i>
+                                        @else
+                                            <i class="far fa-thumbs-up like" id="like"></i>
+                                        @endif
 
 
-                                        <div class="dislike_sec">
-                                            @if( Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
-                                                  Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 0 )
-                                                <i class="far fa-thumbs-down like" id="dislike"
-                                                   style="color:tomato"></i>
-                                            @else
-                                                <i class="far fa-thumbs-down like" id="dislike"></i>
-                                            @endif
-                                        </div>
-
-                                        <span id="dislike_Count"></span>
+                                        @if( Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
+                                            Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 0 )
+                                            <i class="far fa-thumbs-down like" id="dislike" style="color:tomato"></i>
+                                        @else
+                                            <i class="far fa-thumbs-down like" id="dislike"></i>
+                                        @endif
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{-- display category done--}}
-                        {{--  @foreach($sample->categories as $cat)
-                             {{ $cat->title }}
-                          @endforeach--}}
                     </div>
                 </div>
 

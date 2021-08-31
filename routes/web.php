@@ -182,7 +182,7 @@ Route::group(['prefix'=>'like'],function (){
 
     Route::post('/addLike',[LikeController::class,'updateLike'])->name('add_sample_Like');
     Route::get('/countLike',[LikeController::class,'likeCount'])->name('get_likes');
-    Route::get('/countDisLike',[LikeController::class,'disLikeCount'])->name('get_disLike');
+
 
 });
 
