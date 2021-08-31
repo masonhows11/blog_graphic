@@ -67,21 +67,8 @@
                                             <i class="far fa-thumbs-up like" id="like"> </i>
 
                                         </div>
-                                      {{--  @if(Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
-                                            Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 1 )
-                                            <i class="far fa-thumbs-up like" id="like" style="color:green"></i>
-                                        @else
-                                            <i class="far fa-thumbs-up like" id="like"></i>
-                                        @endif--}}
 
 
-
-                                      {{--  @if( Auth::user()->likes()->where('sample_id', $sample->id)->first() &&
-                                            Auth::user()->likes()->where('sample_id', $sample->id)->first()->like == 0 )
-                                            <i class="far fa-thumbs-down like" id="dislike" style="color:tomato"></i>
-                                        @else
-                                            <i class="far fa-thumbs-down like" id="dislike"></i>
-                                        @endif--}}
 
                                     </div>
                                 </div>

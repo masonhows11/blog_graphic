@@ -68,33 +68,24 @@
 
         $('.like').on('click', function (event) {
             event.preventDefault();
-            console.log(event)
-            if(event.target.id === 'dislike')
-            {
-                console.log('dislike clicked')
-            }else
-            {
-                console.log('like clicked')
+            //console.log(event)
+
+            let like = document.getElementById('like');
+            let dis_like = document.getElementById('dislike');
+            let is_like = '';
+            if (event.target.id === 'dislike') {
+
+                is_like = false;
+                event.target.style.color = 'tomato';
+                like.style.color = '';
+                //console.log('dislike clicked')
+            } else {
+                is_like = true;
+                dis_like.style.color = '';
+                event.target.style.color = 'green';
+                //console.log('like clicked')
+
             }
-         
-            let sample_id = document.getElementById('sample_id').value;
-          $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                method: 'POST',
-                url: '{{ route('add_sample_Like') }}',
-                data: {sample_id:sample_id},
-            }).done(function () {
-
-
-            });
-
-        });
-
-       /* $(window).on('load',function () {
 
             let sample_id = document.getElementById('sample_id').value;
             $.ajaxSetup({
@@ -103,8 +94,28 @@
                 }
             });
             $.ajax({
-                method: 'GET',
-                url: '{{ route('get_likes') }}',
+                method: 'POST',
+                url: '{{ route('add_sample_Like') }}',
+                data: {is_like:is_like ,sample_id: sample_id},
+            }).done(function (data) {
+
+                console.log(data);
+
+            });
+
+        });
+
+        /* $(window).on('load',function () {
+
+             let sample_id = document.getElementById('sample_id').value;
+             $.ajaxSetup({
+                 headers: {
+                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 }
+             });
+             $.ajax({
+                 method: 'GET',
+                 url: '{{ route('get_likes') }}',
                 data: {sample_id:sample_id},
             }).done(function (data) {
                 document.getElementById('like_count').innerText = data['like_count'];
@@ -113,14 +124,7 @@
         })*/
 
 
-
-
-
-
     });
-
-
-
 
 
 </script>
