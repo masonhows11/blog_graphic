@@ -88,12 +88,31 @@
                     }else{
                         event.target.previousElementSibling.style.color = '';
                     }
+
             });
 
         });
 
+        $(window).on('load',function () {
 
-        
+            let sample_id = document.getElementById('sample_id').value;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'GET',
+                url: '{{ route('get_likes') }}',
+                data: {sample_id:sample_id},
+            }).done(function (data) {
+                document.getElementById('like_count').innerText = data['like_count'];
+                document.getElementById('dislike_Count').innerText = data['like_dis_count'];
+            });
+        })
+
+
+
 
 
 

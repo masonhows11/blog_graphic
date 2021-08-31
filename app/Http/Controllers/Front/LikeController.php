@@ -45,8 +45,13 @@ class LikeController extends Controller
         return null;
     }
 
-    public function likeCount()
+    public function likeCount(Request $request)
     {
 
+        $like_count = Like::where('sample_id',$request->sample_id)->where('like','=',1)->count();
+        $like_dis_count = Like::where('sample_id',$request->sample_id)->where('like','=',0)->count();
+        return response()->json(['like_count'=>$like_count,'like_dis_count'=>$like_dis_count]);
     }
+
+
 }
