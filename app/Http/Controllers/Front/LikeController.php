@@ -17,8 +17,8 @@ class LikeController extends Controller
          //return $request;
 
         $sample_id = $request->sample_id;
-        $is_like = $request['is_like'];
-        $update_like = false;
+        $is_like = $request['is_like']=== 'true';
+        //$update_like = false;
 
         $user_id = Auth::id();
         $sample = Sample::find($sample_id);
@@ -32,6 +32,28 @@ class LikeController extends Controller
 
         if($like_exists)
         {
+              $already_like  = $like_exists->like == 'true';
+
+              if($is_like == $already_like)
+              {
+                  $like_exists->delete();
+              }else
+              {
+
+              }
+
+            /*if($is_like == $like_exists->like)
+            {
+                $like_exists->delete();
+            }*/
+
+        }else {
+
+            $like = new Like();
+            $like->user_id = $user_id;
+            $like->sample_id = $sample_id;
+            $like->like = $is_like;
+            $like->save();
 
         }
 
