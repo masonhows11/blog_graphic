@@ -79,6 +79,7 @@
                 event.target.style.color = 'tomato';
                 like.style.color = '';
                 //console.log('dislike clicked')
+
             } else {
                 is_like = true;
                 dis_like.style.color = '';

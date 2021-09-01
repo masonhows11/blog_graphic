@@ -14,11 +14,23 @@ class LikeController extends Controller
 
     public function updateLike(Request $request)
     {
-        return $request;
+        // return $request;
 
         $sample_id = $request->sample_id;
         $is_like = $request['is_like'] === 'true';
         $update_like = false;
+
+        $user_id = Auth::id();
+        $sample = Sample::find($sample_id);
+
+        if(!$sample)
+        {
+            return null;
+        }
+
+        $like = Like::where('sample_id','=',$sample_id)->where('user_id','=',$user_id)->first();
+        //$user->likes->where('sapmple_id',$sample_id)->first();
+
 
     }
 
