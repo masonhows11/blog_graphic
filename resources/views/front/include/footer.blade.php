@@ -66,26 +66,48 @@
 
     $(document).ready(function () {
 
+
+        function load_likes()
+        {
+            let sample_id = document.getElementById('sample_id').value;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'GET',
+                url: '{{ route('get_likes') }}',
+                data: {sample_id:sample_id},
+            }).done(function (data) {
+                console.log(data);
+                document.getElementById('like_count').innerText = data['likes'];
+                document.getElementById('dislike_count').innerText = data['dislikes'];
+            });
+        }
+
+        $(window).on('load',function () {
+            load_likes();
+        })
+
         $('.like').on('click', function (event) {
             event.preventDefault();
-            //console.log(event)
-
             let like = document.getElementById('like');
             let dis_like = document.getElementById('dislike');
             let is_like = '';
-            if (event.target.id === 'dislike') {
+
+          if (event.target.id === 'dislike') {
 
                 is_like = false;
                 event.target.style.color = 'tomato';
                 like.style.color = '';
-                //console.log('dislike clicked')
+               // load_likes();
 
             } else {
                 is_like = true;
                 dis_like.style.color = '';
                 event.target.style.color = 'green';
-                //console.log('like clicked')
-
+                //load_likes();
             }
 
             let sample_id = document.getElementById('sample_id').value;
@@ -102,30 +124,48 @@
 
 
 
-                console.log(data);
+
+
+
+
+
+
+
+                
+               /* let sample_id = document.getElementById('sample_id').value;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route('get_likes') }}',
+                    data: {sample_id:sample_id},
+                }).done(function (data) {
+                    console.log(data);
+                    document.getElementById('like_count').innerText = data['likes'];
+                    document.getElementById('dislike_count').innerText = data['dislikes'];
+                });*/
+
+                /*if (event.target.id === 'dislike') {
+                    is_like = false;
+                    event.target.style.color = 'tomato';
+                    like.style.color = '';
+
+                } else {
+                    is_like = true;
+                    dis_like.style.color = '';
+                    event.target.style.color = 'green';
+
+
+                }*/
 
             });
 
         });
 
-        $(window).on('load',function () {
 
-             let sample_id = document.getElementById('sample_id').value;
-             $.ajaxSetup({
-                 headers: {
-                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                 }
-             });
-             $.ajax({
-                 method: 'GET',
-                 url: '{{ route('get_likes') }}',
-                data: {sample_id:sample_id},
-            }).done(function (data) {
-                console.log(data);
-                document.getElementById('like_count').innerText = data['likes'];
-                document.getElementById('dislike_count').innerText = data['dislikes'];
-            });
-        })
 
 
     });
