@@ -19,7 +19,7 @@ class CreateLikesTable extends Migration
             $table->unsignedBigInteger('sample_id')->nullable();
             $table->unsignedBigInteger('courses_id')->nullable();
             $table->unsignedBigInteger('create_design_id')->nullable();
-            $table->tinyInteger('like');
+            $table->boolean('like');
             $table->timestamps();
         });
     }
