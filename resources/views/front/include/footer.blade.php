@@ -100,6 +100,8 @@
                 data: {is_like:is_like ,sample_id: sample_id},
             }).done(function (data) {
 
+
+
                 console.log(data);
 
             });

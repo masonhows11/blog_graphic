@@ -49,7 +49,7 @@
                             <div class="row d-flex flex-row justify-content-evenly">
                                 <div class="col-6">
                                     <div class="created_date">
-                                       {{ jdate($sample->created_at)->format('%d %B %Y') }}
+                                        {{ jdate($sample->created_at)->format('%d %B %Y') }}
                                     </div>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
@@ -57,16 +57,27 @@
                                     <div class="d-flex flex-row-reverse">
 
                                         <div class="dislike_sec">
-                                            <span id="dislike_count"></span>
-                                            <i class="far fa-thumbs-down like" id="dislike"></i>
+                                            @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
+                                                 Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',0)->first() )
+                                                <span id="dislike_count"></span>
+                                                <i class="far fa-thumbs-down like" style="color:tomato" id="dislike"></i>
+                                            @else
+                                                <span id="dislike_count"></span>
+                                                <i class="far fa-thumbs-down like" id="dislike"></i>
+                                            @endif
 
                                         </div>
 
                                         <div class="like_sec mx-2">
-                                            <span id="like_count"></span>
-                                            <i class="far fa-thumbs-up like" id="like"></i>
+                                            @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
+                                                 Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',1)->first())
+                                                <span id="like_count"></span>
+                                                <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
+                                            @else
+                                                <span id="like_count"></span>
+                                                <i class="far fa-thumbs-up like" id="like"></i>
+                                            @endif
                                         </div>
-
 
 
                                     </div>
