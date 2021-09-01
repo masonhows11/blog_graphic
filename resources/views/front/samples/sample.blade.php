@@ -49,7 +49,7 @@
                             <div class="row d-flex flex-row justify-content-evenly">
                                 <div class="col-6">
                                     <div class="created_date">
-                                        <span>ایجاد شده در تاریخ : </span>{{ jdate($sample->created_at)->format('%d %B %Y') }}
+                                       {{ jdate($sample->created_at)->format('%d %B %Y') }}
                                     </div>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
@@ -57,15 +57,14 @@
                                     <div class="d-flex flex-row-reverse">
 
                                         <div class="dislike_sec">
-                                            <span id="dislike_count">2</span>
+                                            <span id="dislike_count"></span>
                                             <i class="far fa-thumbs-down like" id="dislike"></i>
 
                                         </div>
 
                                         <div class="like_sec mx-2">
-                                            <span id="like_count">5</span>
-                                            <i class="far fa-thumbs-up like" id="like"> </i>
-
+                                            <span id="like_count"></span>
+                                            <i class="far fa-thumbs-up like" id="like"></i>
                                         </div>
 
 

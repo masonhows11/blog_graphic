@@ -18,52 +18,42 @@ class LikeController extends Controller
 
         $sample_id = $request->sample_id;
         $is_like = $request['is_like'] === 'true';
-
-
         $user_id = Auth::id();
         $sample = Sample::find($sample_id);
-
         if (!$sample) {
             return null;
         }
-
         $like_exists = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
-
-
-       if ($like_exists) {
-
+        if ($like_exists) {
             $already_like = $like_exists->like;
-
             if ($already_like == $is_like) {
                 $like_exists->delete();
                 return null;
-            }elseif($already_like != $is_like){
+            } elseif ($already_like != $is_like) {
                 $like_exists->like = $is_like;
                 $like_exists->save();
                 return null;
             }
-
-
-
         } else {
-
             $like = new Like();
             $like->user_id = $user_id;
             $like->sample_id = $sample_id;
             $like->like = $is_like;
             $like->save();
-
         }
-
-
     }
 
     public function likeCount(Request $request)
     {
 
-        $like_count = Like::where('sample_id', $request->sample_id)->where('like', '=', 1)->count();
-        $like_dis_count = Like::where('sample_id', $request->sample_id)->where('like', '=', 0)->count();
-        return response()->json(['like_count' => $like_count, 'like_dis_count' => $like_dis_count]);
+        $likes = Like::where('sample_id', $request->sample_id)
+            ->where('like', '=', 1)->count();
+
+        $dislikes = Like::where('sample_id', $request->sample_id)
+            ->where('like', '=', 0)->count();
+
+        return response()
+            ->json(['likes' => $likes, 'dislikes' => $dislikes]);
     }
 
 
