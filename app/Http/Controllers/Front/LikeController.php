@@ -32,20 +32,8 @@ class LikeController extends Controller
 
         if($like_exists)
         {
-              $already_like  = $like_exists->like == 'true';
 
-              if($is_like == $already_like)
-              {
-                  $like_exists->delete();
-              }else
-              {
-
-              }
-
-            /*if($is_like == $like_exists->like)
-            {
-                $like_exists->delete();
-            }*/
+            
 
         }else {
 
