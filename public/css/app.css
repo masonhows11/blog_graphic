@@ -18259,6 +18259,11 @@ body {
   cursor: pointer;
 }
 
+.card-footer .dislike_sec .dislike_count,
+.card-footer .like_sec .like_count {
+  font-family: "iransans_num_bold", serif;
+}
+
 /************** filter courses ***********/
 .filter-courses {
   max-height: 60px;

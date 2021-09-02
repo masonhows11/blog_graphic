@@ -58,41 +58,37 @@
 
                                         <div class="dislike_sec">
                                             @if(Auth::check())
-
                                                 @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
                                                      Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',0)->first() )
-                                                    <span id="dislike_count"></span>
-                                                    <i class="far fa-thumbs-down like" style="color:tomato"
-                                                       id="dislike"></i>
+                                                    <span id="dislike_count" class="dislike_count"></span>
+                                                    <i class="far fa-thumbs-down like" style="color:tomato" id="dislike"></i>
                                                 @else
-                                                    <span id="dislike_count"></span>
+                                                    <span id="dislike_count" class="dislike_count"></span>
                                                     <i class="far fa-thumbs-down like" id="dislike"></i>
                                                 @endif
-
                                             @else
-                                                <span id="dislike_count"></span>
+                                                <span id="dislike_count" class="dislike_count"></span>
                                                 <i class="far fa-thumbs-down like" id="dislike"></i>
                                             @endif
-                                            
                                         </div>
+
                                         <div class="like_sec mx-2">
                                             @if(Auth::check())
-
                                                 @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
                                                      Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',1)->first())
-                                                    <span id="like_count"></span>
+                                                    <span id="like_count" class="like_count"></span>
                                                     <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
                                                 @else
-                                                    <span id="like_count"></span>
+                                                    <span id="like_count" class="like_count"></span>
                                                     <i class="far fa-thumbs-up like" id="like"></i>
                                                 @endif
-
                                             @else
-                                                <span id="like_count"></span>
+                                                <span id="like_count" class="like_count"></span>
                                                 <i class="far fa-thumbs-up like" id="like"></i>
                                             @endif
-
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
