@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-    //
+
 
     public function updateLike(Request $request)
     {
@@ -29,11 +29,11 @@ class LikeController extends Controller
 
             if ($already_like == $is_like) {
                 $like_exists->delete();
-                //return null;
+
             } elseif ($already_like != $is_like) {
                 $like_exists->like = $is_like;
                 $like_exists->save();
-                //return null;
+
             }
         } else {
             $like = new Like();
@@ -49,10 +49,8 @@ class LikeController extends Controller
 
         }else if($like == null)
         {
-
             return response()->json($like);
         }
-
 
     }
 

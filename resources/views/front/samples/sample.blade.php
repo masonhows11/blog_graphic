@@ -56,10 +56,11 @@
 
                                     <div class="d-flex flex-row-reverse">
 
+                                        <input type="hidden" id="auth_user" value="{{ \Illuminate\Support\Facades\Auth::user() }}">
                                         <div class="dislike_sec">
                                             @if(Auth::check())
                                                 @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
-                                                     Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',0)->first() )
+                                                     Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',0)->first())
                                                     <span id="dislike_count" class="dislike_count"></span>
                                                     <i class="far fa-thumbs-down like" style="color:tomato" id="dislike"></i>
                                                 @else
@@ -68,7 +69,7 @@
                                                 @endif
                                             @else
                                                 <span id="dislike_count" class="dislike_count"></span>
-                                                <i class="far fa-thumbs-down like" id="dislike"></i>
+                                                <i class="far fa-thumbs-down like_un_auth" id="dislike"></i>
                                             @endif
                                         </div>
 
@@ -84,7 +85,7 @@
                                                 @endif
                                             @else
                                                 <span id="like_count" class="like_count"></span>
-                                                <i class="far fa-thumbs-up like" id="like"></i>
+                                                <i class="far fa-thumbs-up like_un_auth" id="like"></i>
                                             @endif
                                         </div>
 
@@ -102,6 +103,7 @@
 @endsection
 @section('my-scripts')
     <script type="text/javascript">
+
 
         $(document).ready(function () {
             function load_likes() {
@@ -122,12 +124,19 @@
                 });
             }
 
+
+
             $(window).on('load', function () {
                 load_likes();
             })
 
+
+
             $('.like').on('click', function (event) {
                 event.preventDefault();
+
+
+
                 let like = document.getElementById('like');
                 let dis_like = document.getElementById('dislike');
                 let is_like = '';

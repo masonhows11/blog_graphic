@@ -53,6 +53,7 @@
 {{--<script src="{{ asset('front/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>--}}
 <script src="{{ asset('js/http_unpkg.com_aos@2.3.1_dist_aos.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('js/alloy_finger.min.js') }}"></script>
 <script src="{{ asset('js/lc_lightbox.lite.min.js') }}"></script>
 <script>
@@ -61,7 +62,14 @@
         gallery: true
     });
 </script>
-
+<script>
+    $(document).ready(function () {
+        $('.like_un_auth').on('click',function () {
+            //event.preventDefault();
+            Swal.fire('success','برای ثبت لایک وارد سایت شوید','کاربر گرامی');
+        });
+    });
+</script>
 <script>
     AOS.init({
         duration: 1200,
