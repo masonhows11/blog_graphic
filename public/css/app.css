@@ -18244,10 +18244,6 @@ body {
   font-size: larger;
 }
 
-.one-sample .sample-images img {
-  border-radius: 5px;
-}
-
 /**************like or dislike************/
 .one-sample .card .card-footer .like_un_auth,
 .one-sample .card .card-footer .dislike,
@@ -18305,6 +18301,11 @@ body {
 
   .menu_item .menu_item {
     font-size: 0.8em;
+  }
+
+  .sample-images {
+    justify-content: center;
+    align-items: center;
   }
 }
 @media screen and (max-width: 960px) {
