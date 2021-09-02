@@ -94,14 +94,12 @@
             let like = document.getElementById('like');
             let dis_like = document.getElementById('dislike');
             let is_like = '';
-
             if (event.target.id === 'dislike') {
 
                 is_like = false;
             } else {
                 is_like = true;
             }
-
             let sample_id = document.getElementById('sample_id').value;
             $.ajaxSetup({
                 headers: {
@@ -113,31 +111,23 @@
                 url: '{{ route('add_sample_Like') }}',
                 data: {is_like: is_like, sample_id: sample_id},
             }).done(function (data) {
-
-                console.log(data['like']);
-
-                if(data['like']=== 0)
+                if(data['like'] === 0)
                 {
                     dis_like.style.color = 'tomato';
                     like.style.color = '';
-                }else{
-
+                    if(data['like'] === null)
+                    {
+                        dis_like.style.color = '';
+                        like.style.color = '';
+                    }
+                }else if(data['like'] === 1)
+                {
                     like.style.color = 'green';
                     dis_like.style.color = '';
+                }else{
+                    like.style.color = '';
+                    dis_like.style.color = '';
                 }
-               // console.log(is_like);
-
-
-                // if (event.target.style.color === 'tomato') {
-                //     //is_like = false;
-                //     event.target.style.color = '';
-                //     //like.style.color = '';
-                // } else if(event.target.style.color === 'green'){
-                //     //is_like = true;
-                //     //dis_like.style.color = '';
-                //     event.target.style.color = '';
-                // }
-
                 load_likes();
             });
 
