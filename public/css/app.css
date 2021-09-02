@@ -18249,6 +18249,7 @@ body {
 }
 
 /**************like or dislike************/
+.one-sample .card .card-footer .like_un_auth,
 .one-sample .card .card-footer .dislike,
 .one-sample .card .card-footer .like {
   font-size: 25px;

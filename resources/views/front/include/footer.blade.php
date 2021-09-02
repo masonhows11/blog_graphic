@@ -66,7 +66,9 @@
     $(document).ready(function () {
         $('.like_un_auth').on('click',function () {
             //event.preventDefault();
-            Swal.fire('success','برای ثبت لایک وارد سایت شوید','کاربر گرامی');
+            Swal.fire({icon:'warning',
+                title:'کاربر گرامی',
+                text:'برای ثبت like یا dislike وارد سایت شوید!'});
         });
     });
 </script>
