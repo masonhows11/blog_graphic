@@ -18259,6 +18259,11 @@ body {
   cursor: pointer;
 }
 
+.card-footer .created_date {
+  font-family: "iransans_num_light", serif;
+  font-size: 1.1rem;
+}
+
 .card-footer .dislike_sec .dislike_count,
 .card-footer .like_sec .like_count {
   font-family: "iransans_num_bold", serif;
