@@ -26,13 +26,14 @@ class LikeController extends Controller
         $like_exists = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
         if ($like_exists) {
             $already_like = $like_exists->like;
+
             if ($already_like == $is_like) {
                 $like_exists->delete();
-                return null;
+                //return null;
             } elseif ($already_like != $is_like) {
                 $like_exists->like = $is_like;
                 $like_exists->save();
-                return null;
+                //return null;
             }
         } else {
             $like = new Like();
@@ -41,6 +42,8 @@ class LikeController extends Controller
             $like->like = $is_like;
             $like->save();
         }
+        $like = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
+        return response()->json(['like'=>$like]);
     }
 
     public function likeCount(Request $request)
