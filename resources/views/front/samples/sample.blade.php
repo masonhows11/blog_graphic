@@ -60,14 +60,13 @@
                                             @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
                                                  Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',0)->first() )
                                                 <span id="dislike_count"></span>
-                                                <i class="far fa-thumbs-down like" style="color:tomato" id="dislike"></i>
+                                                <i class="far fa-thumbs-down like" style="color:tomato"
+                                                   id="dislike"></i>
                                             @else
                                                 <span id="dislike_count"></span>
                                                 <i class="far fa-thumbs-down like" id="dislike"></i>
                                             @endif
-
                                         </div>
-
                                         <div class="like_sec mx-2">
                                             @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
                                                  Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',1)->first())
@@ -78,20 +77,81 @@
                                                 <i class="far fa-thumbs-up like" id="like"></i>
                                             @endif
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
     </div>
-    <script>
+@endsection
+@section('my-scripts')
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            function load_likes() {
+                let sample_id = document.getElementById('sample_id').value;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route('get_likes') }}',
+                    data: {sample_id: sample_id},
+                }).done(function (data) {
+
+                    document.getElementById('like_count').innerText = data['likes'];
+                    document.getElementById('dislike_count').innerText = data['dislikes'];
+                });
+            }
+
+            $(window).on('load', function () {
+                load_likes();
+            })
+
+            $('.like').on('click', function (event) {
+                event.preventDefault();
+                let like = document.getElementById('like');
+                let dis_like = document.getElementById('dislike');
+                let is_like = '';
+                if (event.target.id === 'dislike') {
+
+                    is_like = false;
+                } else {
+                    is_like = true;
+                }
+                let sample_id = document.getElementById('sample_id').value;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('add_sample_Like') }}',
+                    data: {is_like: is_like, sample_id: sample_id},
+                }).done(function (data) {
+                    if (data['like'] == null) {
+                        dis_like.style.color = '';
+                        like.style.color = '';
+                    } else if (data['like'] === 0) {
+                        dis_like.style.color = 'tomato';
+                        like.style.color = '';
+                    } else if (data['like'] === 1) {
+                        like.style.color = 'green';
+                        dis_like.style.color = '';
+                    }
+
+                    load_likes();
+                });
+            });
+        });
 
     </script>
 @endsection
+

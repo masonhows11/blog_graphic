@@ -6,3 +6,4 @@
     @yield('content')
 </div>
 @include('front.include.footer')
+@yield('my-scripts')
