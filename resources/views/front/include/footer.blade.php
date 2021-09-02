@@ -114,9 +114,9 @@
                 data: {is_like: is_like, sample_id: sample_id},
             }).done(function (data) {
 
-                console.log(data);
+                console.log(data['like']);
 
-                if(is_like === false)
+                if(data['like']=== 0)
                 {
                     dis_like.style.color = 'tomato';
                     like.style.color = '';

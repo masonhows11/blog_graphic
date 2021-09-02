@@ -43,7 +43,7 @@ class LikeController extends Controller
             $like->save();
         }
         $like = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
-        return response()->json(['like'=>$like]);
+        return response()->json($like);
     }
 
     public function likeCount(Request $request)
