@@ -111,23 +111,26 @@
                 url: '{{ route('add_sample_Like') }}',
                 data: {is_like: is_like, sample_id: sample_id},
             }).done(function (data) {
-                if(data['like'] === 0)
+
+                    console.log(data);
+
+                if(data['like'] == null)
                 {
+                    console.log(data['like']);
+                    dis_like.style.color = '';
+                    like.style.color = '';
+
+                }else if(data['like'] === 0)
+                {
+                    console.log(' dislike happen');
                     dis_like.style.color = 'tomato';
                     like.style.color = '';
-                    if(data['like'] === null)
-                    {
-                        dis_like.style.color = '';
-                        like.style.color = '';
-                    }
-                }else if(data['like'] === 1)
-                {
+                }else if(data['like'] === 1){
+                    console.log(' like happen');
                     like.style.color = 'green';
                     dis_like.style.color = '';
-                }else{
-                    like.style.color = '';
-                    dis_like.style.color = '';
                 }
+                
                 load_likes();
             });
 
