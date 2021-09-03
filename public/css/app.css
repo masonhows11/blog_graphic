@@ -18302,11 +18302,6 @@ body {
   .menu_item .menu_item {
     font-size: 0.8em;
   }
-
-  .sample-images {
-    justify-content: center;
-    align-items: center;
-  }
 }
 @media screen and (max-width: 960px) {
   .menu_item .menu_item {
