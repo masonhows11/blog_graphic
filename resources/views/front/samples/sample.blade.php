@@ -123,42 +123,61 @@
 
     <div class="row d-flex flex-column justify-content-center align-content-center comments-sec mt-5">
 
-        <div class="col-lg-7 mt-5 list-comments" >
 
+
+        <div class="col-lg-7 mt-5 list-comments">
+            @foreach($sample->comments as $comment)
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد </p>
+                    <p class="card-text">
+                        {{ $comment->description }}
+                    </p>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <div><span class="users_comment">نعیم</span></div>
-                    <div><span class="date_comment">12 شهریور 1400</span></div>
+                    <div><span class="users_comment">{{ $comment->user_name }}</span></div>
+                    <div><span class="date_comment">{{ jdate($comment->created_at)->format('%d %B %Y') }}</span></div>
                 </div>
             </div>
-
+            @endforeach
         </div>
 
-        <div class="col-lg-7 mt-5 mb-5 rounded-3 add-comment">
+        @if(Auth::check())
+            <div class="col-lg-7 mt-5 mb-5 rounded-3 add-comment">
 
-            <form action="/comment/store"  method="post">
-                @csrf
-                <div class="mb-5">
-                    <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
-                    <textarea class="form-control @error('description') is_invalid @enderror"
-                              name="description" wrap="physical" id="subject-body" rows="6" cols="6">
-                </textarea>
-                    @error('description')
-                    <div class="alert alert-danger mt-4">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-outline-primary">ارسال دیدگاه</button>
-                </div>
-            </form>
-
-        </div>
+                <form action="/comment/store" method="post">
+                    @csrf
+                    <input type="hidden" name="sample_id" value="{{ $sample->id }}">
+                    <div class="mb-5">
+                        <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
+                        <textarea class="form-control @error('description') is_invalid @enderror"
+                                  name="description" wrap="physical" id="subject-body" rows="6" cols="6">
+                        </textarea>
+                        @error('description')
+                        <div class="alert alert-danger mt-4">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-outline-primary">ارسال دیدگاه</button>
+                    </div>
+                </form>
+            </div>
+        @else
+            <div class="col-lg-7 mt-5 mb-5  message_auth">
+                <p class="text-center">کاربر گرامی برای ثبت دیدگاه خود ابتدا <a href="/loginForm" class="text-center">وارد</a>
+                    سایت شوید با تشکر.</p>
+            </div>
+        @endif
     </div>
 @endsection
 @section('my-scripts')
+    @if(session('message'))
+        <script>
+            Swal.fire({
+                icon:'success',
+                text: '{{ session('message') }}',
+            })
+        </script>
+    @endif
     <script type="text/javascript">
 
 

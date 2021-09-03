@@ -413,6 +413,14 @@ body {
 .comments-sec .add-comment {
     border:2px solid #3DC8E9;
 }
+
+.comments-sec .message_auth{
+    border-bottom:2px  solid #3DC8E9;
+}
+.comments-sec p a{
+    text-decoration:none;
+    font-size: large;
+}
  /************** filter courses ***********/
 
 .filter-courses {
