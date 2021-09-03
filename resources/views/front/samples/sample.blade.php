@@ -28,28 +28,28 @@
                                     <div class="row d-flex justify-content-center">
 
                                         <div class="mt-2 d-flex justify-content-center col-sm col-sm">
-                                            <a class="my_box image-item" href="{{ asset('/template/samples/'.$sample->image1) }}">
+                                            <a class="my_box" href="{{ asset('/template/samples/'.$sample->image1) }}">
                                                 <img class="rounded-3" src="{{ asset('/template/samples/'.$sample->image1) }}" width="120"
                                                      alt="image">
                                             </a>
                                         </div>
 
                                         <div class="mt-2 d-flex justify-content-center col-sm col-sm">
-                                            <a class="my_box image-item" href="{{ asset('/template/samples/'.$sample->image2) }}">
+                                            <a class="my_box" href="{{ asset('/template/samples/'.$sample->image2) }}">
                                                 <img class="rounded-3" src="{{ asset('/template/samples/'.$sample->image2) }}" width="120"
                                                      alt="image">
                                             </a>
                                         </div>
 
                                         <div class="mt-2 d-flex justify-content-center col-sm col-sm">
-                                            <a class="my_box image-item" href="{{ asset('/template/samples/'.$sample->image3) }}">
+                                            <a class="my_box" href="{{ asset('/template/samples/'.$sample->image3) }}">
                                                 <img class="rounded-3" src="{{ asset('/template/samples/'.$sample->image3) }}" width="120"
                                                      alt="image">
                                             </a>
                                         </div>
 
                                         <div class="mt-2 d-flex justify-content-center col-sm col-sm">
-                                            <a class="my_box image-item" href="{{ asset('/template/samples/'.$sample->image4) }}">
+                                            <a class="my_box" href="{{ asset('/template/samples/'.$sample->image4) }}">
                                                 <img class="rounded-3" src="{{ asset('/template/samples/'.$sample->image4) }}" width="120"
                                                      alt="image">
                                             </a>
