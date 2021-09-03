@@ -115,11 +115,24 @@
         </div>
     </div>
     <div class="row d-flex flex-column justify-content-center align-content-center comments-sec mt-5" style="border:1px solid tomato;height:auto">
-        <div class="col-lg-7 mt-5 list-comments" style="border:1px solid orangered;height: 100px">
+        <div class="col-lg-7 mt-5 list-comments" style="border:1px solid black;height: 100px">
 
         </div>
-        <div class="col-lg-7 mt-5 mb-5 add-comment" style="border:1px solid black;height: 100px">
+        <div class="col-lg-7 mt-5 mb-5 add-comment" style="border:1px solid black;height: auto">
+            <form action="" method="post">
+            <div class="mb-3">
+                <label for="subject-comment" class="form-label">موضوع</label>
+                <input type="text" class="form-control" id="subject-comment">
 
+            </div>
+            <div class="mb-3">
+                <label for="subject-body" class="form-label">متن دیدگاه</label>
+                <textarea class="form-control" id="subject-body" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">ارسال دیدگاه</button>
+            </div>
+            </form>
         </div>
     </div>
 @endsection

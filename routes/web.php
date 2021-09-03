@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TipController;
 use App\Http\Controllers\Admin\SampleController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Front\CommentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -183,6 +185,13 @@ Route::group(['prefix'=>'like'],function (){
     Route::post('/addLike',[LikeController::class,'updateLike'])->name('add_sample_Like');
     Route::get('/countLike',[LikeController::class,'likeCount'])->name('get_likes');
 
+
+});
+
+Route::group(['prefix'=>'comment'],function (){
+
+    Route::post('/store',[CommentController::class,'store']);
+    
 
 });
 
