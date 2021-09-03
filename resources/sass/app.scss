@@ -397,9 +397,23 @@ body {
     font-family: 'iransans_num_bold',serif;
 }
 /**************** comments style***********/
+.comments-sec .list-comments .card .card-footer .date_comment,
+.comments-sec .alert-danger {
+    font-family: 'iransans_num_light',serif;
+}
+.comments-sec textarea{
+    text-align: right;
+}
+.comments-sec,
+.comments-sec .list-comments
+{
+    height: auto;
+}
 
-
-/************** filter courses ***********/
+.comments-sec .add-comment {
+    border:2px solid #3DC8E9;
+}
+ /************** filter courses ***********/
 
 .filter-courses {
     max-height: 60px;

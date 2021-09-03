@@ -25,37 +25,41 @@
                             <p class="card-text">{{ strip_tags($sample->description) }}</p>
 
                             <div class="container  sample-images">
-                                    <div class="row d-flex justify-content-center">
+                                <div class="row d-flex justify-content-center">
 
-                                        <div class="mt-2 d-flex justify-content-center col-sm col-sm">
-                                            <a class="my_box" href="{{ asset('/template/samples/'.$sample->image1) }}">
-                                                <img class="rounded-3" src="{{ asset('/template/samples/'.$sample->image1) }}" width="120"
-                                                     alt="image">
-                                            </a>
-                                        </div>
-
-                                        <div class="mt-2 d-flex justify-content-center col-sm col-sm">
-                                            <a class="my_box" href="{{ asset('/template/samples/'.$sample->image2) }}">
-                                                <img class="rounded-3" src="{{ asset('/template/samples/'.$sample->image2) }}" width="120"
-                                                     alt="image">
-                                            </a>
-                                        </div>
-
-                                        <div class="mt-2 d-flex justify-content-center col-sm col-sm">
-                                            <a class="my_box" href="{{ asset('/template/samples/'.$sample->image3) }}">
-                                                <img class="rounded-3" src="{{ asset('/template/samples/'.$sample->image3) }}" width="120"
-                                                     alt="image">
-                                            </a>
-                                        </div>
-
-                                        <div class="mt-2 d-flex justify-content-center col-sm col-sm">
-                                            <a class="my_box" href="{{ asset('/template/samples/'.$sample->image4) }}">
-                                                <img class="rounded-3" src="{{ asset('/template/samples/'.$sample->image4) }}" width="120"
-                                                     alt="image">
-                                            </a>
-                                        </div>
-
+                                    <div class="mt-2 d-flex justify-content-center col-sm col-sm">
+                                        <a class="my_box" href="{{ asset('/template/samples/'.$sample->image1) }}">
+                                            <img class="rounded-3"
+                                                 src="{{ asset('/template/samples/'.$sample->image1) }}" width="120"
+                                                 alt="image">
+                                        </a>
                                     </div>
+
+                                    <div class="mt-2 d-flex justify-content-center col-sm col-sm">
+                                        <a class="my_box" href="{{ asset('/template/samples/'.$sample->image2) }}">
+                                            <img class="rounded-3"
+                                                 src="{{ asset('/template/samples/'.$sample->image2) }}" width="120"
+                                                 alt="image">
+                                        </a>
+                                    </div>
+
+                                    <div class="mt-2 d-flex justify-content-center col-sm col-sm">
+                                        <a class="my_box" href="{{ asset('/template/samples/'.$sample->image3) }}">
+                                            <img class="rounded-3"
+                                                 src="{{ asset('/template/samples/'.$sample->image3) }}" width="120"
+                                                 alt="image">
+                                        </a>
+                                    </div>
+
+                                    <div class="mt-2 d-flex justify-content-center col-sm col-sm">
+                                        <a class="my_box" href="{{ asset('/template/samples/'.$sample->image4) }}">
+                                            <img class="rounded-3"
+                                                 src="{{ asset('/template/samples/'.$sample->image4) }}" width="120"
+                                                 alt="image">
+                                        </a>
+                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -71,13 +75,15 @@
 
                                     <div class="d-flex flex-row-reverse">
 
-                                        <input type="hidden" id="auth_user" value="{{ \Illuminate\Support\Facades\Auth::user() }}">
+                                        <input type="hidden" id="auth_user"
+                                               value="{{ \Illuminate\Support\Facades\Auth::user() }}">
                                         <div class="dislike_sec">
                                             @if(Auth::check())
                                                 @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
                                                      Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',0)->first())
                                                     <span id="dislike_count" class="dislike_count"></span>
-                                                    <i class="far fa-thumbs-down like" style="color:tomato" id="dislike"></i>
+                                                    <i class="far fa-thumbs-down like" style="color:tomato"
+                                                       id="dislike"></i>
                                                 @else
                                                     <span id="dislike_count" class="dislike_count"></span>
                                                     <i class="far fa-thumbs-down like" id="dislike"></i>
@@ -114,28 +120,39 @@
             </div>
         </div>
     </div>
-    <div class="row d-flex flex-column justify-content-center align-content-center comments-sec mt-5" style="border:1px solid tomato;height:auto">
-        <div class="col-lg-7 mt-5 list-comments" style="border:1px solid black;height: 100px">
+
+    <div class="row d-flex flex-column justify-content-center align-content-center comments-sec mt-5">
+
+        <div class="col-lg-7 mt-5 list-comments" >
+
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <div><span class="users_comment">نعیم</span></div>
+                    <div><span class="date_comment">12 شهریور 1400</span></div>
+                </div>
+            </div>
 
         </div>
-        <div class="col-lg-7 mt-5 mb-5 add-comment" style="border:1px solid black;height: auto">
+
+        <div class="col-lg-7 mt-5 mb-5 rounded-3 add-comment">
 
             <form action="/comment/store"  method="post">
                 @csrf
-            <div class="mb-3">
-                <label for="subject-comment" class="form-label">موضوع</label>
-                <input type="text" class="form-control" id="subject-comment" >
-
-            </div>
-            <div class="mb-3">
-                <label for="subject-body" class="form-label">متن دیدگاه</label>
-                <textarea class="form-control" id="subject-body" rows="3" >
+                <div class="mb-5">
+                    <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
+                    <textarea class="form-control @error('description') is_invalid @enderror"
+                              name="description" wrap="physical" id="subject-body" rows="6" cols="6">
                 </textarea>
-
-            </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary">ارسال دیدگاه</button>
-            </div>
+                    @error('description')
+                    <div class="alert alert-danger mt-4">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-outline-primary">ارسال دیدگاه</button>
+                </div>
             </form>
 
         </div>
@@ -146,6 +163,8 @@
 
 
         $(document).ready(function () {
+
+
             function load_likes() {
                 let sample_id = document.getElementById('sample_id').value;
                 $.ajaxSetup({
@@ -165,16 +184,13 @@
             }
 
 
-
             $(window).on('load', function () {
                 load_likes();
             })
 
 
-
             $('.like').on('click', function (event) {
                 event.preventDefault();
-
 
 
                 let like = document.getElementById('like');
