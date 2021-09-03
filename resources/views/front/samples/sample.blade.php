@@ -114,7 +114,14 @@
             </div>
         </div>
     </div>
+    <div class="row d-flex flex-column justify-content-center align-content-center comments-sec mt-5" style="border:1px solid tomato;height:auto">
+        <div class="col-lg-7 mt-5 list-comments" style="border:1px solid orangered;height: 100px">
 
+        </div>
+        <div class="col-lg-7 mt-5 mb-5 add-comment" style="border:1px solid black;height: 100px">
+
+        </div>
+    </div>
 @endsection
 @section('my-scripts')
     <script type="text/javascript">
