@@ -119,54 +119,62 @@
                 </div>
             </div>
         </div>
+
     </div>
 
-    <div class="row d-flex flex-column justify-content-center align-content-center comments-sec mt-5">
+    <div class="row  mt-5">
 
+        <div class="col-md-3">
 
-
-        <div class="col-lg-7 mt-5 list-comments">
-            @foreach($sample->comments as $comment)
-            <div class="card">
-                <div class="card-body">
-                    <p class="card-text">
-                        {{ $comment->description }}
-                    </p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <div><span class="users_comment">{{ $comment->user_name }}</span></div>
-                    <div><span class="date_comment">{{ jdate($comment->created_at)->format('%d %B %Y') }}</span></div>
-                </div>
-            </div>
-            @endforeach
         </div>
 
-        @if(Auth::check())
-            <div class="col-lg-7 mt-5 mb-5 rounded-3 add-comment">
+        <div class="col-md-9">
+            <div class="row d-flex flex-column justify-content-center comments-sec">
+                <div class="col-lg-9 mt-5 list-comments">
+                    @foreach($sample->comments as $comment)
+                        <div class="card mt-5">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{ $comment->description }}
+                                </p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <div><span class="users_comment">{{ $comment->user_name }}</span></div>
+                                <div><span class="date_comment">{{ jdate($comment->created_at)->format('%d %B %Y') }}</span></div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
 
-                <form action="/comment/store" method="post">
-                    @csrf
-                    <input type="hidden" name="sample_id" value="{{ $sample->id }}">
-                    <div class="mb-5">
-                        <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
-                        <textarea class="form-control @error('description') is_invalid @enderror"
-                                  name="description" wrap="physical" id="subject-body" rows="6" cols="6">
+                @if(Auth::check())
+                    <div class="col-lg-9 mt-5 mb-5 rounded-3 add-comment">
+
+                        <form action="/comment/store" method="post">
+                            @csrf
+                            <input type="hidden" name="sample_id" value="{{ $sample->id }}">
+                            <div class="mb-5">
+                                <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
+                                <textarea class="form-control @error('description') is_invalid @enderror"
+                                          name="description" wrap="physical" id="subject-body" rows="6" cols="6">
                         </textarea>
-                        @error('description')
-                        <div class="alert alert-danger mt-4">{{ $message }}</div>
-                        @enderror
+                                @error('description')
+                                <div class="alert alert-danger mt-4">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-outline-primary">ارسال دیدگاه</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-outline-primary">ارسال دیدگاه</button>
+                @else
+                    <div class="col-lg-9 mt-5 mb-5  message_auth">
+                        <p class="text-center">کاربر گرامی برای ثبت دیدگاه خود ابتدا <a href="/loginForm" class="text-center">وارد</a>
+                            سایت شوید با تشکر.</p>
                     </div>
-                </form>
+                @endif
             </div>
-        @else
-            <div class="col-lg-7 mt-5 mb-5  message_auth">
-                <p class="text-center">کاربر گرامی برای ثبت دیدگاه خود ابتدا <a href="/loginForm" class="text-center">وارد</a>
-                    سایت شوید با تشکر.</p>
-            </div>
-        @endif
+        </div>
+
     </div>
 @endsection
 @section('my-scripts')
