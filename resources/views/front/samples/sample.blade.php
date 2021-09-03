@@ -119,20 +119,28 @@
 
         </div>
         <div class="col-lg-7 mt-5 mb-5 add-comment" style="border:1px solid black;height: auto">
-            <form action="" method="post">
+
+            <form action="/comment/store" class="needs-validation" method="post">
+                @csrf
             <div class="mb-3">
                 <label for="subject-comment" class="form-label">موضوع</label>
-                <input type="text" class="form-control" id="subject-comment">
-
+                <input type="text" class="form-control" id="subject-comment" required>
+                <div class="invalid-feedback">
+                    موضوغ دیدگاه رو وارد کنید
+                </div>
             </div>
             <div class="mb-3">
                 <label for="subject-body" class="form-label">متن دیدگاه</label>
-                <textarea class="form-control" id="subject-body" rows="3"></textarea>
+                <textarea class="form-control" id="subject-body" rows="3" required></textarea>
+                <div class="invalid-feedback">
+                    متن دیدگاه را وارد کنید
+                </div>
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">ارسال دیدگاه</button>
             </div>
             </form>
+
         </div>
     </div>
 @endsection

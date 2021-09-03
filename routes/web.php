@@ -191,7 +191,7 @@ Route::group(['prefix'=>'like'],function (){
 Route::group(['prefix'=>'comment'],function (){
 
     Route::post('/store',[CommentController::class,'store']);
-    
+
 
 });
 
