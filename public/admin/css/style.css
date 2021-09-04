@@ -87,3 +87,12 @@
     direction: rtl;
     white-space: normal
 }
+.comments-section .list_comments,
+.comments-section .subject_menu {
+    display: flex;
+    justify-content: center;
+}
+
+.comments-section .list_comments {
+    margin-top:20px;
+}
