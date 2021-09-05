@@ -10,27 +10,42 @@
         <div class="row subject_menu" style="border:1px solid red;height: auto">
 
 
-            <a href="/samples/index" class="col-lg-2 col-md-2 menu_item ">
-                <div><p class="text-center mt-4">نمونه کارها</p></div>
-            </a>
+            <div class="col-md-3">
+                <a href="/samples/index" class="menu_item">
+                   <p class="text-center mt-4">نمونه کارها</p>
+                </a>
+            </div>
 
-            <a href="#" class="col-lg-2 col-md-2 menu_item ">
-                <div><p class="text-center mt-4"> خلاقیت و طراحی</p></div>
-            </a>
+            <div class="col-md-3">
+                <a href="#" class="menu_item">
+                   <p class="text-center mt-4"> خلاقیت و طراحی</p>
+                </a>
+            </div>
 
-            <a href="#" class="col-lg-2 col-md-2 menu_item ">
-                <div><p class="text-center mt-4">نکات طلایی</p></div>
-            </a>
+            <div class="col-md-3">
+                <a href="#" class="menu_item">
+                   <p class="text-center mt-4">نکات طلایی</p>
+                </a>
+            </div>
 
-            <a href="/store/index" class="col-lg-2 col-md-2 menu_item ">
-                <div><p class="text-center mt-4">دوره های آموزشی</p></div>
-            </a>
+            <div class="col-md-3">
+                <a href="/store/index" class="menu_item">
+                    <p class="text-center mt-4">دوره های آموزشی</p>
+                </a>
+            </div>
+
+
+
+
+
+
+
 
         </div>
 
         <div class="row list_comments " style="border:1px solid red;height: auto">
 
-            <div class="col-lg-10 " style="border:1px solid black;height: 100px">
+            <div class="col-lg-10 col-lg-offset-1" style="border:1px solid black;height: 100px">
 
             </div>
 
