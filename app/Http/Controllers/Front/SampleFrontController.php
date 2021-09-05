@@ -24,20 +24,24 @@ class SampleFrontController extends Controller
 
     {
         $categories = Category::where('parent_id', null)->get();
-        $sample = Sample::with('categories','likes','comments')->where('slug', '=', $sample)->first();
+
+        $sample = Sample::with(['categories', 'likes', 'comments' => function ($query) {
+            $query->where('approved', 1);
+        }])->where('slug', '=', $sample)->first();
+
         return view('front.samples.sample')->with(['sample' => $sample, 'categories' => $categories]);
     }
 
     public function samplesCategory($category)
     {
         $categories = Category::where('parent_id', null)->get();
-        $samples =  Sample::with('categories')
+        $samples = Sample::with('categories')
             ->join('category_sample', 'samples.id', '=', 'category_sample.sample_id')
             ->join('categories', 'categories.id', '=', 'category_sample.category_id')
             ->where('categories.name', '=', $category)->select('samples.*')->get();
 
-          return view('front.samples.samples_base_category')
-              ->with(['samples'=>$samples,'categories'=>$categories]);
+        return view('front.samples.samples_base_category')
+            ->with(['samples' => $samples, 'categories' => $categories]);
 
     }
 
