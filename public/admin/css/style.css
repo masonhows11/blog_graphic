@@ -90,8 +90,14 @@
 
 .comments-section .list_comments,
 .comments-section .subject_menu .col-md-3{
-    margin-top:10px;
+    margin-top:40px;
 }
-
+.comments-section .subject_menu a{
+    margin-top: 15px;
+}
+.comments-section .subject_menu .menu_item p{
+    padding: 10px 0 18px 0;
+    border-bottom:2px solid tomato;
+}
 
 
