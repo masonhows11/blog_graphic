@@ -33,5 +33,6 @@
 {{--</div>--}}
 <!-- ./wrapper -->
 @include('admin.include.admin_footer_js')
+@yield('my_script_admin');
 </body>
 </html>

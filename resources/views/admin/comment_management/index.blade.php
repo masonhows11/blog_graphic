@@ -11,7 +11,7 @@
 
 
             <div class="col-md-3">
-                <a href="" class="menu_item">
+                <a href="#" id="sample_comments" class="menu_item">
                     <p class="text-center mt-4">نمونه کارها</p>
                 </a>
             </div>
@@ -66,4 +66,33 @@
         </div>
 
     </div>
+@endsection
+@section('my_script_admin')
+    <script>
+
+        $(document).ready(function () {
+
+           $(document).on('click','#sample_comments',function () {
+                //console.log(' sample comments clicked');
+
+               $.ajaxSetup({
+                   headers: {
+                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                   }
+               });
+               $.ajax({
+                   method: 'GET',
+                   url: '{{ route('get_likes') }}',
+                   data: {sample_id: sample_id},
+               }).done(function (data) {
+
+
+               });
+            })
+
+
+        })
+
+
+    </script>
 @endsection
