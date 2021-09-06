@@ -40,8 +40,29 @@
         <div class="row list_comments">
             <div class="col-lg-10 col-lg-offset-1">
                 <table class="table table-bordered" id="tbl_comments">
-                    
+
                 </table>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="commentBodyModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">متن دیدگاه</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id="comment_body"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">خروج</button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -52,6 +73,7 @@
         $(document).ready(function () {
             $(document).on('click', '#sample_comments', function () {
                 let comments = '';
+                let comment_body = '';
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -60,9 +82,9 @@
                 $.ajax({
                     method: 'GET',
                     url: '{{ route('getSampleComments') }}',
+
                     success: function (data) {
                         console.log(data['sample_comments']);
-
                          comments += '<table>' +
                              '<thead><tr>' +
                              '<th class="text-center">شناسه</th>' +
@@ -78,7 +100,10 @@
                                 '<td class="text-center">' + data['sample_comments'][i].id + '</td>' +
                                 '<td class="text-center">' + data['sample_comments'][i].title + '</td>' +
                                 '<td class="text-center">' + data['sample_comments'][i].user_name + '</td>' +
-                                '<td class="text-center"><button class="btn btn-outline-light" >مشاهد متن دیدگاه</button></td>' +
+                                '<td class="text-center"><button type="button"' +
+                                ' data-toggle="modal"' +
+                                ' data-target="#commentBodyModal"' +
+                                ' class="btn btn-outline-light" >مشاهد متن دیدگاه</button></td>' +
                                 '<td class="text-center"><button class="btn btn-success">تایید</button></td>' +
                                 '<td class="text-center"><button class="btn btn-danger">حذف</button></td>' +
                                 '</tr>';
@@ -86,6 +111,7 @@
                         }
                         comments += '</tbody>';
                         document.getElementById('tbl_comments').innerHTML = comments;
+
                     }, error: function (error) {
                         console.log(error)
                     },
