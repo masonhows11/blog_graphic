@@ -176,6 +176,10 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 Route::group(['prefix'=>'admin/comments','middleware'=>'role:admin'],function (){
 
     Route::get('/index',[CommentAdController::class,'index']);
+    Route::get('/getSamplesComments',[CommentAdController::class,'getSampleComments'])->name('getSampleComments');
+    Route::get('/getTipsComments',[CommentAdController::class,'getSampleComments'])->name('getTipsComments');
+    Route::get('/getCreativesComments',[CommentAdController::class,'getSampleComments'])->name('getCreativesComments');
+    Route::get('/getCoursesComments',[CommentAdController::class,'getSampleComments'])->name('getCoursesComments');
 
 });
 
@@ -202,7 +206,7 @@ Route::group(['prefix'=>'comment'],function (){
 
 });
 
-Route::group(['prefix'=>'creative'],function (){
+Route::group(['prefix'=>'creative'],function(){
 
 
 

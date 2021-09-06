@@ -38,29 +38,23 @@
         </div>
 
         <div class="row list_comments">
-
             <div class="col-lg-10 col-lg-offset-1">
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>شناسه</th>
-                        <th>عنوان نمونه کار</th>
-                        <th>کاربر</th>
-                        <th>متن دیدگاه</th>
-                        <th>تایید</th>
-                        <th>حذف</th>
+                        <th class="text-center">شناسه</th>
+                        <th class="text-center">عنوان نمونه کار</th>
+                        <th class="text-center"> کاربر</th>
+                        <th class="text-center">متن دیدگاه</th>
+                        <th class="text-center">تایید</th>
+                        <th class="text-center">حذف</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+
+                    <tbody id="tbl_comments">
+
                     </tbody>
+
                 </table>
             </div>
         </div>
@@ -69,30 +63,37 @@
 @endsection
 @section('my_script_admin')
     <script>
-
         $(document).ready(function () {
+            $(document).on('click', '#sample_comments', function () {
+                let comments = '';
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route('getSampleComments') }}',
+                    success: function (data) {
+                        console.log(data['sample_comments']);
+                        for (let i = 0; i < data['sample_comments'].length; i++) {
+                            comments +=
+                                '<tbody><tr>' +
+                                '<td class="text-center">' + data['sample_comments'][i].id + '</td>' +
+                                '<td class="text-center">' + data['sample_comments'][i].title + '</td>' +
+                                '<td class="text-center">' + data['sample_comments'][i].user_name + '</td>' +
+                                '<td class="text-center"><button class="btn btn-outline-light" >مشاهد متن دیدگاه</button></td>' +
+                                '<td class="text-center"><button class="btn btn-success">تایید</button></td>' +
+                                '<td class="text-center"><button class="btn btn-danger">حذف</button></td>' +
+                                '</tr></tbody>';
 
-           $(document).on('click','#sample_comments',function () {
-                //console.log(' sample comments clicked');
-
-               $.ajaxSetup({
-                   headers: {
-                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                   }
-               });
-               $.ajax({
-                   method: 'GET',
-                   url: '{{ route('get_likes') }}',
-                   data: {sample_id: sample_id},
-               }).done(function (data) {
-
-
-               });
-            })
-
-
-        })
-
-
+                        }
+                        document.getElementById('tbl_comments').innerHTML = comments;
+                    }, error: function (error) {
+                        console.log(error)
+                    },
+                });
+            });
+        });
     </script>
 @endsection
