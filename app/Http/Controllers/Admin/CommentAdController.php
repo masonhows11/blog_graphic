@@ -10,7 +10,9 @@ class CommentAdController extends Controller
     //
     public function index()
     {
+        
         return view('admin.comment_management.index');
     }
+
 
 }

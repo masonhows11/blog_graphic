@@ -100,4 +100,8 @@
     border-bottom:2px solid tomato;
 }
 
-
+.comments-section .list_comments .col-lg-10
+{
+    height: auto;
+   margin-top:12px;
+}
