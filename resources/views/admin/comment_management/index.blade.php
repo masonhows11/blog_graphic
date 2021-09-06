@@ -70,14 +70,8 @@
 @endsection
 @section('my_script_admin')
     <script>
-
-
-
         $(document).ready(function () {
-
-
             function load_comment(){
-
                 let comments = '';
                 $.ajaxSetup({
                     headers: {
@@ -108,8 +102,10 @@
                                 ' data-target="#commentBodyModal"' +
                                 ' class="btn btn-outline-light" onclick="get_comment_body(this)" data-comment="' + data['sample_comments'][i].description + '" >' +
                                 'مشاهد متن دیدگاه</button></td>' +
-                                '<td class="text-center"><button class="btn btn-success">تایید</button></td>' +
-                                '<td class="text-center"><button class="btn btn-danger">حذف</button></td>' +
+                                '<td class="text-center"><button onclick="confirm_comment(this)" data-id=" ' + data['sample_comments'][i].id + ' "' +
+                                ' class="btn btn-light">تایید نشده</button></td>' +
+                                '<td class="text-center"><button onclick="delete_comment(this) " data-id=" ' + data['sample_comments'][i].id + ' "' +
+                                ' class="btn btn-danger">حذف</button></td>' +
                                 '</tr>';
                         }
                         comments += '</tbody>';
@@ -119,12 +115,10 @@
                     },
                 });
             }
-
             // load comment when comment index page is complete loaded
             /*  $(window).on('load',function () {
                 load_comment();
             });*/
-
             $(document).on('click', '#sample_comments', function () {
                 load_comment();
             });
@@ -133,6 +127,16 @@
             let comment_body = '';
             comment_body = body.getAttribute('data-comment');
             document.getElementById('comment_body').innerHTML = comment_body;
+        }
+        function confirm_comment(id) {
+            let comment_id = '';
+            comment_id = id.getAttribute('data-id');
+            console.log(comment_id);
+        }
+        function delete_comment(id) {
+            let comment_id = '';
+            comment_id = id.getAttribute('data-id');
+            console.log(comment_id);
         }
     </script>
 @endsection
