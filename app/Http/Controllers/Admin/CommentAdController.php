@@ -15,8 +15,6 @@ class CommentAdController extends Controller
             ->join('samples','comments.sample_id','=','samples.id')
             ->join('users','users.id','=','comments.user_id')
             ->select('comments.id','samples.title','users.user_name','comments.description')->get();
-       // return  $sample_comments;
-
 
         return view('admin.comment_management.index');
     }

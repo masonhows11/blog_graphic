@@ -70,9 +70,14 @@
 @endsection
 @section('my_script_admin')
     <script>
+
+
+
         $(document).ready(function () {
 
-            $(document).on('click', '#sample_comments', function () {
+
+            function load_comment(){
+
                 let comments = '';
                 $.ajaxSetup({
                     headers: {
@@ -83,7 +88,6 @@
                     method: 'GET',
                     url: '{{ route('getSampleComments') }}',
                     success: function (data) {
-                        console.log(data['sample_comments']);
                         comments += '<table>' +
                             '<thead><tr>' +
                             '<th class="text-center">شناسه</th>' +
@@ -114,14 +118,21 @@
                         console.log(error)
                     },
                 });
+            }
+
+            // load comment when comment index page is complete loaded
+            /*  $(window).on('load',function () {
+                load_comment();
+            });*/
+
+            $(document).on('click', '#sample_comments', function () {
+                load_comment();
             });
         });
-
         function get_comment_body(body) {
             let comment_body = '';
             comment_body = body.getAttribute('data-comment');
             document.getElementById('comment_body').innerHTML = comment_body;
         }
-
     </script>
 @endsection
