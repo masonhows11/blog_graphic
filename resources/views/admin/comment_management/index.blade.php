@@ -71,9 +71,9 @@
 @section('my_script_admin')
     <script>
         $(document).ready(function () {
+
             $(document).on('click', '#sample_comments', function () {
                 let comments = '';
-                let comment_body = '';
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -82,18 +82,17 @@
                 $.ajax({
                     method: 'GET',
                     url: '{{ route('getSampleComments') }}',
-
                     success: function (data) {
                         console.log(data['sample_comments']);
-                         comments += '<table>' +
-                             '<thead><tr>' +
-                             '<th class="text-center">شناسه</th>' +
-                             '<th class="text-center">هنوان نمونه کار</th>' +
-                             '<th class="text-center">کاربر</th>' +
-                             '<th class="text-center">متن دیدگاه</th>' +
-                             '<th class="text-center">تایید</th>' +
-                             '<th class="text-center">حذف</th>' +
-                             '</tr></thead><tbody>';
+                        comments += '<table>' +
+                            '<thead><tr>' +
+                            '<th class="text-center">شناسه</th>' +
+                            '<th class="text-center">هنوان نمونه کار</th>' +
+                            '<th class="text-center">کاربر</th>' +
+                            '<th class="text-center">متن دیدگاه</th>' +
+                            '<th class="text-center">تایید</th>' +
+                            '<th class="text-center">حذف</th>' +
+                            '</tr></thead><tbody>';
                         for (let i = 0; i < data['sample_comments'].length; i++) {
                             comments +=
                                 '<tr>' +
@@ -103,20 +102,26 @@
                                 '<td class="text-center"><button type="button"' +
                                 ' data-toggle="modal"' +
                                 ' data-target="#commentBodyModal"' +
-                                ' class="btn btn-outline-light" >مشاهد متن دیدگاه</button></td>' +
+                                ' class="btn btn-outline-light" onclick="get_comment_body(this)" data-comment="' + data['sample_comments'][i].description + '" >' +
+                                'مشاهد متن دیدگاه</button></td>' +
                                 '<td class="text-center"><button class="btn btn-success">تایید</button></td>' +
                                 '<td class="text-center"><button class="btn btn-danger">حذف</button></td>' +
                                 '</tr>';
-
                         }
                         comments += '</tbody>';
                         document.getElementById('tbl_comments').innerHTML = comments;
-
                     }, error: function (error) {
                         console.log(error)
                     },
                 });
             });
         });
+
+        function get_comment_body(body) {
+            let comment_body = '';
+            comment_body = body.getAttribute('data-comment');
+            document.getElementById('comment_body').innerHTML = comment_body;
+        }
+
     </script>
 @endsection
