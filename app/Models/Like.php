@@ -26,4 +26,9 @@ class Like extends Model
     {
         return $this->belongsTo(Sample::class);
     }
+
+    public function creative()
+    {
+        return $this->belongsTo(Creative::class);
+    }
 }

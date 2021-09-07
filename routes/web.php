@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\SampleController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Admin\CommentAdController;
-
+use App\Http\Controllers\Admin\CreativeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -172,6 +172,16 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
     Route::get('/active',[CourseController::class,'changeStatus']);
 
 });
+
+Route::group(['prefix'=>'admin/creative','middleware'=>'role:admin'],function (){
+
+
+    Route::get('index',[CreativeController::class,'index']);
+
+
+});
+
+
 
 Route::group(['prefix'=>'admin/comments','middleware'=>'role:admin'],function (){
 

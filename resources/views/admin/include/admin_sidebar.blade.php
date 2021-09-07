@@ -116,6 +116,7 @@
                     <li><a href="/admin/sample/create"><i class="fa fa-circle-o"></i>اضافه کردن نمونه کار</a></li>
                 </ul>
             </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-lightbulb-o"></i> <span>نکات طلایی</span>
@@ -128,6 +129,20 @@
 <!--                    <li><a href="#"><i class="fa fa-circle-o"></i>مدیریت نکات طلایی</a></li>-->
                 </ul>
             </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-creative-commons"></i> <span>حلاقیت و طراحی</span>
+                    <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/creative/index"><i class="fa fa-circle-o"></i>لیست خلاقیت ها</a></li>
+                    <!--                    <li><a href="#"><i class="fa fa-circle-o"></i>مدیریت نکات طلایی</a></li>-->
+                </ul>
+            </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-comment"></i> <span>نظرات</span>
