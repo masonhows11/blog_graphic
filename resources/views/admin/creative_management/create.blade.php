@@ -57,6 +57,11 @@
                 @error('image')
                 <div class="alert alert-danger fade-in">{{ $message }}</div>
                 @enderror
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-save-tip">ذخیره</button>
+                    <a href="/admin/admin/creative" class="btn btn-default btn-save-tip">انصراف</a>
+                </div>
             </form>
 
         </div>
