@@ -132,7 +132,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-creative-commons"></i> <span>حلاقیت و طراحی</span>
+                    <i class="fa fa-creative-commons"></i> <span>خلاقیت و طراحی</span>
                     <span class="pull-left-container">
               <i class="fa fa-angle-right pull-left"></i>
             </span>

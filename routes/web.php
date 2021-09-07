@@ -176,8 +176,13 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
 Route::group(['prefix'=>'admin/creative','middleware'=>'role:admin'],function (){
 
 
-    Route::get('index',[CreativeController::class,'index']);
-
+    Route::get('/index',[CreativeController::class,'index']);
+    Route::get('/create',[CreativeController::class,'create']);
+    Route::post('/store',[CreativeController::class,'store']);
+    Route::get('/edit',[CreativeController::class,'edit']);
+    Route::post('/update',[CreativeController::class,'update']);
+    Route::delete('/delete',[CreativeController::class,'delete']);
+    Route::get('/active',[CreativeController::class,'changeStatus']);
 
 });
 
