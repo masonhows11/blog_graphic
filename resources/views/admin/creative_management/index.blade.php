@@ -35,20 +35,20 @@
                 </tr>
                 </thead>
                 <tbody>
-              {{--  @foreach($creatives as $creative)
+                @foreach($creatives as $creative)
                     <tr>
-                        <td>{{ $sample->id }}</td>
-                        <td>{{ $sample->title }}</td>
-                        <td><a href="/admin/sample/active?sample={{$sample->id}}" class="btn btn-default">{{ $sample->approved == 0 ? 'منتشر نشده' : 'منتشره شده'  }}</a></td>
-                        <td><a href="/admin/sample/edit?sample={{$sample->id}}" class="btn btn-info">ویرایش</a> |
-                            <a href="/admin/sample/delete?sample={{$sample->id}}" onclick="deleteItem(event)" class="btn btn-danger" >حذف</a>
-                            <form action="/admin/sample/delete?sample={{$sample->id}}" method="post" id="delete-item">
+                        <td>{{ $creative->id }}</td>
+                        <td>{{ $creative->title }}</td>
+                        <td><a href="/admin/creative/active?creative={{$creative->id}}" class="btn btn-default">{{ $creative->status == 0 ? 'منتشر نشده' : 'منتشر شده'  }}</a></td>
+                        <td><a href="/admin/creative/edit?creative={{$creative->id}}" class="btn btn-info">ویرایش</a> |
+                            <a href="/admin/creative/delete?creative={{$creative->id}}" onclick="deleteItem(event)" class="btn btn-danger" >حذف</a>
+                            <form action="/admin/creative/delete?creative={{$creative->id}}" method="post" id="delete-item">
                                 @csrf
                                 @method('delete')
                             </form>
                         <td>
                     </tr>
-                @endforeach--}}
+                @endforeach
                 </tbody>
             </table>
         </div>

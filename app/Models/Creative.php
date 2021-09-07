@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Creative extends Model
 {
-    use HasFactory;
+    use HasFactory,Sluggable;
 
     protected $fillable =['title','name','image','description','user_id'];
 
