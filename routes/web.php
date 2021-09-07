@@ -183,6 +183,7 @@ Route::group(['prefix'=>'admin/comments','middleware'=>'role:admin'],function ()
     Route::get('/getCoursesComments',[CommentAdController::class,'getSampleComments'])->name('getCoursesComments');
 
     Route::post('/confirmComment',[CommentAdController::class,'confirmComment'])->name('confirmComment');
+    Route::get('/deleteComment',[CommentAdController::class,'deleteComment'])->name('deleteComment');
 
 });
 

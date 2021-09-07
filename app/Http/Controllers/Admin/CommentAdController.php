@@ -52,5 +52,10 @@ class CommentAdController extends Controller
 
     }
 
+    public function deleteComment(Request $request)
+    {
+
+    }
+
 
 }

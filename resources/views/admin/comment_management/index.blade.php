@@ -123,11 +123,13 @@
                 load_comment();
             });
         });
+
         function get_comment_body(body) {
             let comment_body = '';
             comment_body = body.getAttribute('data-comment');
             document.getElementById('comment_body').innerHTML = comment_body;
         }
+
         function confirm_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
@@ -139,9 +141,10 @@
             });
             $.ajax({
                 method: 'POST',
-                url: '{{ route('getSampleComments') }}',
+                url: '{{ route('confirmComment') }}',
             });
         }
+
         function delete_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
@@ -153,8 +156,9 @@
             });
             $.ajax({
                 method: 'GET',
-                url: '{{ route('getSampleComments') }}',
+                url: '{{ route('deleteComment') }}',
             });
         }
+
     </script>
 @endsection
