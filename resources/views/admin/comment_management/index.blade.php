@@ -132,11 +132,29 @@
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
             console.log(comment_id);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'POST',
+                url: '{{ route('getSampleComments') }}',
+            });
         }
         function delete_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
             console.log(comment_id);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'GET',
+                url: '{{ route('getSampleComments') }}',
+            });
         }
     </script>
 @endsection

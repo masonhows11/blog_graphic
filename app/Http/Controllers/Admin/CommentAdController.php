@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\DB;
 
 class CommentAdController extends Controller
@@ -45,6 +46,11 @@ class CommentAdController extends Controller
 
     }
 
+    public function confirmComment(Request $request)
+    {
+
+
+    }
 
 
 }
