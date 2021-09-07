@@ -14,6 +14,7 @@ class CommentAdController extends Controller
         $sample_comments = DB::table('comments')
             ->join('samples','comments.sample_id','=','samples.id')
             ->join('users','users.id','=','comments.user_id')
+            ->where('comments.approved','=',0)
             ->select('comments.id','samples.title','users.user_name','comments.description')->get();
 
         return view('admin.comment_management.index');
@@ -24,6 +25,7 @@ class CommentAdController extends Controller
         $sample_comments = DB::table('comments')
             ->join('samples','comments.sample_id','=','samples.id')
             ->join('users','users.id','=','comments.user_id')
+            ->where('comments.approved','=',0)
             ->select('comments.id','samples.title','users.user_name','comments.description')->get();
 
        return  response()->json(['sample_comments'=>$sample_comments]);
