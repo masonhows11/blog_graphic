@@ -70,59 +70,63 @@
 @endsection
 @section('my_script_admin')
     <script>
-        $(document).ready(function () {
-            function load_comment(){
-                let comments = '';
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    method: 'GET',
-                    url: '{{ route('getSampleComments') }}',
-                    success: function (data) {
-                        comments += '<table>' +
-                            '<thead><tr>' +
-                            '<th class="text-center">شناسه</th>' +
-                            '<th class="text-center">هنوان نمونه کار</th>' +
-                            '<th class="text-center">کاربر</th>' +
-                            '<th class="text-center">متن دیدگاه</th>' +
-                            '<th class="text-center">تایید</th>' +
-                            '<th class="text-center">حذف</th>' +
-                            '</tr></thead><tbody>';
-                        for (let i = 0; i < data['sample_comments'].length; i++) {
-                            comments +=
-                                '<tr>' +
-                                '<td class="text-center">' + data['sample_comments'][i].id + '</td>' +
-                                '<td class="text-center">' + data['sample_comments'][i].title + '</td>' +
-                                '<td class="text-center">' + data['sample_comments'][i].user_name + '</td>' +
-                                '<td class="text-center"><button type="button"' +
-                                ' data-toggle="modal"' +
-                                ' data-target="#commentBodyModal"' +
-                                ' class="btn btn-outline-light" onclick="get_comment_body(this)" data-comment="' + data['sample_comments'][i].description + '" >' +
-                                'مشاهد متن دیدگاه</button></td>' +
-                                '<td class="text-center"><button onclick="confirm_comment(this)" data-id=" ' + data['sample_comments'][i].id + ' "' +
-                                ' class="btn btn-light">تایید نشده</button></td>' +
-                                '<td class="text-center"><button onclick="delete_comment(this) " data-id=" ' + data['sample_comments'][i].id + ' "' +
-                                ' class="btn btn-danger">حذف</button></td>' +
-                                '</tr>';
-                        }
-                        comments += '</tbody>';
-                        document.getElementById('tbl_comments').innerHTML = comments;
-                    }, error: function (error) {
-                        console.log(error)
-                    },
-                });
-            }
-            // load comment when comment index page is complete loaded
-            /*  $(window).on('load',function () {
-                load_comment();
-            });*/
-            $(document).on('click', '#sample_comments', function () {
-                load_comment();
+        // $(document).ready(function () {
+
+        function load_comment() {
+            let comments = '';
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
+            $.ajax({
+                method: 'GET',
+                url: '{{ route('getSampleComments') }}',
+                success: function (data) {
+                    comments += '<table>' +
+                        '<thead><tr>' +
+                        '<th class="text-center">شناسه</th>' +
+                        '<th class="text-center">هنوان نمونه کار</th>' +
+                        '<th class="text-center">کاربر</th>' +
+                        '<th class="text-center">متن دیدگاه</th>' +
+                        '<th class="text-center">تایید</th>' +
+                        '<th class="text-center">حذف</th>' +
+                        '</tr></thead><tbody>';
+                    for (let i = 0; i < data['sample_comments'].length; i++) {
+                        comments +=
+                            '<tr>' +
+                            '<td class="text-center">' + data['sample_comments'][i].id + '</td>' +
+                            '<td class="text-center">' + data['sample_comments'][i].title + '</td>' +
+                            '<td class="text-center">' + data['sample_comments'][i].user_name + '</td>' +
+                            '<td class="text-center"><button type="button"' +
+                            ' data-toggle="modal"' +
+                            ' data-target="#commentBodyModal"' +
+                            ' class="btn btn-outline-light" onclick="get_comment_body(this)" data-comment="' + data['sample_comments'][i].description + '" >' +
+                            'مشاهد متن دیدگاه</button></td>' +
+                            '<td class="text-center"><button onclick="confirm_comment(this)" data-id=" ' + data['sample_comments'][i].id + ' "' +
+                            ' class="btn btn-light">تایید نشده</button></td>' +
+                            '<td class="text-center"><button onclick="delete_comment(this) " data-id=" ' + data['sample_comments'][i].id + ' "' +
+                            ' class="btn btn-danger">حذف</button></td>' +
+                            '</tr>';
+                    }
+                    comments += '</tbody>';
+                    document.getElementById('tbl_comments').innerHTML = comments;
+                }, error: function (error) {
+                    console.log(error)
+                },
+            });
+        }
+
+        // load comment when comment index page is complete loaded
+        /*  $(window).on('load',function () {
+            load_comment();
+        });*/
+        $(document).on('click', '#sample_comments', function () {
+            load_comment();
         });
+
+
+        // });
 
         function get_comment_body(body) {
             let comment_body = '';
@@ -133,7 +137,6 @@
         function confirm_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
-            console.log(comment_id);
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -141,14 +144,24 @@
             });
             $.ajax({
                 method: 'POST',
+                data: {comment_id: comment_id},
                 url: '{{ route('confirmComment') }}',
+                success: function (data) {
+                    if (data['status'] === 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            text: data['success'],
+                        })
+                    }
+                    load_comment();
+                }, error: function () {
+                }
             });
         }
 
         function delete_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
-            console.log(comment_id);
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -156,7 +169,20 @@
             });
             $.ajax({
                 method: 'GET',
+                data: {comment_id: comment_id},
                 url: '{{ route('deleteComment') }}',
+                success: function (data) {
+                    if(data['status'] === 200)
+                    {
+                        Swal.fire({
+                            icon: 'success',
+                            text: data['success'],
+                        })
+                    }
+                    load_comment();
+                }, error: function () {
+
+                }
             });
         }
 
