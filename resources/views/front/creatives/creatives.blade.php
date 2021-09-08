@@ -18,7 +18,7 @@
                             </p>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <a href="#" class="text-center">ادامه...</a>
+                            <a href="/creatives/creative/{{$creative->slug}}" class="text-center">ادامه...</a>
                         </div>
                     </div>
                 </div>

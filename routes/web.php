@@ -233,9 +233,10 @@ Route::group(['prefix'=>'comment'],function (){
 
 });
 
-Route::group(['prefix'=>'creative'],function(){
+Route::group(['prefix'=>'creatives'],function(){
 
     Route::get('/index',[CreativeFrontController::class,'index']);
+    Route::get('/creative/{creative}',[CreativeFrontController::class,'creative']);
 
 });
 

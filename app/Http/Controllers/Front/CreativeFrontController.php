@@ -16,4 +16,12 @@ class CreativeFrontController extends Controller
         return view('front.creatives.creatives')
             ->with(['creatives'=>$creatives]);
     }
+
+    public function creative($creative)
+    {
+        $creative = Creative::with(['likes','comments'=>function($query){
+            $query->where('approved',1);
+        }])->where('slug','=',$creative)->first();
+        return view('front.creatives.creative')->with(['creative'=>$creative]);
+    }
 }
