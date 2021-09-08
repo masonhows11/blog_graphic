@@ -32,8 +32,8 @@ class CreateCommentsTable extends Migration
             $table->foreign('sample_id')->references('id')
                 ->on('samples')->onDelete('cascade');
 
-            $table->unsignedBigInteger('creatives_id')->nullable();
-            $table->foreign('creatives_id')->references('id')
+            $table->unsignedBigInteger('creative_id')->nullable();
+            $table->foreign('creative_id')->references('id')
                 ->on('creatives')->onDelete('cascade');
 
             $table->string('user_name');

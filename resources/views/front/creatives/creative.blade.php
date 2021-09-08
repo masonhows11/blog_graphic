@@ -5,9 +5,9 @@
 @section('content')
     <div class="row">
 
-        <div class="col-md-9 one-sample">
+        <div class="col-md-9 ">
 
-            <div class="row d-flex flex-column justify-content-center">
+            <div class="row d-flex  justify-content-center one-sample">
                 <div class="col-lg-9 mt-2">
                     <div class="card">
                         <input type="hidden" id="sample_id" value="{{ $creative->id }}">
@@ -39,8 +39,8 @@
                                                value="{{ \Illuminate\Support\Facades\Auth::user() }}">
                                         <div class="dislike_sec">
                                             @if(Auth::check())
-                                                @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
-                                                     Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',0)->first())
+                                                @if( Auth::user()->likes()->where('sample_id','=',$creative->id) &&
+                                                     Auth::user()->likes()->where('sample_id','=',$creative->id)->where('like','=',0)->first())
                                                     <span id="dislike_count" class="dislike_count"></span>
                                                     <i class="far fa-thumbs-down like" style="color:tomato"
                                                        id="dislike"></i>
@@ -56,8 +56,8 @@
 
                                         <div class="like_sec mx-2">
                                             @if(Auth::check())
-                                                @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
-                                                     Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',1)->first())
+                                                @if( Auth::user()->likes()->where('sample_id','=',$creative->id) &&
+                                                     Auth::user()->likes()->where('sample_id','=',$creative->id)->where('like','=',1)->first())
                                                     <span id="like_count" class="like_count"></span>
                                                     <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
                                                 @else
@@ -88,7 +88,7 @@
             <div class="col-md-9">
                 <div class="row d-flex flex-column justify-content-center comments-sec">
                     <div class="col-lg-9 mt-5 list-comments">
-                        @foreach($sample->comments as $comment)
+                        @foreach($creative->comments as $comment)
                             <div class="card mt-5">
                                 <div class="card-body">
                                     <p class="card-text">
@@ -108,7 +108,7 @@
 
                             <form action="/comment/store" method="post">
                                 @csrf
-                                <input type="hidden" name="sample_id" value="{{ $sample->id }}">
+                                <input type="hidden" name="creative_id" value="{{ $creative->id }}">
                                 <div class="mb-5">
                                     <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                     <textarea class="form-control @error('description') is_invalid @enderror"
