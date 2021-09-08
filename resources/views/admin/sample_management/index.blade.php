@@ -37,7 +37,7 @@
                         <tr>
                             <td>{{ $sample->id }}</td>
                             <td>{{ $sample->title }}</td>
-                            <td><a href="/admin/sample/active?sample={{$sample->id}}" class="btn btn-default">{{ $sample->approved == 0 ? 'منتشر نشده' : 'منتشره شده'  }}</a></td>
+                            <td><a href="/admin/sample/active?sample={{$sample->id}}" class="btn btn-default">{{ $sample->approved == 0 ? 'منتشر نشده' : 'منتشر شده'  }}</a></td>
                             <td><a href="/admin/sample/edit?sample={{$sample->id}}" class="btn btn-info">ویرایش</a> |
                                 <a href="/admin/sample/delete?sample={{$sample->id}}" onclick="deleteItem(event)" class="btn btn-danger" >حذف</a>
                                 <form action="/admin/sample/delete?sample={{$sample->id}}" method="post" id="delete-item">
