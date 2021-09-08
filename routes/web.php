@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Admin\CommentAdController;
 use App\Http\Controllers\Admin\CreativeController;
+use App\Http\Controllers\Front\CreativeFrontController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -234,7 +235,7 @@ Route::group(['prefix'=>'comment'],function (){
 
 Route::group(['prefix'=>'creative'],function(){
 
-
+    Route::get('/index',[CreativeFrontController::class,'index']);
 
 });
 

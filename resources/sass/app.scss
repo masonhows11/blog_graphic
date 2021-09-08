@@ -349,7 +349,10 @@ body {
 .main-section .list-samples-left .samples-item .card{
     min-height: 400px;
 }
-.articles-creativity-item .card,
+.articles-creativity .articles-creativity-item .card{
+    border-radius: 20px;
+    height:auto;
+}
 .samples-item .card {
     border-radius: 20px;
     max-height: 800px;
