@@ -55,6 +55,9 @@ Route::get('/profile',[AuthController::class,'showProfile'])->middleware(['auth'
 
 Route::get('/logout',[AuthController::class,'logout'])->middleware('auth')->name('logout');
 
+/************************************************************************************************************/
+/******************************************* Admin Routes ***************************************************/
+/************************************************************************************************************/
 
 Route::group(['prefix'=>'admin','middleware'=>'role:admin'],function (){
 
@@ -201,6 +204,10 @@ Route::group(['prefix'=>'admin/comments','middleware'=>'role:admin'],function ()
     Route::get('/deleteComment',[CommentAdController::class,'deleteComment'])->name('deleteComment');
 
 });
+
+/************************************************************************************************************/
+/******************************************* Front Routes ***************************************************/
+/************************************************************************************************************/
 
 Route::group(['prefix'=>'samples'],function (){
 
