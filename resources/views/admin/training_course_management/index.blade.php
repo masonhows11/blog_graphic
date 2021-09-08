@@ -19,7 +19,6 @@
                 @endif
             </div>
         </div>
-
         <div class="row page-header-row">
             <div class="page-header">
                 <h3>دوره های آموزشی</h3>

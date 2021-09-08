@@ -19,6 +19,11 @@
                     @endif
                 </div>
             </div>
+            <div class="row page-header-row">
+                <div class="page-header">
+                    <h3>نمونه کارها</h3>
+                </div>
+            </div>
             <div class="row new-tip-row">
                 <a href="/admin/sample/create" class="btn btn-success">ایجاد نمونه کار جدید</a>
             </div>
