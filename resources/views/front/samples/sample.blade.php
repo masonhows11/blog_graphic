@@ -199,7 +199,7 @@
                 });
                 $.ajax({
                     method: 'GET',
-                    url: '{{ route('get_likes') }}',
+                    url: '{{ route('get_sample_likes') }}',
                     data: {sample_id: sample_id},
                 }).done(function (data) {
 

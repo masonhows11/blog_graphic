@@ -44,11 +44,12 @@ class LikeController extends Controller
             $like->save();
         }
         $like = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
-        if($like != null)
+        if($like !==  null)
         {
             return response()->json($like);
 
-        }else if($like == null)
+        }
+        if($like === null)
         {
             return response()->json($like);
         }
@@ -95,16 +96,18 @@ class LikeController extends Controller
         } else {
             $like = new Like();
             $like->user_id = $user_id;
-            $like->ceative_id = $request->creative_id;
+            $like->creative_id = $request->creative_id;
             $like->like = $is_like;
             $like->save();
         }
         $like = Like::where('creative_id', '=', $request->creative_id)->where('user_id', '=', $user_id)->first();
-        if($like != null)
+        if($like !== null)
         {
             return response()->json($like);
 
-        }else if($like == null)
+        }
+
+        if($like === null)
         {
             return response()->json($like);
         }
@@ -123,6 +126,7 @@ class LikeController extends Controller
         return response()
             ->json(['likes' => $likes, 'dislikes' => $dislikes]);
     }
+
   /*  public function sampleLike(Request $request)
     {
 

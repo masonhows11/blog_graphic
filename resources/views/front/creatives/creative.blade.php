@@ -7,7 +7,7 @@
 
         <div class="col-lg-9 mt-2">
             <div class="card">
-                <input type="hidden" id="sample_id" value="{{ $creative->id }}">
+                <input type="hidden" id="creative_id" value="{{ $creative->id }}">
                 <input type="hidden" id="token" value="{{ csrf_token() }}">
                 <img src="{{ asset('/template/creativity/'.$creative->image) }}" class="card-img-top" alt="">
                 <div class="card-header">
@@ -145,7 +145,7 @@
         $(document).ready(function () {
 
             function load_likes() {
-                let sample_id = document.getElementById('sample_id').value;
+                let creative_id = document.getElementById('creative_id').value;
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -153,8 +153,8 @@
                 });
                 $.ajax({
                     method: 'GET',
-                    url: '{{ route('get_likes') }}',
-                    data: {sample_id: sample_id},
+                    url: '{{ route('get_creative_likes') }}',
+                    data: {creative_id: creative_id},
                 }).done(function (data) {
 
                     document.getElementById('like_count').innerText = data['likes'];
@@ -181,7 +181,7 @@
                 } else {
                     is_like = true;
                 }
-                let sample_id = document.getElementById('sample_id').value;
+                let creative_id = document.getElementById('creative_id').value;
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -189,8 +189,8 @@
                 });
                 $.ajax({
                     method: 'POST',
-                    url: '{{ route('add_sample_Like') }}',
-                    data: {is_like: is_like, sample_id: sample_id},
+                    url: '{{ route('add_creative_Like') }}',
+                    data: {is_like: is_like, creative_id:creative_id},
                 }).done(function (data) {
                     if (data['like'] == null) {
                         dis_like.style.color = '';
