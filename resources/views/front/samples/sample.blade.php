@@ -152,7 +152,7 @@
 
                         <form action="/comment/store" method="post">
                             @csrf
-                            <input type="hidden" name="article_id" value="{{ $sample->id }}">
+                            <input type="hidden" name="sample_id" value="{{ $sample->id }}">
                             <div class="mb-5">
                                 <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                 <textarea class="form-control @error('description') is_invalid @enderror"
