@@ -220,8 +220,17 @@ Route::group(['prefix'=>'samples'],function (){
 
 Route::group(['prefix'=>'like'],function (){
 
-    Route::post('/addLike',[LikeController::class,'updateLike'])->name('add_sample_Like');
-    Route::get('/countLike',[LikeController::class,'likeCount'])->name('get_likes');
+    Route::post('/addSampleLike',[LikeController::class,'sampleLike'])->name('add_sample_Like');
+    Route::get('/countSampleLike',[LikeController::class,'sampleLikeCount'])->name('get_sample_likes');
+
+    Route::post('/addCreativeLike',[LikeController::class,'creativeLike'])->name('add_creative_Like');
+    Route::get('/countCreativeLike',[LikeController::class,'creativeLikeCount'])->name('get_creative_likes');
+
+    Route::post('/addTipLike',[LikeController::class,'tipLike'])->name('add_tips_Like');
+    Route::get('/countTipLike',[LikeController::class,'tipLikeCount'])->name('get_tip_likes');
+
+    Route::post('/addCourseLike',[LikeController::class,'courseLike'])->name('add_course_Like');
+    Route::get('/countCourseLike',[LikeController::class,'courseLikeCount'])->name('get_course_likes');
 
 
 });
