@@ -26,7 +26,7 @@ class CommentController extends Controller
             'user_name' => Auth::user()->user_name,
             'user_id' => Auth::id(),
             'email' => Auth::user()->email,
-            'sample_id' => $request->sample_id,
+            'sample_id' => $request->article_id,
             'description'=> $request->description
         ]);
 

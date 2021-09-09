@@ -130,6 +130,7 @@
 
         <div class="col-md-9">
             <div class="row d-flex flex-column justify-content-center comments-sec">
+
                 <div class="col-lg-9 mt-5 list-comments">
                     @foreach($sample->comments as $comment)
                         <div class="card mt-5">
@@ -151,7 +152,7 @@
 
                         <form action="/comment/store" method="post">
                             @csrf
-                            <input type="hidden" name="sample_id" value="{{ $sample->id }}">
+                            <input type="hidden" name="article_id" value="{{ $sample->id }}">
                             <div class="mb-5">
                                 <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                 <textarea class="form-control @error('description') is_invalid @enderror"
