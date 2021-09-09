@@ -74,8 +74,8 @@
 
                                     <div class="d-flex flex-row-reverse">
 
-                                        <input type="hidden" id="auth_user"
-                                               value="{{ \Illuminate\Support\Facades\Auth::user() }}">
+                                       {{-- <input type="hidden" id="auth_user"
+                                               value="{{ \Illuminate\Support\Facades\Auth::user() }}">--}}
                                         <div class="dislike_sec">
                                             @if(Auth::check())
                                                 @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
