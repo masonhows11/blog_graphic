@@ -36,8 +36,8 @@
                                        value="{{ \Illuminate\Support\Facades\Auth::user() }}">
                                 <div class="dislike_sec">
                                     @if(Auth::check())
-                                        @if( Auth::user()->likes()->where('sample_id','=',$creative->id) &&
-                                             Auth::user()->likes()->where('sample_id','=',$creative->id)->where('like','=',0)->first())
+                                        @if( Auth::user()->likes()->where('creative_id','=',$creative->id) &&
+                                             Auth::user()->likes()->where('creative_id','=',$creative->id)->where('like','=',0)->first())
                                             <span id="dislike_count" class="dislike_count"></span>
                                             <i class="far fa-thumbs-down like" style="color:tomato"
                                                id="dislike"></i>
@@ -53,8 +53,8 @@
 
                                 <div class="like_sec mx-2">
                                     @if(Auth::check())
-                                        @if( Auth::user()->likes()->where('sample_id','=',$creative->id) &&
-                                             Auth::user()->likes()->where('sample_id','=',$creative->id)->where('like','=',1)->first())
+                                        @if( Auth::user()->likes()->where('creative_id','=',$creative->id) &&
+                                             Auth::user()->likes()->where('creative_id','=',$creative->id)->where('like','=',1)->first())
                                             <span id="like_count" class="like_count"></span>
                                             <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
                                         @else

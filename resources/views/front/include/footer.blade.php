@@ -56,6 +56,81 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('js/alloy_finger.min.js') }}"></script>
 <script src="{{ asset('js/lc_lightbox.lite.min.js') }}"></script>
+{{-- likes scripts --}}
+<script>
+    // $(document).ready(function () {
+
+
+        function load_likes() {
+            let sample_id = document.getElementById('sample_id').value;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'GET',
+                url: '{{ route('get_likes') }}',
+                data: {sample_id: sample_id},
+            }).done(function (data) {
+
+                document.getElementById('like_count').innerText = data['likes'];
+                document.getElementById('dislike_count').innerText = data['dislikes'];
+            });
+        }
+
+
+        $(window).on('load', function () {
+            load_likes();
+        })
+
+
+        $('.like').on('click', function (event) {
+            event.preventDefault();
+
+
+            let like = document.getElementById('like');
+            let dis_like = document.getElementById('dislike');
+            let is_like = '';
+            if (event.target.id === 'dislike') {
+
+                is_like = false;
+            } else {
+                is_like = true;
+            }
+            let sample_id = document.getElementById('sample_id').value;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'POST',
+                url: '{{ route('add_sample_Like') }}',
+                data: {is_like: is_like, sample_id: sample_id},
+            }).done(function (data) {
+                if (data['like'] == null) {
+                    dis_like.style.color = '';
+                    like.style.color = '';
+                } else if (data['like'] === 0) {
+                    dis_like.style.color = 'tomato';
+                    like.style.color = '';
+                } else if (data['like'] === 1) {
+                    like.style.color = 'green';
+                    dis_like.style.color = '';
+                }
+
+                load_likes();
+            });
+        });
+    // });
+</script>
+
+{{-- comments scripts--}}
+<script>
+
+</script>
+
 <script>
     lc_lightbox('.my_box', {
         wrap_class: 'lcl_fade_oc',

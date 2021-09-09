@@ -13,7 +13,7 @@ class Like extends Model
         ['user_id',
             'sample_id',
             'courses_id',
-            'create_design_id',
+            'creative_id',
             'like'];
 
 
