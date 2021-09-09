@@ -8,7 +8,6 @@
         <div class="col-lg-9 mt-2">
             <div class="card">
                 <input type="hidden" id="sample_id" value="{{ $creative->id }}">
-                <input type="hidden" id="user_id" value="{{ \Illuminate\Support\Facades\Auth::id() }}">
                 <input type="hidden" id="token" value="{{ csrf_token() }}">
                 <img src="{{ asset('/template/creativity/'.$creative->image) }}" class="card-img-top" alt="">
                 <div class="card-header">
