@@ -188,9 +188,7 @@
     @endif
     <script type="text/javascript">
 
-/*
         $(document).ready(function () {
-
 
             function load_likes() {
                 let sample_id = document.getElementById('sample_id').value;
@@ -254,7 +252,7 @@
                     load_likes();
                 });
             });
-        });*/
+        });
 
     </script>
 @endsection
