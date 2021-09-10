@@ -12,7 +12,7 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-      //return $request;
+       // return $request;
 
         $request->validate([
             'description' => 'required|min:20|max:400'
@@ -40,6 +40,16 @@ class CommentController extends Controller
                 'user_id' => Auth::id(),
                 'email' => Auth::user()->email,
                 'creative_id' => $request->creative_id,
+                'description'=> $request->description
+            ]);
+        }
+        if ($request->has('tip_id')){
+
+            Comment::create([
+                'user_name' => Auth::user()->user_name,
+                'user_id' => Auth::id(),
+                'email' => Auth::user()->email,
+                'tip_id' => $request->tip_id,
                 'description'=> $request->description
             ]);
         }
