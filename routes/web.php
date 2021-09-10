@@ -23,6 +23,7 @@ use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Admin\CommentAdController;
 use App\Http\Controllers\Admin\CreativeController;
 use App\Http\Controllers\Front\CreativeFrontController;
+use App\Http\Controllers\Front\TipFrontController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -226,7 +227,7 @@ Route::group(['prefix'=>'like'],function (){
     Route::post('/addCreativeLike',[LikeController::class,'creativeLike'])->name('add_creative_Like');
     Route::get('/countCreativeLike',[LikeController::class,'creativeLikeCount'])->name('get_creative_likes');
 
-    Route::post('/addTipLike',[LikeController::class,'tipLike'])->name('add_tips_Like');
+    Route::post('/addTipLike',[LikeController::class,'tipLike'])->name('add_tip_Like');
     Route::get('/countTipLike',[LikeController::class,'tipLikeCount'])->name('get_tip_likes');
 
     Route::post('/addCourseLike',[LikeController::class,'courseLike'])->name('add_course_Like');
@@ -251,7 +252,10 @@ Route::group(['prefix'=>'creatives'],function(){
 
 Route::group(['prefix'=>'tips'],function (){
 
-    
+
+    Route::get('/index',[TipFrontController::class,'index']);
+    Route::get('/tip/{tip}',[TipFrontController::class,'tip']);
+
 
 });
 

@@ -39,12 +39,17 @@ class TipController extends Controller
             'image.required'=>'فیلد تصویر لازامی است.'
         ]);
 
+        if ($request->has('image')){
+
+            $image = str_ireplace('http://localhost/template/tips/','',$request->image);
+        }
+
 
         Tip::create([
             'title' => $request->title,
             'short_description'=>$request->short_description,
             'description'=>$request->description,
-            'image'=>$request->image,
+            'image'=>$image,
             'writer'=> Auth::user()->user_name,
         ]);
 
@@ -75,26 +80,32 @@ class TipController extends Controller
             'image.required'=>'فیلد تصویر لازامی است.'
         ]);
 
-            Tip::where('id',$request->id)
+        if ($request->has('image')){
+
+            $image = str_ireplace('http://localhost/template/tips/','',$request->image);
+        }
+
+        Tip::where('id',$request->id)
                 ->update([
                     'title' => $request->title,
                     'short_description'=>$request->short_description,
                     'description'=>$request->description,
-                    'image'=>$request->image
+                    'image'=>$image
                 ]);
         return redirect('admin/tip/index')->with('success','نکته طلایی با موفقیت ویرایش شد.');
 
     }
 
-    public function changeStatus(Request $request): \Illuminate\Http\RedirectResponse
+    public function changeStatus(Request $request)
     {
          $tip = Tip::find($request->tip);
-        if($tip->status == 0)
+         
+        if($tip->status === 0)
         {
             $tip->status = 1;
             $tip->save();
             return redirect()->back()->with('success','وضعیت مقاله بروز رسانی شد.');
-        }else
+        }
             $tip->status = 0;
             $tip->save();
             return redirect()->back()->with('success','وضعیت مقاله بروز رسانی شد.');

@@ -15,7 +15,11 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "morilog/jalali": "3.*",
+<<<<<<< HEAD
         "spatie/laravel-permission": "^4.2"
+=======
+        "spatie/laravel-permission": "^4.2",
+>>>>>>> a84a9d43ae9766ff68a69f4cbf22a0f9256399dc
 
     },
     "require-dev": {
