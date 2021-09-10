@@ -30,7 +30,7 @@ class CommentAdController extends Controller
             ->where('comments.approved','=',0)
             ->select('comments.id','samples.title','users.user_name','comments.description')->get();
 
-       return  response()->json(['comments'=>$comments]);
+       return  response()->json($comments);
     }
 
     public function getCreativesComments()
@@ -41,19 +41,20 @@ class CommentAdController extends Controller
             ->where('comments.approved','=',0)
             ->select('comments.id','creatives.title','users.user_name','comments.description')->get();
 
-        return  response()->json(['comments'=>$comments]);
+        return  response()->json($comments);
     }
 
-    public function getTipsComments()
-    {
-        $comments = DB::table('comments')
-            ->join('tips','comments.tip_id','=','tips.id')
-            ->join('users','users.id','=','comments.user_id')
-            ->where('comments.approved','=',0)
-            ->select('comments.id','tips.title','users.user_name','comments.description')->get();
+      public function getTipsComments()
+       {
+           $comments = DB::table('comments')
+               ->join('tips','comments.tip_id','=','tips.id')
+               ->join('users','users.id','=','comments.user_id')
+               ->where('comments.approved','=',0)
+               ->select('comments.id','tips.title','users.user_name','comments.description')->get();
 
-        return  response()->json(['comments'=>$comments]);
-    }
+           return  response()->json($comments);
+       }
+       /**/
 
 
    /* public function getCoursesComments()

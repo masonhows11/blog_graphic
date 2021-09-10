@@ -83,7 +83,8 @@
                 method: 'GET',
                 url: data_uri,
                 success: function (data) {
-                   let comments_ln = data['comments'].length;
+                    const comments_ln = data.length;
+                    console.log(data);
                     comments += '<table>' +
                         '<thead><tr>' +
                         '<th class="text-center">شناسه</th>' +
@@ -96,17 +97,17 @@
                     for (let i = 0; i < comments_ln ; i++) {
                         comments +=
                             '<tr>' +
-                            '<td class="text-center">' + data['comments'][i].id + '</td>' +
-                            '<td class="text-center">' + data['comments'][i].title + '</td>' +
-                            '<td class="text-center">' + data['comments'][i].user_name + '</td>' +
+                            '<td class="text-center">' + data[i].id + '</td>' +
+                            '<td class="text-center">' + data[i].title + '</td>' +
+                            '<td class="text-center">' + data[i].user_name + '</td>' +
                             '<td class="text-center"><button type="button"' +
                             ' data-toggle="modal"' +
                             ' data-target="#commentBodyModal"' +
-                            ' class="btn btn-outline-light" onclick="get_comment_body(this)" data-comment="' + data['comments'][i].description + '" >' +
+                            ' class="btn btn-outline-light" onclick="get_comment_body(this)" data-comment="' + data[i].description + '" >' +
                             'مشاهد متن دیدگاه</button></td>' +
-                            '<td class="text-center"><button onclick="confirm_comment(this)" data-id=" ' + data['comments'][i].id + ' "' +
+                            '<td class="text-center"><button onclick="confirm_comment(this)" data-id=" ' + data[i].id + ' "' +
                             ' class="btn btn-light">تایید نشده</button></td>' +
-                            '<td class="text-center"><button onclick="delete_comment(this) " data-id=" ' + data['comments'][i].id + ' "' +
+                            '<td class="text-center"><button onclick="delete_comment(this) " data-id=" ' + data[i].id + ' "' +
                             ' class="btn btn-danger">حذف</button></td>' +
                             '</tr>';
                     }
@@ -174,7 +175,7 @@
                             text: data['success'],
                         })
                     }
-                    load_comment();
+                   // load_comment();
                 }, error: function () {
                 }
             });
@@ -199,7 +200,7 @@
                             text: data['success'],
                         })
                     }
-                    load_comment();
+                    //load_comment();
                 }, error: function () {
 
                 }
