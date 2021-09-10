@@ -17,19 +17,19 @@
             </div>
 
             <div class="col-md-3">
-                <a href="#" class="menu_item">
+                <a href="#" id="creative_comments" class="menu_item">
                     <p class="text-center mt-4"> خلاقیت و طراحی</p>
                 </a>
             </div>
 
             <div class="col-md-3">
-                <a href="#" class="menu_item">
+                <a href="#"  id="tip_comments" class="menu_item">
                     <p class="text-center mt-4">نکات طلایی</p>
                 </a>
             </div>
 
             <div class="col-md-3">
-                <a href="#" class="menu_item">
+                <a href="#"  id="course_comments" class="menu_item">
                     <p class="text-center mt-4">دوره های آموزشی</p>
                 </a>
             </div>
