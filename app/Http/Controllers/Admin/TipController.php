@@ -99,12 +99,13 @@ class TipController extends Controller
     public function changeStatus(Request $request)
     {
          $tip = Tip::find($request->tip);
-        if($tip->status == 0)
+         
+        if($tip->status === 0)
         {
             $tip->status = 1;
             $tip->save();
             return redirect()->back()->with('success','وضعیت مقاله بروز رسانی شد.');
-        }else
+        }
             $tip->status = 0;
             $tip->save();
             return redirect()->back()->with('success','وضعیت مقاله بروز رسانی شد.');
