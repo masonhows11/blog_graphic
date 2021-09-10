@@ -14,7 +14,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $tip->title }}</h5>
                                 <p class="card-text">
-                                    {{ strip_tags(Str::substr($tip->description,0,160))  }}
+                                    {{ strip_tags(Str::substr($tip->short_description,0,160))  }}
                                 </p>
                             </div>
                             <div class="card-footer d-flex justify-content-end">

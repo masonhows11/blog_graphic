@@ -16,7 +16,7 @@
         "laravel/ui": "^3.3",
         "morilog/jalali": "3.*",
         "spatie/laravel-permission": "^4.2",
-     
+
     },
     "require-dev": {
         "facade/ignition": "^2.5",
