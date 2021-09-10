@@ -24,24 +24,24 @@ class CommentAdController extends Controller
 
     public function getSampleComments()
     {
-        $sample_comments = DB::table('comments')
+        $comments = DB::table('comments')
             ->join('samples','comments.sample_id','=','samples.id')
             ->join('users','users.id','=','comments.user_id')
             ->where('comments.approved','=',0)
             ->select('comments.id','samples.title','users.user_name','comments.description')->get();
 
-       return  response()->json(['sample_comments'=>$sample_comments]);
+       return  response()->json(['comments'=>$comments]);
     }
 
     public function getTipsComments()
     {
-      /*  $sample_comments = DB::table('comments')
+        $comments = DB::table('comments')
             ->join('samples','comments.sample_id','=','samples.id')
             ->join('users','users.id','=','comments.user_id')
             ->where('comments.approved','=',0)
             ->select('comments.id','samples.title','users.user_name','comments.description')->get();
 
-        return  response()->json(['sample_comments'=>$sample_comments]);*/
+        return  response()->json(['comments'=>$comments]);
     }
     public function getCreativesComments()
     {

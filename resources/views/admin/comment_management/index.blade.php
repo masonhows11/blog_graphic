@@ -92,20 +92,20 @@
                         '<th class="text-center">تایید</th>' +
                         '<th class="text-center">حذف</th>' +
                         '</tr></thead><tbody>';
-                    for (let i = 0; i < data['sample_comments'].length; i++) {
+                    for (let i = 0; i < data['comments'].length; i++) {
                         comments +=
                             '<tr>' +
-                            '<td class="text-center">' + data['sample_comments'][i].id + '</td>' +
-                            '<td class="text-center">' + data['sample_comments'][i].title + '</td>' +
-                            '<td class="text-center">' + data['sample_comments'][i].user_name + '</td>' +
+                            '<td class="text-center">' + data['comments'][i].id + '</td>' +
+                            '<td class="text-center">' + data['comments'][i].title + '</td>' +
+                            '<td class="text-center">' + data['comments'][i].user_name + '</td>' +
                             '<td class="text-center"><button type="button"' +
                             ' data-toggle="modal"' +
                             ' data-target="#commentBodyModal"' +
-                            ' class="btn btn-outline-light" onclick="get_comment_body(this)" data-comment="' + data['sample_comments'][i].description + '" >' +
+                            ' class="btn btn-outline-light" onclick="get_comment_body(this)" data-comment="' + data['comments'][i].description + '" >' +
                             'مشاهد متن دیدگاه</button></td>' +
-                            '<td class="text-center"><button onclick="confirm_comment(this)" data-id=" ' + data['sample_comments'][i].id + ' "' +
+                            '<td class="text-center"><button onclick="confirm_comment(this)" data-id=" ' + data['comments'][i].id + ' "' +
                             ' class="btn btn-light">تایید نشده</button></td>' +
-                            '<td class="text-center"><button onclick="delete_comment(this) " data-id=" ' + data['sample_comments'][i].id + ' "' +
+                            '<td class="text-center"><button onclick="delete_comment(this) " data-id=" ' + data['comments'][i].id + ' "' +
                             ' class="btn btn-danger">حذف</button></td>' +
                             '</tr>';
                     }
