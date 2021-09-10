@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Creative;
 use App\Models\Like;
 use App\Models\Sample;
+use App\Models\Tip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class LikeController extends Controller
 {
 

@@ -14,6 +14,7 @@ class Like extends Model
             'sample_id',
             'courses_id',
             'creative_id',
+            'tip_id',
             'like'];
 
 
@@ -30,5 +31,9 @@ class Like extends Model
     public function creative()
     {
         return $this->belongsTo(Creative::class);
+    }
+    public function tip()
+    {
+       return $this->belongsTo(Tip::class);
     }
 }
