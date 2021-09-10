@@ -86,7 +86,7 @@
                     comments += '<table>' +
                         '<thead><tr>' +
                         '<th class="text-center">شناسه</th>' +
-                        '<th class="text-center">هنوان نمونه کار</th>' +
+                        '<th class="text-center">عنوان نمونه کار</th>' +
                         '<th class="text-center">کاربر</th>' +
                         '<th class="text-center">متن دیدگاه</th>' +
                         '<th class="text-center">تایید</th>' +
@@ -143,7 +143,6 @@
         $(document).on('click', '#course_comments', function () {
 
             let data_uri = document.getElementById('course_comments').getAttribute('data-uri');
-            console.log(data_uri);
             load_comment(data_uri);
         });
 
