@@ -72,6 +72,8 @@
     <script>
         // $(document).ready(function () {
 
+        let global_data_uri = '';
+
         function load_comment(data_uri) {
             let comments = '';
             $.ajaxSetup({
@@ -84,7 +86,7 @@
                 url: data_uri,
                 success: function (data) {
                     const comments_ln = data.length;
-                    console.log(data);
+                    //console.log(data);
                     comments += '<table>' +
                         '<thead><tr>' +
                         '<th class="text-center">شناسه</th>' +
@@ -94,7 +96,7 @@
                         '<th class="text-center">تایید</th>' +
                         '<th class="text-center">حذف</th>' +
                         '</tr></thead><tbody>';
-                    for (let i = 0; i < comments_ln ; i++) {
+                    for (let i = 0; i < comments_ln; i++) {
                         comments +=
                             '<tr>' +
                             '<td class="text-center">' + data[i].id + '</td>' +
@@ -127,19 +129,22 @@
         $(document).on('click', '#sample_comments', function () {
 
             let data_uri = document.getElementById('sample_comments').getAttribute('data-uri');
+            global_data_uri = data_uri;
             load_comment(data_uri);
         });
 
         $(document).on('click', '#creative_comments', function () {
 
             let data_uri = document.getElementById('creative_comments').getAttribute('data-uri');
+            global_data_uri = data_uri;
             load_comment(data_uri);
         });
 
         $(document).on('click', '#tip_comments', function () {
 
             let data_uri = document.getElementById('tip_comments').getAttribute('data-uri');
-           load_comment(data_uri);
+            global_data_uri = data_uri;
+            load_comment(data_uri);
         });
 
         /*$(document).on('click', '#course_comments', function () {
@@ -147,7 +152,6 @@
             let data_uri = document.getElementById('course_comments').getAttribute('data-uri');
             load_comment(data_uri);
         });*/
-
 
 
         function get_comment_body(body) {
@@ -175,7 +179,7 @@
                             text: data['success'],
                         })
                     }
-                   // load_comment();
+                    load_comment(global_data_uri);
                 }, error: function () {
                 }
             });
@@ -200,7 +204,7 @@
                             text: data['success'],
                         })
                     }
-                    //load_comment();
+                    load_comment(global_data_uri);
                 }, error: function () {
 
                 }
