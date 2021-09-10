@@ -11,25 +11,25 @@
 
 
             <div class="col-md-3">
-                <a href="#" id="sample_comments" class="menu_item">
+                <a href="#" id="sample_comments" data-uri="{{ route('getSampleComments') }}" class="menu_item">
                     <p class="text-center mt-4">نمونه کارها</p>
                 </a>
             </div>
 
             <div class="col-md-3">
-                <a href="#" id="creative_comments" class="menu_item">
+                <a href="#" id="creative_comments" data-uri="{{ route('getCreativesComments') }}" class="menu_item">
                     <p class="text-center mt-4"> خلاقیت و طراحی</p>
                 </a>
             </div>
 
             <div class="col-md-3">
-                <a href="#"  id="tip_comments" class="menu_item">
+                <a href="#" id="tip_comments" data-uri="{{ route('getTipsComments') }}" class="menu_item">
                     <p class="text-center mt-4">نکات طلایی</p>
                 </a>
             </div>
 
             <div class="col-md-3">
-                <a href="#"  id="course_comments" class="menu_item">
+                <a href="#" id="course_comments" data-uri="{{ route('getCoursesComments') }}" class="menu_item">
                     <p class="text-center mt-4">دوره های آموزشی</p>
                 </a>
             </div>
@@ -72,7 +72,7 @@
     <script>
         // $(document).ready(function () {
 
-        function load_comment() {
+        function load_comment(data_uri) {
             let comments = '';
             $.ajaxSetup({
                 headers: {
@@ -81,7 +81,7 @@
             });
             $.ajax({
                 method: 'GET',
-                url: '{{ route('getSampleComments') }}',
+                url: data_uri,
                 success: function (data) {
                     comments += '<table>' +
                         '<thead><tr>' +
@@ -121,12 +121,33 @@
         /*  $(window).on('load',function () {
             load_comment();
         });*/
+
         $(document).on('click', '#sample_comments', function () {
-            load_comment();
+
+            let data_uri = document.getElementById('sample_comments').getAttribute('data-uri');
+            load_comment(data_uri);
+        });
+
+        $(document).on('click', '#creative_comments', function () {
+
+            let data_uri = document.getElementById('creative_comments').getAttribute('data-uri');
+            load_comment(data_uri);
+        });
+
+        $(document).on('click', '#tip_comments', function () {
+
+            let data_uri = document.getElementById('tip_comments').getAttribute('data-uri');
+           load_comment(data_uri);
+        });
+
+        $(document).on('click', '#course_comments', function () {
+
+            let data_uri = document.getElementById('course_comments').getAttribute('data-uri');
+            console.log(data_uri);
+            load_comment(data_uri);
         });
 
 
-        // });
 
         function get_comment_body(body) {
             let comment_body = '';
@@ -172,8 +193,7 @@
                 data: {comment_id: comment_id},
                 url: '{{ route('deleteComment') }}',
                 success: function (data) {
-                    if(data['status'] === 200)
-                    {
+                    if (data['status'] === 200) {
                         Swal.fire({
                             icon: 'success',
                             text: data['success'],
