@@ -70,10 +70,7 @@
 @endsection
 @section('my_script_admin')
     <script>
-        // $(document).ready(function () {
-
         let global_data_uri = '';
-
         function load_comment(data_uri) {
             let comments = '';
             $.ajaxSetup({
@@ -86,7 +83,7 @@
                 url: data_uri,
                 success: function (data) {
                     const comments_ln = data.length;
-                    //console.log(data);
+
                     comments += '<table>' +
                         '<thead><tr>' +
                         '<th class="text-center">شناسه</th>' +
@@ -120,46 +117,37 @@
                 },
             });
         }
-
         // load comment when comment index page is complete loaded
         /*  $(window).on('load',function () {
             load_comment();
         });*/
-
         $(document).on('click', '#sample_comments', function () {
 
             let data_uri = document.getElementById('sample_comments').getAttribute('data-uri');
             global_data_uri = data_uri;
             load_comment(data_uri);
         });
-
         $(document).on('click', '#creative_comments', function () {
 
             let data_uri = document.getElementById('creative_comments').getAttribute('data-uri');
             global_data_uri = data_uri;
             load_comment(data_uri);
         });
-
         $(document).on('click', '#tip_comments', function () {
 
             let data_uri = document.getElementById('tip_comments').getAttribute('data-uri');
             global_data_uri = data_uri;
             load_comment(data_uri);
         });
-
         /*$(document).on('click', '#course_comments', function () {
-
             let data_uri = document.getElementById('course_comments').getAttribute('data-uri');
             load_comment(data_uri);
         });*/
-
-
         function get_comment_body(body) {
             let comment_body = '';
             comment_body = body.getAttribute('data-comment');
             document.getElementById('comment_body').innerHTML = comment_body;
         }
-
         function confirm_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
@@ -184,7 +172,6 @@
                 }
             });
         }
-
         function delete_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
