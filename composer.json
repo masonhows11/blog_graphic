@@ -16,7 +16,7 @@
         "laravel/ui": "^3.3",
         "morilog/jalali": "3.*",
         "spatie/laravel-permission": "^4.2",
-      "ext-mysql_xdevapi": "*"
+     
     },
     "require-dev": {
         "facade/ignition": "^2.5",

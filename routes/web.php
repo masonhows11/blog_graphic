@@ -23,6 +23,7 @@ use App\Http\Controllers\Front\CommentController;
 use App\Http\Controllers\Admin\CommentAdController;
 use App\Http\Controllers\Admin\CreativeController;
 use App\Http\Controllers\Front\CreativeFrontController;
+use App\Http\Controllers\Front\TipFrontController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -251,6 +252,8 @@ Route::group(['prefix'=>'creatives'],function(){
 
 Route::group(['prefix'=>'tips'],function (){
 
+    Route::get('/index',[TipFrontController::class,'index']);
+    Route::get('/tip/{tip}',[TipFrontController::class,'tip']);
 
 });
 
