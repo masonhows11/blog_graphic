@@ -83,16 +83,17 @@
                 method: 'GET',
                 url: data_uri,
                 success: function (data) {
+                   let comments_ln = data['comments'].length;
                     comments += '<table>' +
                         '<thead><tr>' +
                         '<th class="text-center">شناسه</th>' +
-                        '<th class="text-center">عنوان نمونه کار</th>' +
+                        '<th class="text-center">عنوان مقاله</th>' +
                         '<th class="text-center">کاربر</th>' +
                         '<th class="text-center">متن دیدگاه</th>' +
                         '<th class="text-center">تایید</th>' +
                         '<th class="text-center">حذف</th>' +
                         '</tr></thead><tbody>';
-                    for (let i = 0; i < data['comments'].length; i++) {
+                    for (let i = 0; i < comments_ln ; i++) {
                         comments +=
                             '<tr>' +
                             '<td class="text-center">' + data['comments'][i].id + '</td>' +
@@ -140,11 +141,11 @@
            load_comment(data_uri);
         });
 
-        $(document).on('click', '#course_comments', function () {
+        /*$(document).on('click', '#course_comments', function () {
 
             let data_uri = document.getElementById('course_comments').getAttribute('data-uri');
             load_comment(data_uri);
-        });
+        });*/
 
 
 

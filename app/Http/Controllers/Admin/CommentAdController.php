@@ -32,7 +32,7 @@ class CommentAdController extends Controller
 
        return  response()->json(['comments'=>$comments]);
     }
-    
+
     public function getCreativesComments()
     {
         $comments = DB::table('comments')
