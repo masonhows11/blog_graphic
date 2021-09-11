@@ -79,10 +79,10 @@
                     <input type="text"
                            id="status_paid"
                            class="form-control"
-                           value="{{ $course->status_paid == 0 ? 'رایگان' : 'نقدی' }}"
+                           value="{{ $course->status_paid == 1 ? 'رایگان' : 'نقدی' }}"
                            readonly>
                 </div>
-                @if( $course->status_paid == 1)
+                @if( $course->status_paid == 2)
                     <div class="">
                         <label for="price">قیمت دوره:</label>
                         <input type="text"
@@ -92,7 +92,7 @@
                                readonly>
                     </div>
                 @endif
-                @if( $course->status_paid == 1)
+                @if( $course->status_paid == 2)
                     <div>
                         <label for="Discount">تخفیف:</label>
                         <input type="text"

@@ -37,7 +37,7 @@ class CourseController extends Controller
             'title' => 'required|max:150',
             'name' => 'required|max:150',
             'description' => 'required|min:50',
-            'status_paid' => 'required|integer',
+            'status_paid' => 'required','between:0,1','numeric',
             'level_course' => 'required',
             'image' => 'required',
             'cat' => 'required',
