@@ -162,8 +162,6 @@
                 if(event.target.value == 1)
                 {
                     price.disabled = true;
-                   // console.log(event.target.value);
-                    //$("#price").prop("disabled:true");
                 }
 
                 if(event.target.value == 2){
