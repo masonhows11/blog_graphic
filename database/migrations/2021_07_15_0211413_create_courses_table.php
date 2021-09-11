@@ -28,7 +28,7 @@ class CreateCoursesTable extends Migration
             $table->unsignedBigInteger('student_count')->default(0);
             $table->unsignedBigInteger('video_count')->default(0);
             $table->time('course_duration')->default(0);
-            $table->string('price')->default(0);
+            $table->string('price')->nullable();
             $table->unsignedBigInteger('views')->default(0);
             $table->string('level_course')->nullable();
             $table->string('status_paid')->nullable();
