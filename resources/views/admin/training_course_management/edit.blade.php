@@ -64,9 +64,9 @@
                 <select class="form-control @error('status_paid') is-invalid @enderror"
                         name="status_paid"
                         id="paid">
-                    <option value="">نوع پرداخت را انتخاب کنید...</option>
-                    <option value="0" {{ ($course->status_paid == 0) ? 'selected':'' }}>رایگان</option>
-                    <option value="1" {{ ($course->status_paid == 1) ? 'selected':'' }}>خریدنی</option>
+                    <option value="0">نوع پرداخت را انتخاب کنید...</option>
+                    <option value="1" {{ ($course->status_paid == 1) ? 'selected':'' }}>رایگان</option>
+                    <option value="2" {{ ($course->status_paid == 2) ? 'selected':'' }}>خریدنی</option>
                 </select>
                 @error('status_paid')
                 <div class="alert alert-danger fade-in">{{ $message }}</div>
@@ -160,5 +160,28 @@
             language: 'fa',
             removePlugins: 'image',
         });
+    </script>
+@endsection
+@section('my_script_admin')
+    <script>
+
+        $(document).ready(function () {
+
+            let paid = document.getElementById('paid');
+            let price = document.getElementById('price');
+            paid.addEventListener("change",function (event) {
+                if(event.target.value == 1)
+                {
+                    price.disabled = true;
+                }
+
+                if(event.target.value == 2){
+                    price.disabled = false;
+                }
+            })
+        });
+
+
+
     </script>
 @endsection
