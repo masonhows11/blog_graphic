@@ -41,7 +41,7 @@ class CourseController extends Controller
             'level_course' => 'required',
             'image' => 'required',
             'cat' => 'required',
-            'price' => ['between:0,100000000','numeric',Rule::requiredIf($request->status_paid == 1)],
+            'price' => ['between:0,100000000','numeric',Rule::requiredIf($request->status_paid == 2)],
         ], $messages = [
             'title.required' => 'فیلد عنوان الزامی است.',
             'title.max' => 'حداکثر ۵۰ کاراکتر.',

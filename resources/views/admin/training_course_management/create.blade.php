@@ -63,14 +63,16 @@
                 <select class="form-control  @error('status_paid') is-invalid @enderror"
                         name="status_paid"
                         id="paid">
-                    <option value="">نوع پرداخت راانتخاب کنید...</option>
-                    <option value="0">رایگان</option>
-                    <option value="1">خریدنی</option>
+                    <option value="0">نوع پرداخت راانتخاب کنید...</option>
+                    <option value="1">رایگان</option>
+                    <option value="2">خریدنی</option>
                 </select>
                 @error('status_paid')
                 <div class="alert alert-danger fade-in">{{ $message }}</div>
                 @enderror
             </div>
+
+
             <div class="form-group">
                 <label for="price">قیمت دوره:</label>
                 <input type="text" class="form-control @error('price') is-invalid @enderror"
@@ -149,4 +151,28 @@
         });
     </script>
 @endsection
+@section('my_script_admin')
+    <script>
 
+        $(document).ready(function () {
+
+            let paid = document.getElementById('paid');
+            let price = document.getElementById('price');
+            paid.addEventListener("change",function (event) {
+                if(event.target.value == 1)
+                {
+                    price.disabled = true;
+                   // console.log(event.target.value);
+                    //$("#price").prop("disabled:true");
+                }
+
+                if(event.target.value == 2){
+                    price.disabled = false;
+                }
+            })
+        });
+
+
+
+    </script>
+@endsection
