@@ -198,9 +198,9 @@ Route::group(['prefix'=>'admin/comments','middleware'=>'role:admin'],function ()
     Route::get('/index',[CommentAdController::class,'index']);
 
     Route::get('/getSamplesComments',[CommentAdController::class,'getSampleComments'])->name('getSampleComments');
-    Route::get('/getTipsComments',[CommentAdController::class,'getSampleComments'])->name('getTipsComments');
-    Route::get('/getCreativesComments',[CommentAdController::class,'getSampleComments'])->name('getCreativesComments');
-    Route::get('/getCoursesComments',[CommentAdController::class,'getSampleComments'])->name('getCoursesComments');
+    Route::get('/getTipsComments',[CommentAdController::class,'getTipsComments'])->name('getTipsComments');
+    Route::get('/getCreativesComments',[CommentAdController::class,'getCreativesComments'])->name('getCreativesComments');
+    Route::get('/getCoursesComments',[CommentAdController::class,'getCoursesComments'])->name('getCoursesComments');
 
     Route::post('/confirmComment',[CommentAdController::class,'confirmComment'])->name('confirmComment');
     Route::get('/deleteComment',[CommentAdController::class,'deleteComment'])->name('deleteComment');

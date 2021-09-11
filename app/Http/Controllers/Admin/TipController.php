@@ -99,7 +99,7 @@ class TipController extends Controller
     public function changeStatus(Request $request)
     {
          $tip = Tip::find($request->tip);
-         
+
         if($tip->status === 0)
         {
             $tip->status = 1;
