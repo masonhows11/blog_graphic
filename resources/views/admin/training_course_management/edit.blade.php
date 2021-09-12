@@ -167,6 +167,10 @@
 
         $(document).ready(function () {
 
+            $(window).on('load',function () {
+
+            });
+
             let paid = document.getElementById('paid');
             let price = document.getElementById('price');
             paid.addEventListener("change",function (event) {
