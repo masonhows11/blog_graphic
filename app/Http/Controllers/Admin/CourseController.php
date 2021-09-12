@@ -136,7 +136,7 @@ class CourseController extends Controller
     }
 
 
-    public function delete(Request $request): \Illuminate\Http\RedirectResponse
+    public function delete(Request $request)
     {
         Course::destroy($request->course);
         return redirect()->back()->with('success', 'دوره با موفقیت حذف شد.');
@@ -167,7 +167,7 @@ class CourseController extends Controller
                 'last_update'=>$last_update]);
 
         }
-        else
+
         return view('admin.training_course_management.details')
         ->with(['course' => $course]);
 
@@ -191,7 +191,7 @@ class CourseController extends Controller
     }
 
 
-    public function storeNewLesson(Request $request): \Illuminate\Http\RedirectResponse
+    public function storeNewLesson(Request $request)
     {
 
         $validated = $request->validate([
