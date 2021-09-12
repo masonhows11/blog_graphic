@@ -65,7 +65,7 @@
                     @enderror
                 </div>
 
-               <div class="form-group">
+               {{--<div class="form-group">
                    <label for="video_path">انتخاب فایل ویدئو:</label>
                    <input type="file"
                           class="form-control @error('video_path') is_invalid @enderror"
@@ -73,7 +73,15 @@
                    @error('video_path')
                    <div class="alert alert-danger">{{ $message }}</div>
                    @enderror
-               </div>
+               </div>--}}
+                <div class="form-group">
+                    <label for="video_path">لینک فایل آموزشی:</label>
+                    <input type="text" class="form-control @error('video_path') is-invalid @enderror"
+                    name="video_path">
+                    @error('video_path')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <div class="flex">
                     <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>

@@ -17,7 +17,7 @@ class CourseController extends Controller
 
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::orderBy('id','asc')->get();
         return view('admin.training_course_management.index')
             ->with('courses', $courses);
     }
@@ -37,11 +37,11 @@ class CourseController extends Controller
             'title' => 'required|max:150',
             'name' => 'required|max:150',
             'description' => 'required|min:50',
-            'status_paid' => ['between:1,2','required','numeric'],
+            'status_paid' => ['between:1,2', 'required', 'numeric'],
             'level_course' => 'required',
             'image' => 'required',
             'cat' => 'required',
-            'price' => ['between:0,100000000','numeric',Rule::requiredIf($request->status_paid == 2)],
+            'price' => ['between:0,100000000', 'numeric', Rule::requiredIf($request->status_paid == 2)],
         ], $messages = [
             'title.required' => 'فیلد عنوان الزامی است.',
             'title.max' => 'حداکثر ۵۰ کاراکتر.',
@@ -54,9 +54,9 @@ class CourseController extends Controller
             'cat.required' => 'دسته بندی الزامی است.',
             'status_paid.required' => 'نوع قیمت الزامی است.',
             'status_paid.between' => 'نوع پرداخت را انتخاب کنید.',
-            'price.required'=> 'قیمت دوره را وارد کنید.',
-            'price.numeric'=>'قیمت را به عدد وارد کنید.',
-            'price.between'=>'حدود قیمت باید بیشتر از ۱۰۰ تومان باشد.'
+            'price.required' => 'قیمت دوره را وارد کنید.',
+            'price.numeric' => 'قیمت را به عدد وارد کنید.',
+            'price.between' => 'حدود قیمت باید بیشتر از ۱۰۰ تومان باشد.'
         ]);
         $image_path = null;
         if ($request->has('image')) {
@@ -149,9 +149,9 @@ class CourseController extends Controller
         $lessons = Lesson::where('course_id', $request->course)
             ->select('lesson_duration')->get();
 
-        if($lessons->isNotEmpty()){
+        if ($lessons->isNotEmpty()) {
             $last_update = Lesson::latest()->first();
-            $last_update = date('Y:m:d',strtotime($last_update->created_at));
+            $last_update = date('Y:m:d', strtotime($last_update->created_at));
             $lessons_count = count($lessons);
             $seconds = null;
             for ($i = 0; $i < $lessons_count; $i++) {
@@ -161,16 +161,15 @@ class CourseController extends Controller
             }
             $course_time = date("H:i:s", strtotime($seconds) + $seconds);
             return view('admin.training_course_management.details')
-            ->with(['course' => $course,
-                'course_time' => $course_time,
-                'lessons_count'=>$lessons_count,
-                'last_update'=>$last_update]);
+                ->with(['course' => $course,
+                    'course_time' => $course_time,
+                    'lessons_count' => $lessons_count,
+                    'last_update' => $last_update]);
 
         }
 
         return view('admin.training_course_management.details')
-        ->with(['course' => $course]);
-
+            ->with(['course' => $course]);
 
 
     }
@@ -185,9 +184,9 @@ class CourseController extends Controller
     public function createNewLesson(Request $request)
     {
         $course = Course::find($request->course);
-        $lessons = Lesson::where('course_id','=',$request->course)->paginate(3);
+        $lessons = Lesson::where('course_id', '=', $request->course)->paginate(3);
         return view('admin.training_course_management.add_lesson')
-            ->with(['course' => $course,'lessons'=>$lessons]);
+            ->with(['course' => $course, 'lessons' => $lessons]);
     }
 
 
@@ -198,7 +197,8 @@ class CourseController extends Controller
             'title' => 'required|max:100',
             'name' => 'required|max:100',
             'lesson_duration' => ['required', 'regex:/^([01]?\d|2[0-3]|24(?=:00?:00?$)):([0-5]\d):([0-5]\d)$/'],
-            'video_path' => ['required','mimetypes:video/avi,video/mp4,video/mkv']
+            'video_path' => 'required'
+            //'video_path' => ['required','mimetypes:video/avi,video/mp4,video/mkv']
         ], $messages = [
             'title.required' => 'فیلد عنوان الزامی است.',
             'title.max' => 'حداکثر ۱۰۰ کاراکتر.',
@@ -206,24 +206,27 @@ class CourseController extends Controller
             'name.max' => 'حداکثر ۱۰۰ کاراکتر.',
             'lesson_duration.required' => 'مدت زمان درس  را وارد کنید.',
             'lesson_duration.regex' => 'فرمت  مدت زمان را به صورت ساعت:دقیقه:ثانیه وارد کنید از چپ به راست.',
-            'video_path.required' => 'فایل ویدئو را انتخاب کنید.',
-            'video_path.mimetypes'=>'فرمت فایل ویدئو انتخابی معتبر نمی باشد.'
+            'video_path.required' => 'لینک فایل آموزشی را وارد کنید.',
+            //'video_path.required' => 'فایل ویدئو را انتخاب کنید.',
+            //'video_path.mimetypes'=>'فرمت فایل ویدئو انتخابی معتبر نمی باشد.'
         ]);
 
-        if ($request->file('video_path')) {
-            $original_name = $request->file('video_path')->getClientOriginalName();
-            $save_path = '/public/video/lessons';
-            $file_name_upload = time() . '.' . $original_name;
-            $file_name_store = $save_path . '.' . $file_name_upload;
-            $request->file('video_path')->move('video/lessons', $file_name_upload);
-        }
+        /* if ($request->file('video_path')) {
+             $original_name = $request->file('video_path')->getClientOriginalName();
+             $save_path = '/public/video/lessons';
+             $file_name_upload = time() . '.' . $original_name;
+             $file_name_store = $save_path . '.' . $file_name_upload;
+             $request->file('video_path')->move('video/lessons', $file_name_upload);
+         }*/
+
 
         Lesson::create([
             'course_id' => $request->id,
             'title' => $request->title,
             'name' => $request->name,
             'lesson_duration' => $request->lesson_duration,
-            'video_path' => $file_name_store,
+            'video_path' => $request->video_path
+            //'video_path' => $file_name_store,
         ]);
 
         return redirect()->back()->with('success', 'قسمت جدید با موفقیت ایجاد شد.');
