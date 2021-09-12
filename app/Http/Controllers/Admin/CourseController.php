@@ -17,7 +17,7 @@ class CourseController extends Controller
 
     public function index()
     {
-        $courses = Course::orderBy('id','asc')->get();
+        $courses = Course::all();//orderBy('id','asc')->get();
         return view('admin.training_course_management.index')
             ->with('courses', $courses);
     }

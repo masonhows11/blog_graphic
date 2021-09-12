@@ -36,7 +36,8 @@
                             <th class="text-center">نام دوره</th>
                             <th class="text-center">مشخصات دوره</th>
                             <th class="text-center">ایجاد قسمت  جدید</th>
-                            <th class="text-center">ویرایش | حذف</th>
+                            <th class="text-center">ویرایش</th>
+                            <th class="text-center">حذف</th>
                         </tr>
                 </thead>
                 <tbody>
@@ -46,13 +47,14 @@
                     <td class="text-center">{{ $course->title }}</td>
                     <td class="text-center"><a href="/admin/course/detail?course={{$course->id}}"><i class="fa fa-list-alt"></i></a></td>
                     <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i class="fa fa-save"></i></a></td>
+                    <td class="text-center"><a href="/admin/course/edit?course={{$course->id}}"><i class="fa fa-edit"></i></a></td>
                     <td class="text-center">
-                        <a href="/admin/course/edit?course={{$course->id}}"><i class="fa fa-edit"></i></a>
-                        <a href="/admin/course/delete?course_id={{$course->id}}"  onclick="deleteItem(event)" ><i class="fa fa-remove"></i></a>
+{{--                        <a href="/admin/course/delete?course_id={{$course->id}}"  onclick="deleteItem(event)" ><i class="fa fa-remove"></i></a>--}}
                         <form action="/admin/course/delete?course_id={{$course->id}}" method="post" id="delete-item_form">
                             @csrf
                             @method('delete')
                             <input type="hidden" name="course_id" value="{{ $course->id }}">
+                            <input type="submit"  value="حذف" onclick="deleteItem(event)">
                         </form>
                     </td>
                 </tr>
