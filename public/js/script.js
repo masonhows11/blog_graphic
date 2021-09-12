@@ -1,7 +1,7 @@
 $(function () {
     $('.parent').click(function () {
         $(this).siblings('.child').slideToggle('fast');
-    })
+    });
 });
 /////////////////////////////
 $(document).ready(function () {
@@ -23,8 +23,8 @@ function deleteItem(event) {
         cancelButtonText: 'خیر',
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('delete-item').submit()
+            document.getElementById('delete-item_form').submit();
         }
-    })
+    });
 }
 
