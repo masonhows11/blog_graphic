@@ -37,7 +37,7 @@ class CourseController extends Controller
             'title' => 'required|max:150',
             'name' => 'required|max:150',
             'description' => 'required|min:50',
-            'status_paid' => 'required','between:0,1','numeric',
+            'status_paid' => ['between:1,2','required','numeric'],
             'level_course' => 'required',
             'image' => 'required',
             'cat' => 'required',
@@ -53,6 +53,7 @@ class CourseController extends Controller
             'image.required' => 'فیلد تصویر الزامی است.',
             'cat.required' => 'دسته بندی الزامی است.',
             'status_paid.required' => 'نوع قیمت الزامی است.',
+            'status_paid.between' => 'نوع پرداخت را انتخاب کنید.',
             'price.required'=> 'قیمت دوره را وارد کنید.',
             'price.numeric'=>'قیمت را به عدد وارد کنید.',
             'price.between'=>'حدود قیمت باید بیشتر از ۱۰۰ تومان باشد.'

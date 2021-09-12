@@ -167,12 +167,21 @@
 
         $(document).ready(function () {
 
-            $(window).on('load',function () {
-
-            });
-
             let paid = document.getElementById('paid');
             let price = document.getElementById('price');
+
+            $(window).on('load',function () {
+                let value = $('#paid option:selected').val();
+                if(value == 1)
+                {
+                    price.disabled = true;
+                }
+                if(value == 2)
+                {
+                    price.disabled = false;
+                }
+            });
+
             paid.addEventListener("change",function (event) {
                 if(event.target.value == 1)
                 {
