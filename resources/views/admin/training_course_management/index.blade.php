@@ -67,7 +67,7 @@
         $(document).on('click', '#deleteItem', function (event) {
             event.preventDefault();
             let  course_id = event.target.getAttribute('data-course-id');
-            let  course_element =   event.target.parentElement.parentElement;
+            let  course_element = event.target.parentElement.parentElement;
             swal.fire({
                 title: 'آیا مطمئن هستید این ایتم حذف شود؟',
                 icon: 'error',

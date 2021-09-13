@@ -139,16 +139,12 @@ class CourseController extends Controller
 
     public function delete(Request $request)
     {
-        //return $request;
-
         if(Course::destroy($request->course_id)){
 
             return response()->json(['success'=>'.دوره مورد نظر با موفقیت حذف شد','status'=>200],200);
         }
         return response()->json(['error'=>'.عملیات حذف  انجام نشد','status'=>500],500);
 
-
-        //return redirect()->back()->with('success', 'دوره با موفقیت حذف شد.');
     }
 
 
