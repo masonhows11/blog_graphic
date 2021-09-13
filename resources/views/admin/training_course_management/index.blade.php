@@ -64,3 +64,5 @@
         </div>
     </div>
 @endsection
+@section('my_script_admin')
+@endsection
