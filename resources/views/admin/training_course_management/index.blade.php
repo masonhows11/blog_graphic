@@ -64,14 +64,10 @@
 @endsection
 @section('my_script_admin')
     <script>
-        // $(document).ready(function (){
-
         $(document).on('click', '#deleteItem', function (event) {
             event.preventDefault();
-            console.log(event);
             let  course_id = event.target.getAttribute('data-course-id');
             let  course_element =   event.target.parentElement.parentElement;
-            //console.log(event.target.getAttribute('data-course-id'));
             swal.fire({
                 title: 'آیا مطمئن هستید این ایتم حذف شود؟',
                 icon: 'error',
@@ -82,7 +78,7 @@
                 cancelButtonText: 'خیر',
             }).then((result)=>{
                 if (result.isConfirmed) {
-                   /* $.ajaxSetup({
+                   $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
@@ -92,8 +88,6 @@
                         url: '{{ route('deleteCourse') }}',
                         data: {course_id:course_id},
                     }).done(function (data) {
-                        //console.log(data);
-                        //.remove();
                         course_element.remove();
                         if(data['status'] === 200)
                         {
@@ -110,13 +104,9 @@
                                 text: data['error'],
                             })
                         }
-                    });*/
+                    });
                 }
             });
-
         });
-
-
-
     </script>
 @endsection
