@@ -139,6 +139,7 @@ class CourseController extends Controller
     public function delete(Request $request)
     {
         return $request;
+
         Course::destroy($request->course);
         return redirect()->back()->with('success', 'دوره با موفقیت حذف شد.');
     }
