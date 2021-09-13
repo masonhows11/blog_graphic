@@ -68,33 +68,36 @@
 
         $(document).on('click', '#deleteItem', function (event) {
             event.preventDefault();
+            let  course_id = event.target.getAttribute('data-course-id');
             //console.log(event.target.getAttribute('data-course-id'));
-            
+            swal.fire({
+                title: 'آیا مطمئن هستید این ایتم حذف شود؟',
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف کن!',
+                cancelButtonText: 'خیر',
+            }).then((result)=>{
+                if (result.isConfirmed) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ route('deleteCourse') }}',
+                        data: {course_id:course_id},
+                    }).done(function (data) {
+                        console.log(data);
+                    }).fail();
+                }
+            });
 
         });
 
-        // function deleteItem(event) {
-        //         event.preventDefault();
-        //
-        //     console.log(event);
-        //     // event.preventDefault();
-        //     // Swal.fire({
-        //     //     title: 'آیا مطمئن هستید این ایتم حذف شود؟',
-        //     //     icon: 'error',
-        //     //     showCancelButton: true,
-        //     //     confirmButtonColor: '#3085d6',
-        //     //     cancelButtonColor: '#d33',
-        //     //     confirmButtonText: 'بله حذف کن!',
-        //     //     cancelButtonText: 'خیر',
-        //     // }).then((result) => {
-        //     //     if (result.isConfirmed) {
-        //     //         document.getElementById('delete-item_form').submit();
-        //     //     }
-        //     // });
-        // }
 
-
-        // });
 
     </script>
 @endsection
