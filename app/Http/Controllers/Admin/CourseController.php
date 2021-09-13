@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -138,10 +139,16 @@ class CourseController extends Controller
 
     public function delete(Request $request)
     {
-        return $request;
+        //return $request;
 
-        Course::destroy($request->course);
-        return redirect()->back()->with('success', 'دوره با موفقیت حذف شد.');
+        if(Course::destroy($request->course_id)){
+
+            return response()->json(['success'=>'.دوره مورد نظر با موفقیت حذف شد','status'=>200],200);
+        }
+        return response()->json(['error'=>'.عملیات حذف  انجام نشد','status'=>500],500);
+
+
+        //return redirect()->back()->with('success', 'دوره با موفقیت حذف شد.');
     }
 
 
