@@ -93,19 +93,6 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-newspaper-o"></i><span>مقالات</span>
-                    <span class="pull-left-container">
-              <i class="fa fa-angle-right pull-left"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>لیست مقالات</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>ایجاد</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>ویرایش</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
                     <i class="fa fa-paint-brush"></i> <span>نمونه کار</span>
                     <span class="pull-left-container">
               <i class="fa fa-angle-right pull-left"></i>
