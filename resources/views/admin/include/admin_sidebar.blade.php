@@ -113,7 +113,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="/admin/tip/index"><i class="fa fa-circle-o"></i>لیست نکات طلایی</a></li>
-<!--                    <li><a href="#"><i class="fa fa-circle-o"></i>مدیریت نکات طلایی</a></li>-->
                 </ul>
             </li>
 
