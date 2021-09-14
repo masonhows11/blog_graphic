@@ -64,7 +64,6 @@
                 <ul class="treeview-menu">
                     <li><a href="/admin/course/index"><i class="fa fa-circle-o"></i>لیست دوره ها</a></li>
                     <li><a href="/admin/course/create"><i class="fa fa-circle-o"></i>ایجاد</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>ویرایش</a></li>
                 </ul>
             </li>
             <li class="treeview">
