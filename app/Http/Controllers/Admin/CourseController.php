@@ -242,6 +242,7 @@ class CourseController extends Controller
         $lesson_deleted = Lesson::where('id', '=', $request->lesson_id)
             ->where('course_id', '=', $request->course_id)
             ->first();
+        return view('admin.training_course_management.edit_lesson');
 
 
     }

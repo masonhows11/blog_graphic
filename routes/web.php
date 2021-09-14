@@ -172,7 +172,7 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
     Route::get('/newLesson',[CourseController::class,'createNewLesson']);
     Route::post('/storeNewLesson',[CourseController::class,'storeNewLesson']);
     Route::get('/editLesson',[CourseController::class,'editLesson']);
-    Route::get('/updateLesson',[CourseController::class,'updateLesson'])->name('updateLesson');
+    Route::get('/updateLesson',[CourseController::class,'updateLesson']);
     Route::get('/deleteLesson',[CourseController::class,'deleteLesson'])->name('deleteLesson');
 
     Route::get('/active',[CourseController::class,'changeStatus']);
