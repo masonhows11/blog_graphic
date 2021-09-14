@@ -239,19 +239,26 @@ class CourseController extends Controller
 
     public function editLesson(Request $request)
     {
-        return $request;
+        $lesson_deleted = Lesson::where('id', '=', $request->lesson_id)
+            ->where('course_id', '=', $request->course_id)
+            ->first();
+
+
     }
 
     public function updateLesson(Request $request)
     {
-        return $request;
+
     }
 
     public function deleteLesson(Request $request)
     {
-        return $request;
-        if (Lesson::where('id', '=', $request->lesson_id)->where('course_id', '=', $request->course_id)->delete()) {
 
+        $lesson_deleted = Lesson::where('id', '=', $request->lesson_id)
+            ->where('course_id', '=', $request->course_id)
+            ->delete();
+
+        if ($lesson_deleted) {
             return response()->json(['success' => '.قسمت مورد نظر با موفقیت حذف شد', 'status' => 200], 200);
         }
         return response()->json(['error' => '.عملیات حذف انجام نشد', 'status' => 500], 500);
