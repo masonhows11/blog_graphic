@@ -172,7 +172,7 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
     Route::post('/storeNewLesson',[CourseController::class,'storeNewLesson']);
     Route::get('/editLesson',[CourseController::class,'editLesson']);
     Route::get('/updateLesson',[CourseController::class,'updateLesson']);
-    Route::delete('deleteLesson',[CourseController::class,'deleteLesson']);
+    Route::delete('deleteLesson',[CourseController::class,'deleteLesson'])->name('deleteLesson');
 
     Route::get('/active',[CourseController::class,'changeStatus']);
 

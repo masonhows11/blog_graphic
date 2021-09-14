@@ -65,19 +65,19 @@
                     @enderror
                 </div>
 
-               {{--<div class="form-group">
-                   <label for="video_path">انتخاب فایل ویدئو:</label>
-                   <input type="file"
-                          class="form-control @error('video_path') is_invalid @enderror"
-                          name="video_path" id="input_file" onchange="selectFile(event)">
-                   @error('video_path')
-                   <div class="alert alert-danger">{{ $message }}</div>
-                   @enderror
-               </div>--}}
+                {{--<div class="form-group">
+                    <label for="video_path">انتخاب فایل ویدئو:</label>
+                    <input type="file"
+                           class="form-control @error('video_path') is_invalid @enderror"
+                           name="video_path" id="input_file" onchange="selectFile(event)">
+                    @error('video_path')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>--}}
                 <div class="form-group">
                     <label for="video_path">لینک فایل آموزشی:</label>
                     <input type="text" class="form-control @error('video_path') is-invalid @enderror"
-                    name="video_path">
+                           name="video_path">
                     @error('video_path')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -91,14 +91,15 @@
 
             </form>
         </div>
-        <div  id="app" class="row list-course-lesson-row">
+        <div id="app" class="row list-course-lesson-row">
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th>شناسه</th>
                     <th>عنوان</th>
                     <th>مدت زمان ویدئو</th>
-                    <th>ویرایش | حذف</th>
+                    <th>ویرایش</th>
+                    <th>حذف</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -108,11 +109,10 @@
                         <td>{{ $lesson->title }}</td>
                         <td>{{ $lesson->lesson_duration }}</td>
                         <td><a href="/admin/course/editLesson?lesson={{ $lesson->id }}"><i class="fa fa-edit"></i></a>
-                            <a href="/admin/course/deleteLesson?lesson={{$lesson->id}}"  onclick="deleteItem(event)"><i class="fa fa-remove"></i></a>
-                            <form action="/admin/course/deleteLesson?lesson={{$lesson->id}}" method="post" id="delete-item_{{$lesson->id}}">
-                                @csrf
-                                @method('delete')
-                            </form>
+                        </td>
+                        <td>
+                            <button href="/admin/course/deleteLesson" class="fa fa-remove"
+                                    data-course-id="{{ $lesson->id }}" onclick="deleteItem(event)"></button>
                         </td>
                     </tr>
                 @endforeach
@@ -122,14 +122,15 @@
 
         </div>
         <div class="row row-paginate">
-            <div class="col-lg-3 col-lg-offset-4 col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-5 col-xs-4 col-xs-offset-4">
+            <div
+                class="col-lg-3 col-lg-offset-4 col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-5 col-xs-4 col-xs-offset-4">
                 {{ $lessons->appends(['course'=>$course->id])->links() }}
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
-     function selectFile(event) {
+        function selectFile(event) {
             const size = 180;
             const fileList = event.target.files;
             this.path_file = fileList[0].name;
@@ -162,4 +163,50 @@
         }
     </script>
 @endsection
-
+@section('my_script_admin')
+    <script>
+        $(document).on('click', '#deleteItem', function (event) {
+            event.preventDefault();
+            let lesson_id = event.target.getAttribute('data-course-id');
+            let course_id = document.getElementById('course_id');
+            let course_element = event.target.parentElement.parentElement;
+            swal.fire({
+                title: 'آیا مطمئن هستید این ایتم حذف شود؟',
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف کن!',
+                cancelButtonText: 'خیر',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ route('deleteLesson') }}',
+                        data: {course_id: course_id,lesson_id:lesson_id},
+                    }).done(function (data) {
+                        course_element.remove();
+                        if (data['status'] === 200) {
+                            swal.fire({
+                                icon: 'success',
+                                text: data['success'],
+                            })
+                        }
+                    }).fail(function (data) {
+                        if (data['status'] === 500) {
+                            swal.fire({
+                                icon: 'error',
+                                text: data['error'],
+                            })
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+@endsection

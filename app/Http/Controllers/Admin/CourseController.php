@@ -250,6 +250,12 @@ class CourseController extends Controller
     public function deleteLesson(Request $request)
     {
         return $request;
+         $deleted_lesson = Lesson::where('id','=',$request->lesson_id)->where('course_id','=',$request->course_id)->delete();
+        if($deleted_lesson){
+
+            return response()->json(['success'=>'.قسمت مورد نظر با موفقیت حذف شد','status'=>200],200);
+        }
+        return response()->json(['error'=>'.عملیات حذف انجام نشد','status'=>500],500);
     }
 
 }
