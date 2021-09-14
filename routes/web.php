@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Front\LikeController;
 use App\Http\Controllers\Front\SampleFrontController;
-use App\Http\Controllers\Front\StoreController;
+use App\Http\Controllers\Front\CoursesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\AuthController;
@@ -259,8 +259,8 @@ Route::group(['prefix'=>'tips'],function (){
 
 });
 
-Route::group(['prefix'=>'store'],function (){
+Route::group(['prefix'=>'courses'],function (){
 
-    Route::get('/index',[StoreController::class,'index']);
+    Route::get('/index',[CoursesController::class,'index']);
 
 });

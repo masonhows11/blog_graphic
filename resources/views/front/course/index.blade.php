@@ -3,6 +3,25 @@
     فروشگاه
 @endsection
 @section('content')
+    <div class="row mb-4 filter-courses">
+        <div class="col d-flex filter-courses-item">
+            <ul class="nav mt-1 justify-content-start">
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-current="page" href="#">فیلتر دوره ها :</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">رایگان</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">نقدی</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">اعضای ویژه</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-3 right-category">
             <h5 class="mt-4">دسته بندی ها</h5>
@@ -10,7 +29,7 @@
                 @foreach($categories as $category)
                     <li class="list-group-item mt-2 parent"><a href="#" class="">{{$category->title}}</a></li>
                     @if(count($category->subCategory) > 0)
-                        @include('front.store.sub_category',
+                        @include('front.course.sub_category',
                         ['sub_category'=>$category->subCategory])
                     @endif
                 @endforeach
@@ -114,7 +133,6 @@
                 </div>
 
             </div>
-
         </div>
     </div>
 @endsection
