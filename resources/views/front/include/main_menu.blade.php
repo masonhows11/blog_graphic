@@ -14,7 +14,7 @@
             <div><p class="text-center mt-4">نکات طلایی</p></div>
         </a>
         <a href="/store/index" class="col-lg-2 col-md-2 menu_item ">
-            <div><p class="text-center mt-4">فروشگاه</p></div>
+            <div><p class="text-center mt-4">دوره های آموزشی</p></div>
         </a>
     </div>
 </div>
