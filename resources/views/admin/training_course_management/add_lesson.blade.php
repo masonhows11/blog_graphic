@@ -112,7 +112,7 @@
                         </td>
                         <td>
                             <button href="/admin/course/deleteLesson" class="fa fa-remove"
-                                    data-course-id="{{ $lesson->id }}" onclick="deleteItem(event)"></button>
+                                    data-course-id="{{ $lesson->id }}" id="deleteItem"></button>
                         </td>
                     </tr>
                 @endforeach
@@ -128,7 +128,8 @@
             </div>
         </div>
     </div>
-
+@endsection
+@section('my_script_admin')
     <script type="text/javascript">
         function selectFile(event) {
             const size = 180;
@@ -162,10 +163,9 @@
             }
         }
     </script>
-@endsection
-@section('my_script_admin')
     <script>
         $(document).on('click', '#deleteItem', function (event) {
+
             event.preventDefault();
             let lesson_id = event.target.getAttribute('data-course-id');
             let course_id = document.getElementById('course_id');
@@ -188,22 +188,24 @@
                     $.ajax({
                         method: 'GET',
                         url: '{{ route('deleteLesson') }}',
-                        data: {course_id: course_id,lesson_id:lesson_id},
+                        data: {course_id: course_id, lesson_id: lesson_id},
                     }).done(function (data) {
-                        course_element.remove();
+                        console.log(data);
+                       /* course_element.remove();
                         if (data['status'] === 200) {
                             swal.fire({
                                 icon: 'success',
                                 text: data['success'],
                             })
-                        }
+                        }*/
                     }).fail(function (data) {
-                        if (data['status'] === 500) {
+                        
+                       /* if (data['status'] === 500) {
                             swal.fire({
                                 icon: 'error',
                                 text: data['error'],
                             })
-                        }
+                        }*/
                     });
                 }
             });
