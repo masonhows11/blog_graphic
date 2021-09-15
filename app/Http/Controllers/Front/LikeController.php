@@ -73,8 +73,6 @@ class LikeController extends Controller
     public function creativeLike(Request $request)
     {
 
-
-
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
         $creative = Creative::find($request->creative_id);
@@ -183,19 +181,19 @@ class LikeController extends Controller
             ->json(['likes' => $likes, 'dislikes' => $dislikes]);
     }
 
-    /*
-    public function sampleLike(Request $request)
+
+    public function courseLike(Request $request)
     {
 
 
-        $sample_id = $request->sample_id;
+        $course_id= $request->course_id;
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
-        $sample = Sample::find($sample_id);
-        if (!$sample) {
+        $course = Sample::find($course_id);
+        if (!$course) {
             return null;
         }
-        $like_exists = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
+        $like_exists = Like::where('course_id', '=', $course_id)->where('user_id', '=', $user_id)->first();
         if ($like_exists) {
             $already_like = $like_exists->like;
 
@@ -210,34 +208,35 @@ class LikeController extends Controller
         } else {
             $like = new Like();
             $like->user_id = $user_id;
-            $like->sample_id = $sample_id;
+            $like->coures_id = $course_id;
             $like->like = $is_like;
             $like->save();
         }
-        $like = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
+        $like = Like::where('course_id', '=', $course_id)->where('user_id', '=', $user_id)->first();
         if($like != null)
         {
             return response()->json($like);
 
-        }else if($like == null)
+        }
+        if($like == null)
         {
             return response()->json($like);
         }
 
     }
 
-    public function sampleLikeCount(Request $request)
+    public function courseLikeCount(Request $request)
     {
 
-        $likes = Like::where('sample_id', $request->sample_id)
+        $likes = Like::where('course_id', $request->course_id)
             ->where('like', '=', 1)->count();
 
-        $dislikes = Like::where('sample_id', $request->sample_id)
+        $dislikes = Like::where('course_id', $request->course_id)
             ->where('like', '=', 0)->count();
 
         return response()
             ->json(['likes' => $likes, 'dislikes' => $dislikes]);
-    }*/
+    }
 
 
 }

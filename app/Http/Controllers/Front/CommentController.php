@@ -54,6 +54,16 @@ class CommentController extends Controller
             ]);
         }
 
+        if ($request->has('course_id')){
+            Comment::create([
+                'user_name' => Auth::user()->user_name,
+                'user_id' => Auth::id(),
+                'email' => Auth::user()->email,
+                'course_id' => $request->course_id,
+                'description'=> $request->description
+            ]);
+        }
+
 
         return redirect()->back()->with('message','دیدگاه شما با موفقیت ثبت شد، پس از بررسی نمایش داده خواهد شد.');
 

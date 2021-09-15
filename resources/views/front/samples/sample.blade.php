@@ -61,7 +61,6 @@
                                 </div>
 
                             </div>
-
                         </div>
                         <div class="card-footer">
                             <div class="row d-flex flex-row justify-content-evenly">

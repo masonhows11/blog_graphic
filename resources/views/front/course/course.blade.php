@@ -6,85 +6,84 @@
     <div class="row">
 
         <div class="col-md-3 right-category">
-            @include('front.samples.sample_category')
+            @include('front.course.course_category')
         </div>
 
         <div class="col-md-9  one-sample">
             <div class="row d-flex flex-column justify-content-center">
                 <div class="col-lg-9 mt-2">
                     <div class="card">
-                        <input type="hidden" id="sample_id" value="{{ $course->id }}">
+
+                        <input type="hidden" id="course_id" value="{{ $course->id }}">
                         <input type="hidden" id="token" value="{{ csrf_token() }}">
                         <img src="{{ asset($course->image) }}" class="card-img-top" alt="...">
                         <div class="card-header">
                             {{$course->title}}
                         </div>
+                        <!--  card-body                       -->
                         <div class="card-body">
-
                             <p class="card-text">{{ strip_tags($course->description) }}</p>
+                        </div>
+                        <!-- card-footer                       -->
+                        <div class="card-footer">
+                            <div class="row d-flex flex-row justify-content-evenly">
+                                <div class="col-6">
+                                    <div class="created_date">
+                                        {{ jdate($course->created_at)->format('%d %B %Y') }}
+                                    </div>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
 
+                                    <div class="d-flex flex-row-reverse">
+
+                                        {{-- <input type="hidden" id="auth_user"
+                                                value="{{ \Illuminate\Support\Facades\Auth::user() }}">--}}
+                                        <div class="dislike_sec">
+                                            @if(Auth::check())
+                                                @if( Auth::user()->likes()->where('course_id','=',$course->id) &&
+                                                     Auth::user()->likes()->where('course_id','=',$course->id)->where('like','=',0)->first())
+                                                    <span id="dislike_count" class="dislike_count"></span>
+                                                    <i class="far fa-thumbs-down like" style="color:tomato"
+                                                       id="dislike"></i>
+                                                @else
+                                                    <span id="dislike_count" class="dislike_count"></span>
+                                                    <i class="far fa-thumbs-down like" id="dislike"></i>
+                                                @endif
+                                            @else
+                                                <span id="dislike_count" class="dislike_count"></span>
+                                                <i class="far fa-thumbs-down like_un_auth" id="dislike"></i>
+                                            @endif
+                                        </div>
+
+                                        <div class="like_sec mx-2">
+                                            @if(Auth::check())
+                                                @if( Auth::user()->likes()->where('course_id','=',$course->id) &&
+                                                     Auth::user()->likes()->where('course_id','=',$course->id)->where('like','=',1)->first())
+                                                    <span id="like_count" class="like_count"></span>
+                                                    <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
+                                                @else
+                                                    <span id="like_count" class="like_count"></span>
+                                                    <i class="far fa-thumbs-up like" id="like"></i>
+                                                @endif
+                                            @else
+                                                <span id="like_count" class="like_count"></span>
+                                                <i class="far fa-thumbs-up like_un_auth" id="like"></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
-
                 </div>
-                <div class="card-footer">
-                    <div class="row d-flex flex-row justify-content-evenly">
-                        <div class="col-6">
-                            <div class="created_date">
-                                {{ jdate($course->created_at)->format('%d %B %Y') }}
-                            </div>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
 
-                            <div class="d-flex flex-row-reverse">
-
-                                {{-- <input type="hidden" id="auth_user"
-                                        value="{{ \Illuminate\Support\Facades\Auth::user() }}">--}}
-                                <div class="dislike_sec">
-                                    @if(Auth::check())
-                                        @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
-                                             Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',0)->first())
-                                            <span id="dislike_count" class="dislike_count"></span>
-                                            <i class="far fa-thumbs-down like" style="color:tomato"
-                                               id="dislike"></i>
-                                        @else
-                                            <span id="dislike_count" class="dislike_count"></span>
-                                            <i class="far fa-thumbs-down like" id="dislike"></i>
-                                        @endif
-                                    @else
-                                        <span id="dislike_count" class="dislike_count"></span>
-                                        <i class="far fa-thumbs-down like_un_auth" id="dislike"></i>
-                                    @endif
-                                </div>
-
-                                <div class="like_sec mx-2">
-                                    @if(Auth::check())
-                                        @if( Auth::user()->likes()->where('sample_id','=',$sample->id) &&
-                                             Auth::user()->likes()->where('sample_id','=',$sample->id)->where('like','=',1)->first())
-                                            <span id="like_count" class="like_count"></span>
-                                            <i class="far fa-thumbs-up like" style="color:green" id="like"></i>
-                                        @else
-                                            <span id="like_count" class="like_count"></span>
-                                            <i class="far fa-thumbs-up like" id="like"></i>
-                                        @endif
-                                    @else
-                                        <span id="like_count" class="like_count"></span>
-                                        <i class="far fa-thumbs-up like_un_auth" id="like"></i>
-                                    @endif
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-    </div>
 
-    </div>
+
+
 
     <div class="row  mt-5">
 
@@ -96,7 +95,7 @@
             <div class="row d-flex flex-column justify-content-center comments-sec">
 
                 <div class="col-lg-9 mt-5 list-comments">
-                    @foreach($sample->comments as $comment)
+                    @foreach($course->comments as $comment)
                         <div class="card mt-5">
                             <div class="card-body">
                                 <p class="card-text">
@@ -118,7 +117,7 @@
 
                         <form action="/comment/store" method="post">
                             @csrf
-                            <input type="hidden" name="sample_id" value="{{ $sample->id }}">
+                            <input type="hidden" name="course_id" value="{{ $course->id }}">
                             <div class="mb-5">
                                 <label for="subject-body" class="form-label mt-5">متن دیدگاه</label>
                                 <textarea class="form-control @error('description') is_invalid @enderror"
@@ -159,7 +158,7 @@
         $(document).ready(function () {
 
             function load_likes() {
-                let sample_id = document.getElementById('sample_id').value;
+                let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -168,7 +167,7 @@
                 $.ajax({
                     method: 'GET',
                     url: '{{ route('get_sample_likes') }}',
-                    data: {sample_id: sample_id},
+                    data: {course_id: course_id},
                 }).done(function (data) {
 
                     document.getElementById('like_count').innerText = data['likes'];
@@ -195,7 +194,7 @@
                 } else {
                     is_like = true;
                 }
-                let sample_id = document.getElementById('sample_id').value;
+                let course_id = document.getElementById('course_id').value;
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -204,7 +203,7 @@
                 $.ajax({
                     method: 'POST',
                     url: '{{ route('add_sample_Like') }}',
-                    data: {is_like: is_like, sample_id: sample_id},
+                    data: {is_like: is_like, course_id: course_id},
                 }).done(function (data) {
                     if (data['like'] == null) {
                         dis_like.style.color = '';
