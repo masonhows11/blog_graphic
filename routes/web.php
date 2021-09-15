@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Front\LikeController;
 use App\Http\Controllers\Front\SampleFrontController;
-use App\Http\Controllers\Front\CoursesController;
+use App\Http\Controllers\Front\CoursesFrontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\AuthController;
@@ -15,7 +15,6 @@ use App\Http\Controllers\Admin\RoleAssignController;
 use App\Http\Controllers\Admin\PermController;
 use App\Http\Controllers\Admin\PermAssignController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TipController;
 use App\Http\Controllers\Admin\SampleController;
 use App\Http\Controllers\Admin\CourseController;
@@ -263,6 +262,6 @@ Route::group(['prefix'=>'tips'],function (){
 
 Route::group(['prefix'=>'courses'],function (){
 
-    Route::get('/index',[CoursesController::class,'index']);
+    Route::get('/index',[CoursesFrontController::class,'index']);
 
 });

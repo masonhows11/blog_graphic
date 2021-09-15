@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CoursesController extends Controller
+class CoursesFrontController extends Controller
 {
 
     public function index()
@@ -15,5 +15,7 @@ class CoursesController extends Controller
         return view('front.course.index')
             ->with('categories',$categories);
     }
+
+
 
 }
