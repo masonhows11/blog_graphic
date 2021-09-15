@@ -35,6 +35,7 @@
                     <th class="text-center">شناسه</th>
                     <th class="text-center">نام دوره</th>
                     <th class="text-center">مشخصات دوره</th>
+                    <th class="text-center">وضعیت انتشار</th>
                     <th class="text-center">ایجاد قسمت جدید</th>
                     <th class="text-center">ویرایش</th>
                     <th class="text-center">حذف</th>
@@ -45,15 +46,11 @@
                     <tr>
                         <td class="text-center">{{ $course->id }}</td>
                         <td class="text-center">{{ $course->title }}</td>
-                        <td class="text-center"><a href="/admin/course/detail?course={{$course->id}}"><i
-                                    class="fa fa-list-alt"></i></a></td>
-                        <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i
-                                    class="fa fa-save"></i></a></td>
-                        <td class="text-center"><a href="/admin/course/edit?course={{$course->id}}"><i
-                                    class="fa fa-edit"></i></a></td>
-                        <td class="text-center">
-                            <button href="/admin/course/delete?course_id={{$course->id}}"
-                                    data-course-id="{{ $course->id }}" class="fa fa-remove" id="deleteItem"></button>
+                        <td class="text-center"><a href="/admin/course/detail?course={{$course->id}}"><i class="fa fa-list-alt"></i></a></td>
+                        <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i class="fa fa-save"></i></a></td>
+                        <td class="text-center"><button data-course-id="{{$course->id}}" id="publish_course">منتشر نشده</button></td>
+                        <td class="text-center"><a href="/admin/course/edit?course={{$course->id}}"><i class="fa fa-edit"></i></a></td>
+                        <td class="text-center"><button  data-course-id="{{ $course->id }}" class="fa fa-remove" id="deleteItem"></button>
                         </td>
                     </tr>
                 @endforeach
@@ -107,6 +104,13 @@
                     });
                 }
             });
+        });
+    </script>
+    <script>
+        $(document).on('click', '#publish_course"', function (event) {
+            event.preventDefault();
+
+            
         });
     </script>
 @endsection
