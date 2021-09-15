@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Creative;
 use App\Models\Like;
 use App\Models\Sample;
@@ -189,7 +190,7 @@ class LikeController extends Controller
         $course_id= $request->course_id;
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
-        $course = Sample::find($course_id);
+        $course = Course::find($course_id);
         if (!$course) {
             return null;
         }
@@ -208,7 +209,7 @@ class LikeController extends Controller
         } else {
             $like = new Like();
             $like->user_id = $user_id;
-            $like->coures_id = $course_id;
+            $like->course_id = $course_id;
             $like->like = $is_like;
             $like->save();
         }

@@ -183,7 +183,7 @@
 
             $('.like').on('click', function (event) {
                 event.preventDefault();
-                
+
                 let like = document.getElementById('like');
                 let dis_like = document.getElementById('dislike');
                 let is_like = '';
