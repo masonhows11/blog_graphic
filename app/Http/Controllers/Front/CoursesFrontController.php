@@ -18,6 +18,30 @@ class CoursesFrontController extends Controller
             ->with(['categories'=>$categories,'courses'=>$courses]);
     }
 
+    public function course($course)
+    {
+        $categories = Category::where('parent_id', null)->get();
+
+        $sample = Course::with(['categories', 'likes', 'comments' => function ($query) {
+            $query->where('approved', 1);
+        }])->where('slug', '=', $course)->first();
+
+        return view('front.course.course')->with(['sample' => $sample, 'categories' => $categories]);
+
+
+    }
+
+    public function coursesCategory($category)
+    {
+        $categories = Category::where('parent_id', null)->get();
+        $courses = Course::with('categories')
+            ->join('category_course', 'courses.id', '=', 'category_course.course_id')
+            ->join('categories', 'categories.id', '=', 'category_course.category_id')
+            ->where('categories.name', '=', $category)->select('courses.*')->get();
+
+        return view('front.course.courses_base_category')
+            ->with(['courses' => $courses, 'categories' => $categories]);
+    }
 
 
 }

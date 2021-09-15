@@ -24,16 +24,7 @@
     </div>
     <div class="row">
         <div class="col-md-3 right-category">
-            <h5 class="mt-4">دسته بندی ها</h5>
-            <ul class="list-group samples-category">
-                @foreach($categories as $category)
-                    <li class="list-group-item mt-2 parent"><a href="#" class="">{{$category->title}}</a></li>
-                    @if(count($category->subCategory) > 0)
-                        @include('front.course.sub_category',
-                        ['sub_category'=>$category->subCategory])
-                    @endif
-                @endforeach
-            </ul>
+            @include('front.course.course_category')
         </div>
 
         <div class="col-md-9  list-samples-left">
@@ -49,7 +40,7 @@
                             <p class="card-text">{{ strip_tags(\Illuminate\Support\Str::substr($course->description,0,160))}}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <a href="/" class="text-center">ادامه...</a>
+                            <a href="/courses/course/{{$course->slug}}" class="text-center">ادامه...</a>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,6 @@ class SampleFrontController extends Controller
     }
 
     public function sample($sample)
-
     {
         $categories = Category::where('parent_id', null)->get();
 

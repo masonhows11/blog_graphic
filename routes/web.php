@@ -263,5 +263,7 @@ Route::group(['prefix'=>'tips'],function (){
 Route::group(['prefix'=>'courses'],function (){
 
     Route::get('/index',[CoursesFrontController::class,'index']);
+    Route::get('/course/{course}',[CoursesFrontController::class,'course']);
+    Route::get('/coursesCategory/{category}',[CoursesFrontController::class,'coursesCategory']);
 
 });
