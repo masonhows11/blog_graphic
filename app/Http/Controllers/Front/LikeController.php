@@ -10,14 +10,13 @@ use App\Models\Sample;
 use App\Models\Tip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class LikeController extends Controller
 {
 
 
     public function sampleLike(Request $request)
     {
-
-
         $sample_id = $request->sample_id;
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
@@ -45,13 +44,11 @@ class LikeController extends Controller
             $like->save();
         }
         $like = Like::where('sample_id', '=', $sample_id)->where('user_id', '=', $user_id)->first();
-        if($like !==  null)
-        {
+        if ($like !== null) {
             return response()->json($like);
 
         }
-        if($like === null)
-        {
+        if ($like === null) {
             return response()->json($like);
         }
 
@@ -80,7 +77,7 @@ class LikeController extends Controller
         if (!$creative) {
             return null;
         }
-        $like_exists = Like::where('creative_id', '=',$request->creative_id)->where('user_id', '=', $user_id)->first();
+        $like_exists = Like::where('creative_id', '=', $request->creative_id)->where('user_id', '=', $user_id)->first();
         if ($like_exists) {
             $already_like = $like_exists->like;
 
@@ -100,14 +97,12 @@ class LikeController extends Controller
             $like->save();
         }
         $like = Like::where('creative_id', '=', $request->creative_id)->where('user_id', '=', $user_id)->first();
-        if($like !== null)
-        {
+        if ($like !== null) {
             return response()->json($like);
 
         }
 
-        if($like === null)
-        {
+        if ($like === null) {
             return response()->json($like);
         }
 
@@ -128,9 +123,6 @@ class LikeController extends Controller
 
     public function tipLike(Request $request)
     {
-
-
-
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
         $tip = Tip::find($request->tip_id);
@@ -157,13 +149,11 @@ class LikeController extends Controller
             $like->save();
         }
         $like = Like::where('tip_id', '=', $request->tip_id)->where('user_id', '=', $user_id)->first();
-        if($like !== null)
-        {
+        if ($like !== null) {
             return response()->json($like);
 
         }
-        if($like === null)
-        {
+        if ($like === null) {
             return response()->json($like);
         }
 
@@ -172,7 +162,7 @@ class LikeController extends Controller
     public function tipLikeCount(Request $request)
     {
 
-        $likes = Like::where('tip_id',$request->tip_id)
+        $likes = Like::where('tip_id', $request->tip_id)
             ->where('like', '=', 1)->count();
 
         $dislikes = Like::where('tip_id', $request->tip_id)
@@ -185,9 +175,7 @@ class LikeController extends Controller
 
     public function courseLike(Request $request)
     {
-
-
-        $course_id= $request->course_id;
+        $course_id = $request->course_id;
         $is_like = $request['is_like'] === 'true';
         $user_id = Auth::id();
         $course = Course::find($course_id);
@@ -214,13 +202,11 @@ class LikeController extends Controller
             $like->save();
         }
         $like = Like::where('course_id', '=', $course_id)->where('user_id', '=', $user_id)->first();
-        if($like != null)
-        {
+        if ($like != null) {
             return response()->json($like);
 
         }
-        if($like == null)
-        {
+        if ($like == null) {
             return response()->json($like);
         }
 
@@ -228,7 +214,6 @@ class LikeController extends Controller
 
     public function courseLikeCount(Request $request)
     {
-
         $likes = Like::where('course_id', $request->course_id)
             ->where('like', '=', 1)->count();
 
