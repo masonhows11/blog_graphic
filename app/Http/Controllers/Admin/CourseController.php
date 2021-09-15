@@ -178,9 +178,18 @@ class CourseController extends Controller
 
     }
 
-    public function changeStatus(Request $request)
+    public function changePublishStatus(Request $request)
     {
 
+        $course = Course::findOrFail($request->course_id);
+        $course->status_publish = 1;
+        $course->course_status = 1;
+        $course->save();
+        if ($course->save()) {
+
+            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'status' => 200], 200);
+        }
+        return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
     }
 
     //////////////////////// lesson section ///////////////////////////////////

@@ -107,10 +107,37 @@
         });
     </script>
     <script>
-        $(document).on('click', '#publish_course"', function (event) {
+        $(document).on('click', '#publish_course', function (event) {
             event.preventDefault();
-
-            
+            let  course_id = event.target.getAttribute('data-course-id');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                method: 'POST',
+                url: '{{ route('changePublishStatus') }}',
+                data: {course_id:course_id},
+            }).done(function (data) {
+                
+                if(data['status'] === 200)
+                {
+                    swal.fire({
+                        icon: 'success',
+                        text: data['success'],
+                    })
+                }
+                if(data['status'] === 500)
+                {
+                    swal.fire({
+                        icon: 'error',
+                        text: data['error'],
+                    })
+                }
+            }).fail(function (data) {
+                console.log(data);
+            });
         });
     </script>
 @endsection
