@@ -166,7 +166,7 @@
                 });
                 $.ajax({
                     method: 'GET',
-                    url: '{{ route('get_sample_likes') }}',
+                    url: '{{ route('get_course_likes') }}',
                     data: {course_id: course_id},
                 }).done(function (data) {
 
@@ -183,8 +183,7 @@
 
             $('.like').on('click', function (event) {
                 event.preventDefault();
-
-
+                
                 let like = document.getElementById('like');
                 let dis_like = document.getElementById('dislike');
                 let is_like = '';
@@ -202,7 +201,7 @@
                 });
                 $.ajax({
                     method: 'POST',
-                    url: '{{ route('add_sample_Like') }}',
+                    url: '{{ route('add_course_Like') }}',
                     data: {is_like: is_like, course_id: course_id},
                 }).done(function (data) {
                     if (data['like'] == null) {
