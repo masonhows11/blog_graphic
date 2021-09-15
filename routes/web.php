@@ -166,6 +166,7 @@ Route::group(['prefix'=>'admin/course','middleware'=>'role:admin'],function (){
     Route::post('/update',[CourseController::class,'update']);
     Route::get('/delete',[CourseController::class,'delete'])->name('deleteCourse');
     Route::post('/changePublishStatus',[CourseController::class,'changePublishStatus'])->name('changePublishStatus');
+    Route::get('/getPublishStatus',[CourseController::class,'getPublishStatus'])->name('getPublishStatus');
 
 
     Route::get('/detail',[CourseController::class,'detail']);

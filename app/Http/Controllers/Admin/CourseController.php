@@ -182,14 +182,26 @@ class CourseController extends Controller
     {
 
         $course = Course::findOrFail($request->course_id);
-        $course->status_publish = 1;
-        $course->course_status = 1;
+        if ($course->status_publish == 0) {
+            $course->status_publish = 1;
+            $course->course_status = 1;
+        } else {
+            $course->status_publish = 0;
+            $course->course_status = 0;
+        }
+
         $course->save();
+        $publish_status = $course->status_publish;
         if ($course->save()) {
 
-            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'status' => 200], 200);
+            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' =>  $publish_status , 'status' => 200], 200);
         }
         return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
+    }
+
+    public function getPublishStatus(Request $request)
+    {
+
     }
 
     //////////////////////// lesson section ///////////////////////////////////
@@ -253,7 +265,7 @@ class CourseController extends Controller
             ->first();
         $course = $request->course;
         return view('admin.training_course_management.edit_lesson')
-            ->with(['lesson'=>$lesson,'course'=>$course]);
+            ->with(['lesson' => $lesson, 'course' => $course]);
 
 
     }
@@ -261,7 +273,7 @@ class CourseController extends Controller
     public function updateLesson(Request $request)
     {
 
-       //return $request;
+        //return $request;
         $validated = $request->validate([
             'title' => 'required|max:100',
             'name' => 'required|max:100',
@@ -289,9 +301,9 @@ class CourseController extends Controller
          }*/
         //'video_path' => $file_name_store,
 
-        Lesson::where('id','=',$request->lesson_id)
-               ->where('course_id','=',$request->course_id)
-               ->update([
+        Lesson::where('id', '=', $request->lesson_id)
+            ->where('course_id', '=', $request->course_id)
+            ->update([
                 'title' => $request->title,
                 'name' => $request->name,
                 'lesson_duration' => $request->lesson_duration,
