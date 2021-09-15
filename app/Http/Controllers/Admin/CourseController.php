@@ -194,15 +194,11 @@ class CourseController extends Controller
         $publish_status = $course->status_publish;
         if ($course->save()) {
 
-            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' =>  $publish_status , 'status' => 200], 200);
+            return response()->json(['success' => '.وضعیت انتشار با موفقیت تغییر کرد', 'publish' => $publish_status, 'status' => 200], 200);
         }
         return response()->json(['error' => '.عملیات انتشار انجام نشد', 'status' => 500], 500);
     }
 
-    public function getPublishStatus(Request $request)
-    {
-
-    }
 
     //////////////////////// lesson section ///////////////////////////////////
 
