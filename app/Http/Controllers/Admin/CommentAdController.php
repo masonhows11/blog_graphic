@@ -57,16 +57,17 @@ class CommentAdController extends Controller
        /**/
 
 
-   /* public function getCoursesComments()
+   public function getCoursesComments()
     {
        $comments = DB::table('comments')
-            ->join('samples','comments.sample_id','=','samples.id')
+            ->join('courses','comments.course_id','=','courses.id')
             ->join('users','users.id','=','comments.user_id')
             ->where('comments.approved','=',0)
-            ->select('comments.id','samples.title','users.user_name','comments.description')->get();
+            ->select('comments.id','courses.title','users.user_name','comments.description')->get();
 
-        return  response()->json(['comments'=>$comments]);
-    }*/
+        return  response()->json($comments);
+    }
+
 
     public function confirmComment(Request $request)
     {

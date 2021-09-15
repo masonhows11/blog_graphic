@@ -139,15 +139,20 @@
             global_data_uri = data_uri;
             load_comment(data_uri);
         });
-        /*$(document).on('click', '#course_comments', function () {
+        $(document).on('click', '#course_comments', function (event) {
             let data_uri = document.getElementById('course_comments').getAttribute('data-uri');
+            global_data_uri = data_uri;
             load_comment(data_uri);
-        });*/
+        });
+
+        /*********get comment body / text *******/
         function get_comment_body(body) {
             let comment_body = '';
             comment_body = body.getAttribute('data-comment');
             document.getElementById('comment_body').innerHTML = comment_body;
         }
+
+        /********* Confirm comment **********/
         function confirm_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
@@ -172,6 +177,7 @@
                 }
             });
         }
+        /*********delete comment*********/
         function delete_comment(id) {
             let comment_id = '';
             comment_id = id.getAttribute('data-id');
