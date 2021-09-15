@@ -36,4 +36,9 @@ class Like extends Model
     {
        return $this->belongsTo(Tip::class);
     }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }
