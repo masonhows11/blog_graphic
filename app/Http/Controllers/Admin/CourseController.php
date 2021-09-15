@@ -253,7 +253,7 @@ class CourseController extends Controller
     public function updateLesson(Request $request)
     {
 
-
+       //return $request;
         $validated = $request->validate([
             'title' => 'required|max:100',
             'name' => 'required|max:100',
@@ -279,17 +279,17 @@ class CourseController extends Controller
              $file_name_store = $save_path . '.' . $file_name_upload;
              $request->file('video_path')->move('video/lessons', $file_name_upload);
          }*/
+        //'video_path' => $file_name_store,
 
-        Lesson::create([
-            'course_id' => $request->id,
-            'title' => $request->title,
-            'name' => $request->name,
-            'lesson_duration' => $request->lesson_duration,
-            'video_path' => $request->video_path
-            //'video_path' => $file_name_store,
-        ]);
+        Lesson::where('id','=',$request->lesson_id)
+               ->where('course_id','=',$request->course_id)
+               ->update([
+                'title' => $request->title,
+                'name' => $request->name,
+                'lesson_duration' => $request->lesson_duration,
+                'video_path' => $request->video_path]);
 
-        return redirect()->back()->with('success', 'قسمت جدید با موفقیت ایجاد شد.');
+        return redirect()->back()->with('success', 'قسمت جدید با موفقیت ویرایش شد.');
     }
 
     public function deleteLesson(Request $request)

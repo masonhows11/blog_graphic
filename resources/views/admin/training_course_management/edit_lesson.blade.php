@@ -25,7 +25,8 @@
         <div class="row row-add-lesson">
             <form action="/admin/course/updateLesson" method="post">
                 @csrf
-                <input type="hidden" id="course_id" name="id" value="{{ $course }}">
+                <input type="hidden"  name="course_id" value="{{ $course }}">
+                <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
                 <div class="form-group">
                     <label for="title">عنوان:</label>
                     <input type="text"
