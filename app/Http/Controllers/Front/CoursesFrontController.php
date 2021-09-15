@@ -22,11 +22,11 @@ class CoursesFrontController extends Controller
     {
         $categories = Category::where('parent_id', null)->get();
 
-        $sample = Course::with(['categories', 'likes', 'comments' => function ($query) {
+        $course = Course::with(['categories', 'likes', 'comments' => function ($query) {
             $query->where('approved', 1);
         }])->where('slug', '=', $course)->first();
 
-        return view('front.course.course')->with(['sample' => $sample, 'categories' => $categories]);
+        return view('front.course.course')->with(['course' => $course ,'categories' => $categories]);
 
 
     }
