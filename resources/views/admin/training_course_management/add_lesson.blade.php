@@ -108,7 +108,7 @@
                         <td>{{ $lesson->id }}</td>
                         <td>{{ $lesson->title }}</td>
                         <td>{{ $lesson->lesson_duration }}</td>
-                        <td><a href="/admin/course/editLesson?lesson={{ $lesson->id }}"><i class="fa fa-edit"></i></a>
+                        <td><a href="/admin/course/editLesson?lesson={{ $lesson->id }}&course_id={{$course->id}}"><i class="fa fa-edit"></i></a>
                         </td>
                         <td>
                             <button class="fa fa-remove" data-lesson-id="{{ $lesson->id }}" id="deleteItem"></button>

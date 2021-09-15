@@ -239,6 +239,7 @@ class CourseController extends Controller
 
     public function editLesson(Request $request)
     {
+        return $request;
         $lesson_deleted = Lesson::where('id', '=', $request->lesson_id)
             ->where('course_id', '=', $request->course_id)
             ->first();
