@@ -33,6 +33,7 @@ class CreateCoursesTable extends Migration
             $table->string('level_course')->nullable();
             $table->string('status_paid')->nullable();
             $table->tinyInteger('status_publish')->default(0);
+            $table->tinyInteger('course_status')->default(0);
             $table->double('discount')->default(0);
             $table->timestamp('last_update')->nullable();
             $table->timestamps();
