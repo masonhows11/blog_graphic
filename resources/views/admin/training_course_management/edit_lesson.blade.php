@@ -25,14 +25,14 @@
         <div class="row row-add-lesson">
             <form action="/admin/course/updateLesson" method="post">
                 @csrf
-                <input type="hidden" id="course_id" name="id" value="{{ $course->id }}">
+                <input type="hidden" id="course_id" name="id" value="{{ $course }}">
                 <div class="form-group">
                     <label for="title">عنوان:</label>
                     <input type="text"
                            name="title"
                            class="form-control @error('title') is-invalid @enderror"
                            id="title"
-                           value="{{ old('title') }}">
+                           value="{{ $lesson->title }}">
                     @error('title')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -44,7 +44,7 @@
                            name="name"
                            class="form-control @error('name') is-invalid @enderror"
                            id="name"
-                           value="{{ old('name') }}">
+                           value="{{ $lesson->name }}">
                     @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -56,7 +56,7 @@
                            name="lesson_duration"
                            class="form-control @error('lesson_duration') is-invalid @enderror"
                            id="lesson_duration"
-                           value="{{ old('lesson_duration') }}">
+                           value="{{ $lesson->lesson_duration  }}">
                     @error('lesson_duration')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -74,14 +74,14 @@
                 <div class="form-group">
                     <label for="video_path">لینک فایل آموزشی:</label>
                     <input type="text" class="form-control @error('video_path') is-invalid @enderror"
-                           name="video_path">
+                           name="video_path" value="{{ $lesson->video_path }}">
                     @error('video_path')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="alert alert-danger">{{ $message  }}</div>
                     @enderror
                 </div>
 
                 <div class="flex">
-                    <button type="submit" class="btn btn-success btn-save-lesson">ذخیره</button>
+                    <button type="submit" class="btn btn-success btn-save-lesson">ویرایش</button>
                     <a href="/admin/course/index" class="btn btn-default btn-cancel-lesson">انصراف</a>
 
                 </div>
