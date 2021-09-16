@@ -454,6 +454,17 @@ body {
     width:120px;
     border-radius:5px;
 }
+.course-detail{
+    height: auto;
+    border:2px solid #F2F2F2;
+    border-radius: 5px;
+}
+.course-detail .price{
+    font-family: 'iransans_num_light', serif;
+}
+.course-detail #price:hover{
+    color:white;
+}
 /************** filter courses ***********/
 
 .filter-courses {

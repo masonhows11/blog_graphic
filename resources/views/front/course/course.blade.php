@@ -78,8 +78,44 @@
                 {{-- end course body --}}
 
                 {{-- start course properties and add by user--}}
-                <div class="col-lg-4 mt-2" style="border:2px solid tomato">
-
+                <div class="col-lg-3 mt-2 course-detail">
+                    <div class="row d-flex flex-column align-content-center">
+                        <div class="col-lg-10 mt-2">
+                            <p class="text-center mt-2"> {{ $course->title }}</p>
+                        </div>
+                        <div class="col-lg-10 mt-2">
+                            @php
+                                $author = \App\Models\Course::join('users','courses.user_id','=','users.id')->select('user_name')->first();
+                            @endphp
+                            <p class="text-center mt-2"> مدرس : {{ $author->user_name }} </p>
+                        </div>
+                        <div class="col-lg-10 mt-2">
+                            <p class="text-center mt-2"> تعداد دانشجویان : {{ $course->student_count }}</p>
+                        </div>
+                        <div class="col-lg-10 mt-2">
+                            <p class="text-center mt-2"> تعداد ویدئو ها : {{ $course->video_count }} </p>
+                        </div>
+                        <div class="col-lg-10 mt-2">
+                            <p class="text-center mt-2"> سطح دوره : {{ $course->level_course }}</p>
+                        </div>
+                        <div class="col-lg-10 mt-2">
+                            <p class="text-center mt-2"> مدت زمان دوره : {{ $course->course_duration }} </p>
+                        </div>
+                        <div class="col-lg-10 mt-2">
+                            <p class="text-center mt-2"> وضعیت دوره
+                                : {{ $course->course_status == 1 ? 'در حال برگزاری' : 'پایان دوره' }} </p>
+                        </div>
+                        <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
+                            <div class="d-flex flex-column mt-2">
+                                @if($course->status_paid == 1 )
+                                    <div><a href="#">ثبت نام رایگان در دوره</a></div>
+                                @elseif($course->status_paid == 2)
+                                    <div><p class="price "> {{ number_format($course->price) }} تومان </p></div>
+                                    <div><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {{--end course properties and add by user--}}
             </div>
@@ -96,7 +132,7 @@
 
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="row d-flex flex-column justify-content-center comments-sec">
 
                 <div class="col-lg-9 mt-5 list-comments">

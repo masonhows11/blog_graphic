@@ -24,7 +24,14 @@
                                     {{ strip_tags(\Illuminate\Support\Str::substr($course->description,0,160)) }}
                                 </p>
                             </div>
-                            <div class="card-footer d-flex justify-content-end">
+                            <div class="card-footer d-flex justify-content-between">
+                                <div>
+                                    @if($course->status_paid == 1)
+                                        <p class="course_price w3-flat-alizarin text-center">رایگان</p>
+                                    @elseif($course->status_paid == 2)
+                                        <p class="course_price w3-flat-alizarin text-center">{{ number_format($course->price) }}  تومان  </p>
+                                    @endif
+                                </div>
                                 <a href="/courses/course/{{$course->slug}}" class="text-center">ادامه...</a>
                             </div>
                         </div>
