@@ -18300,9 +18300,20 @@ body {
 }
 
 /*************** course section **********/
-.course_price,
 .continue-course {
-  border-bottom: 2px solid tomato;
+  border-bottom-color: tomato;
+  border-bottom-width: 0;
+  border-bottom-style: solid;
+  transition: border-bottom-width 0.1s ease;
+}
+
+.continue-course:hover {
+  border-bottom-width: 2px;
+}
+
+.course_price {
+  width: 120px;
+  border-radius: 5px;
 }
 
 /************** filter courses ***********/

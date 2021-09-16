@@ -43,9 +43,9 @@
                             <div class="card-footer d-flex justify-content-between">
                                 <div>
                                     @if($course->status_paid == 1)
-                                        <p class="course_price">رایگان</p>
+                                        <p class="course_price w3-flat-alizarin text-center">رایگان</p>
                                     @elseif($course->status_paid == 2)
-                                        <p class="course_price">{{ number_format($course->price) }}  تومان  </p>
+                                        <p class="course_price w3-flat-alizarin text-center">{{ number_format($course->price) }}  تومان  </p>
                                     @endif
                                 </div>
                                 <div>
