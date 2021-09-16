@@ -10,8 +10,10 @@
         </div>
 
         <div class="col-md-9  one-sample">
-            <div class="row d-flex flex-column justify-content-center">
-                <div class="col-lg-9 mt-2">
+
+            <div class="row d-flex  justify-content-center">
+                {{-- start course body --}}
+                <div class="col-lg-8 mt-2">
                     <div class="card">
 
                         <input type="hidden" id="course_id" value="{{ $course->id }}">
@@ -73,8 +75,15 @@
 
                     </div>
                 </div>
+                {{-- end course body --}}
 
+                {{-- start course properties and add by user--}}
+                <div class="col-lg-4 mt-2" style="border:2px solid tomato">
+
+                </div>
+                {{--end course properties and add by user--}}
             </div>
+
         </div>
     </div>
 
@@ -87,7 +96,7 @@
 
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="row d-flex flex-column justify-content-center comments-sec">
 
                 <div class="col-lg-9 mt-5 list-comments">
