@@ -37,10 +37,15 @@
                         <img src="{{asset($course->image)}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $course->title }}</h5>
-                            <p class="card-text">{{ strip_tags(\Illuminate\Support\Str::substr($course->description,0,160))}}</p>
+                            <p class="card-text">{{ strip_tags(\Illuminate\Support\Str::substr($course->description,0,96))}}</p>
                         </div>
-                        <div class="card-footer d-flex justify-content-end">
-                            <a href="/courses/course/{{$course->slug}}" class="text-center">ادامه...</a>
+                        <div class="card-footer d-flex justify-content-between">
+                            <div style="border:1px solid red">
+{{--                                @if($course->status_paid)--}}
+                            </div>
+                            <div style="border: 1px solid orangered">
+                                <a href="/courses/course/{{$course->slug}}" class="text-center">ادامه...</a>
+                            </div>
                         </div>
                     </div>
                 </div>

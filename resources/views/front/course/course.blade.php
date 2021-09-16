@@ -35,9 +35,6 @@
                                 <div class="col-6 d-flex justify-content-end">
 
                                     <div class="d-flex flex-row-reverse">
-
-                                        {{-- <input type="hidden" id="auth_user"
-                                                value="{{ \Illuminate\Support\Facades\Auth::user() }}">--}}
                                         <div class="dislike_sec">
                                             @if(Auth::check())
                                                 @if( Auth::user()->likes()->where('course_id','=',$course->id) &&
@@ -54,7 +51,6 @@
                                                 <i class="far fa-thumbs-down like_un_auth" id="dislike"></i>
                                             @endif
                                         </div>
-
                                         <div class="like_sec mx-2">
                                             @if(Auth::check())
                                                 @if( Auth::user()->likes()->where('course_id','=',$course->id) &&
