@@ -18271,6 +18271,7 @@ body {
 }
 
 /**************** comments style***********/
+.course_price,
 .comments-sec .list-comments .card .card-footer .date_comment,
 .comments-sec .alert-danger {
   font-family: "iransans_num_light", serif;
@@ -18296,6 +18297,12 @@ body {
 .comments-sec p a {
   text-decoration: none;
   font-size: large;
+}
+
+/*************** course section **********/
+.course_price,
+.continue-course {
+  border-bottom: 2px solid tomato;
 }
 
 /************** filter courses ***********/

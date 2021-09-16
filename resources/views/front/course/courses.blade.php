@@ -32,23 +32,28 @@
             <div class="row  row-cols-lg-3 row-cols-md-1 row-cols-sm-1  row-cols-1">
 
                 @foreach($courses as $course)
-                <div class="col mt-2 samples-item">
-                    <div class="card">
-                        <img src="{{asset($course->image)}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $course->title }}</h5>
-                            <p class="card-text">{{ strip_tags(\Illuminate\Support\Str::substr($course->description,0,96))}}</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <div style="border:1px solid red">
-{{--                                @if($course->status_paid)--}}
+                    <div class="col mt-2 samples-item">
+                        <div class="card">
+                            <img src="{{asset($course->image)}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $course->title }}</h5>
+                                <p class="card-text">{{ strip_tags(\Illuminate\Support\Str::substr($course->description,0,96))}}</p>
+                                <p class="author"></p>
                             </div>
-                            <div style="border: 1px solid orangered">
-                                <a href="/courses/course/{{$course->slug}}" class="text-center">ادامه...</a>
+                            <div class="card-footer d-flex justify-content-between">
+                                <div>
+                                    @if($course->status_paid == 1)
+                                        <p class="course_price">رایگان</p>
+                                    @elseif($course->status_paid == 2)
+                                        <p class="course_price">{{ number_format($course->price) }}  تومان  </p>
+                                    @endif
+                                </div>
+                                <div>
+                                    <a href="/courses/course/{{$course->slug}}" class="text-center continue-course">ادامه...</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
 
             </div>

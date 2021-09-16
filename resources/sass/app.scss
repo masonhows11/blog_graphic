@@ -346,13 +346,16 @@ body {
 .main-section .list-samples-left {
     height: auto;
 }
-.main-section .list-samples-left .samples-item .card{
+
+.main-section .list-samples-left .samples-item .card {
     min-height: 400px;
 }
-.articles-creativity .articles-creativity-item .card{
+
+.articles-creativity .articles-creativity-item .card {
     border-radius: 20px;
-    height:auto;
+    height: auto;
 }
+
 .samples-item .card {
     border-radius: 20px;
     max-height: 800px;
@@ -374,57 +377,70 @@ body {
     text-decoration: none;
     color: #000000;
 }
+
 /**************** one sample *************/
-.one-sample .card-header{
-    font-family:'Yekan-regular',Sans-Serif;
+.one-sample .card-header {
+    font-family: 'Yekan-regular', Sans-Serif;
     font-size: larger;
 }
 
 /**************like or dislike************/
 .one-sample .card .card-footer .like_un_auth,
 .one-sample .card .card-footer .dislike,
-.one-sample .card .card-footer .like{
+.one-sample .card .card-footer .like {
     font-size: 25px;
 }
 
-.one-sample .card .card-footer .fa-thumbs-up:hover ,
-.one-sample .card .card-footer .fa-thumbs-down:hover{
-    cursor:pointer;
+.one-sample .card .card-footer .fa-thumbs-up:hover,
+.one-sample .card .card-footer .fa-thumbs-down:hover {
+    cursor: pointer;
 }
-.card-footer .created_date{
-    font-family: 'iransans_num_light',serif;
-    font-size:1.1rem;
+
+.card-footer .created_date {
+    font-family: 'iransans_num_light', serif;
+    font-size: 1.1rem;
 }
+
 .card-footer .dislike_sec .dislike_count,
-.card-footer .like_sec .like_count{
-    font-family: 'iransans_num_bold',serif;
+.card-footer .like_sec .like_count {
+    font-family: 'iransans_num_bold', serif;
 }
+
 /**************** comments style***********/
+.course_price,
 .comments-sec .list-comments .card .card-footer .date_comment,
 .comments-sec .alert-danger {
-    font-family: 'iransans_num_light',serif;
+    font-family: 'iransans_num_light', serif;
 }
-.comments-sec textarea{
+
+.comments-sec textarea {
     text-align: right;
 }
+
 .comments-sec,
-.comments-sec .list-comments
-{
+.comments-sec .list-comments {
     height: auto;
 }
 
 .comments-sec .add-comment {
-    border:2px solid #3DC8E9;
+    border: 2px solid #3DC8E9;
 }
 
-.comments-sec .message_auth{
-    border-bottom:2px  solid #3DC8E9;
+.comments-sec .message_auth {
+    border-bottom: 2px solid #3DC8E9;
 }
-.comments-sec p a{
-    text-decoration:none;
+
+.comments-sec p a {
+    text-decoration: none;
     font-size: large;
 }
- /************** filter courses ***********/
+
+/*************** course section **********/
+.course_price,
+.continue-course {
+    border-bottom: 2px solid tomato;
+}
+/************** filter courses ***********/
 
 .filter-courses {
     max-height: 60px;
@@ -434,8 +450,6 @@ body {
 .filter-courses-item .nav-link {
     color: #000000;
 }
-
-
 
 /************ media query ****************/
 
