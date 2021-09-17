@@ -103,19 +103,23 @@
                 </div>
                 <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
                     <div class="d-flex flex-column mt-2 mb-2">
-                        <form action="" method="post">
-                        @if($course->status_paid == 1 )
 
-                            <div class="mb-2 btn btn-danger add-course" >
-                                <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                <input type="button" class="btn btn-danger" value="ثبت نام رایگان در دوره" id="price">
-                            </div>
+                        @if($course->status_paid == 1 )
+                            <form action="" method="post">
+                                <div class="mb-2 btn btn-danger add-course">
+                                    <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                    <input type="button" class="btn btn-danger" value="ثبت نام رایگان در دوره"
+                                           id="price">
+                                </div>
+                            </form>
                         @elseif($course->status_paid == 2)
-                            <div class="mb-2"><p class="price "> {{ number_format($course->price) }} تومان </p>
-                            </div>
-                            <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
+                            <form action="#" method="post">
+                                <div class="mb-2"><p class="price "> {{ number_format($course->price) }} تومان </p>
+                                </div>
+                                <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
+                            </form>
                         @endif
-                        </form>
+
                     </div>
                 </div>
             </div>
