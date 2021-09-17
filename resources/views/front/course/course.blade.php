@@ -103,22 +103,26 @@
                 </div>
                 <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
                     <div class="d-flex flex-column mt-2 mb-2">
+                        @if(\App\Models\CourseUser::checkAddOrNot(\Illuminate\Support\Facades\Auth::id(),$course->id))
+                            <p class="course-added w3-flat-turquoise">شما در این دوره ثبت نام کرده اید.</p>
+                        @else
+                            @if($course->status_paid == 1 )
+                                <form action="/addCourse/add" method="post">
+                                    @csrf
+                                    <div class="mb-2 btn btn-danger add-course">
+                                        <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                        <input type="submit" class="btn btn-danger" value="ثبت نام رایگان در دوره"
+                                               id="price">
+                                    </div>
+                                </form>
+                            @elseif($course->status_paid == 2)
+                                <form action="#" method="post">
+                                    <div class="mb-2"><p class="price "> {{ number_format($course->price) }} تومان </p>
+                                    </div>
+                                    <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
+                                </form>
+                            @endif
 
-                        @if($course->status_paid == 1 )
-                            <form action="/addCourse/add" method="post">
-                                @csrf
-                                <div class="mb-2 btn btn-danger add-course">
-                                    <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                    <input type="submit" class="btn btn-danger" value="ثبت نام رایگان در دوره"
-                                           id="price">
-                                </div>
-                            </form>
-                        @elseif($course->status_paid == 2)
-                            <form action="#" method="post">
-                                <div class="mb-2"><p class="price "> {{ number_format($course->price) }} تومان </p>
-                                </div>
-                                <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
-                            </form>
                         @endif
 
                     </div>
