@@ -105,10 +105,11 @@
                     <div class="d-flex flex-column mt-2 mb-2">
 
                         @if($course->status_paid == 1 )
-                            <form action="" method="post">
+                            <form action="/addCourse/add" method="post">
+                                @csrf
                                 <div class="mb-2 btn btn-danger add-course">
                                     <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                    <input type="button" class="btn btn-danger" value="ثبت نام رایگان در دوره"
+                                    <input type="submit" class="btn btn-danger" value="ثبت نام رایگان در دوره"
                                            id="price">
                                 </div>
                             </form>
