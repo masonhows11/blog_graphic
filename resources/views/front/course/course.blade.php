@@ -132,10 +132,10 @@
         <!--  end course properties and add by user   -->
     </div>
 
-    <div class="row d-flex flex-column align-content-center mt-5 course-lessons" style="border:1px solid tomato">
+    <div class="row d-flex flex-column align-content-center mt-5 course-lessons">
         @foreach($course->lessons as $lesson)
         <div class="col-md-6 mt-2 mb-2" style="">
-            <p>
+            <p class="text-center">
                 <a  class="btn btn-primary"
                     data-bs-toggle="collapse"
                     href="#collapseExample{{$lesson->id}}"
@@ -148,7 +148,7 @@
             <div class="collapse"
                  id="collapseExample{{$lesson->id}}">
                 <div class="card card-body">
-                    <a href="{{ $lesson->video_path }}">{{$lesson->video_path}}</a>
+                    <a class="text-center" href="{{ $lesson->video_path }}">{{$lesson->video_path}}</a>
                 </div>
             </div>
         </div>

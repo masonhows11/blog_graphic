@@ -18316,6 +18316,7 @@ body {
   border-radius: 5px;
 }
 
+.course-lessons,
 .course-detail {
   height: auto;
   border: 2px solid #F2F2F2;
