@@ -133,18 +133,26 @@
     </div>
 
     <div class="row d-flex flex-column align-content-center mt-5 course-lessons" style="border:1px solid tomato">
-        <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
-
+        @foreach($course->lessons as $lesson)
+        <div class="col-md-6 mt-2 mb-2" style="">
+            <p>
+                <a  class="btn btn-primary"
+                    data-bs-toggle="collapse"
+                    href="#collapseExample{{$lesson->id}}"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="collapseExample">
+                    {{ $lesson->title }}
+                </a>
+            </p>
+            <div class="collapse"
+                 id="collapseExample{{$lesson->id}}">
+                <div class="card card-body">
+                    <a href="{{ $lesson->video_path }}">{{$lesson->video_path}}</a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
-
-        </div>
-        <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
-
-        </div>
-        <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
-
-        </div>
+        @endforeach
     </div>
 
 
