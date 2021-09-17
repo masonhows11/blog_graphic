@@ -12,21 +12,20 @@ class CoursesFrontController extends Controller
 
     public function index()
     {
-        $courses = Course::where('status_publish','=',1)->get();
-        $categories = Category::where('parent_id',null)->get();
+        $courses = Course::where('status_publish', '=', 1)->get();
+        $categories = Category::where('parent_id', null)->get();
         return view('front.course.courses')
-            ->with(['categories'=>$categories,'courses'=>$courses]);
+            ->with(['categories' => $categories, 'courses' => $courses]);
     }
 
     public function course($course)
     {
         $categories = Category::where('parent_id', null)->get();
 
-        $course = Course::with(['categories', 'likes', 'comments' => function ($query) {
+        $course = Course::with(['categories', 'likes', 'lessons', 'comments' => function ($query) {
             $query->where('approved', 1);
         }])->where('slug', '=', $course)->first();
-
-        return view('front.course.course')->with(['course' => $course ,'categories' => $categories]);
+        return view('front.course.course')->with(['course' => $course, 'categories' => $categories]);
 
 
     }

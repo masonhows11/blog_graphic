@@ -47,8 +47,8 @@
                         <td class="text-center">{{ $course->id }}</td>
                         <td class="text-center">{{ $course->title }}</td>
                         <td class="text-center"><a href="/admin/course/detail?course={{$course->id}}"><i class="fa fa-list-alt"></i></a></td>
-                        <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i class="fa fa-save"></i></a></td>
                         <td class="text-center"><button data-course-id="{{$course->id}}" id="publish_course">{{ $course->status_publish == 1 ? 'منتشر شده': 'منتشر نشده' }}</button></td>
+                        <td class="text-center"><a href="/admin/course/newLesson?course={{ $course->id }}"><i class="fa fa-save"></i></a></td>
                         <td class="text-center"><a href="/admin/course/edit?course={{$course->id}}"><i class="fa fa-edit"></i></a></td>
                         <td class="text-center"><button  data-course-id="{{ $course->id }}" class="fa fa-remove" id="deleteItem"></button>
                         </td>
