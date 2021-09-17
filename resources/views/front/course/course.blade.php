@@ -103,16 +103,19 @@
                 </div>
                 <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
                     <div class="d-flex flex-column mt-2 mb-2">
+                        <form action="" method="post">
                         @if($course->status_paid == 1 )
-                            <input type="hidden" name="course_id" value="{{ $course->id }}">
-                            <div class="mb-2 btn btn-danger add-course" id="price">ثبت نام رایگان در
-                                دوره
+
+                            <div class="mb-2 btn btn-danger add-course" >
+                                <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                <input type="button" class="btn btn-danger" value="ثبت نام رایگان در دوره" id="price">
                             </div>
                         @elseif($course->status_paid == 2)
                             <div class="mb-2"><p class="price "> {{ number_format($course->price) }} تومان </p>
                             </div>
                             <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
                         @endif
+                        </form>
                     </div>
                 </div>
             </div>
@@ -206,10 +209,10 @@
         $(document).ready(function () {
 
 
-            $('.add-course').on('click', function (event) {
+            /*$('.add-course').on('click', function (event) {
                 event.preventDefault();
                 console.log(event);
-            });
+            });*/
 
 
             function load_likes() {
