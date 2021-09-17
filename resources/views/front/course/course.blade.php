@@ -104,8 +104,10 @@
                 <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
                     <div class="d-flex flex-column mt-2 mb-2">
                         @if($course->status_paid == 1 )
-                            <div class="mb-2"><a href="#" class="btn btn-danger" id="price">ثبت نام رایگان در
-                                    دوره</a></div>
+                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                            <div class="mb-2 btn btn-danger add-course" id="price">ثبت نام رایگان در
+                                دوره
+                            </div>
                         @elseif($course->status_paid == 2)
                             <div class="mb-2"><p class="price "> {{ number_format($course->price) }} تومان </p>
                             </div>
@@ -119,19 +121,19 @@
     </div>
 
     <div class="row d-flex flex-column align-content-center mt-5 course-lessons" style="border:1px solid tomato">
-            <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
+        <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
 
-            </div>
-            <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
-
-            </div>
-            <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
-
-            </div>
-            <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
-
-            </div>
         </div>
+        <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
+
+        </div>
+        <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
+
+        </div>
+        <div class="col-md-6 mt-2 mb-2" style="border:2px solid brown;height: 100px">
+
+        </div>
+    </div>
 
 
 
@@ -200,7 +202,15 @@
     @endif
     <script type="text/javascript">
 
+
         $(document).ready(function () {
+
+
+            $('.add-course').on('click', function (event) {
+                event.preventDefault();
+                console.log(event);
+            });
+
 
             function load_likes() {
                 let course_id = document.getElementById('course_id').value;

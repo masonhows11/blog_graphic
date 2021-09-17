@@ -7,5 +7,10 @@ use Illuminate\Http\Request;
 
 class FrontCourseStudentController extends Controller
 {
-    //
+
+    public function addFreeCourse(Request $request)
+    {
+
+    }
+
 }
