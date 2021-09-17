@@ -106,12 +106,12 @@
                                 : {{ $course->course_status == 1 ? 'در حال برگزاری' : 'پایان دوره' }} </p>
                         </div>
                         <div class="col-lg-10 d-flex justify-content-center align-content-center mt-2">
-                            <div class="d-flex flex-column mt-2">
+                            <div class="d-flex flex-column mt-2 mb-2">
                                 @if($course->status_paid == 1 )
-                                    <div><a href="#" class="btn btn-danger" id="price">ثبت نام رایگان در دوره</a></div>
+                                    <div class="mb-2"><a href="#" class="btn btn-danger" id="price">ثبت نام رایگان در دوره</a></div>
                                 @elseif($course->status_paid == 2)
-                                    <div><p class="price "> {{ number_format($course->price) }} تومان </p></div>
-                                    <div><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
+                                    <div class="mb-2"><p class="price "> {{ number_format($course->price) }} تومان </p></div>
+                                    <div class="mb-2"><a href="#" class="btn btn-danger" id="price">خرید دروه</a></div>
                                 @endif
                             </div>
                         </div>
