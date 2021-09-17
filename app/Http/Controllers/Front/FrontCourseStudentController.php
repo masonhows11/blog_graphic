@@ -12,7 +12,7 @@ class FrontCourseStudentController extends Controller
 
     public function addFreeCourse(Request $request)
     {
-       // return $request;
+
         $course_id = $request->course_id;
         $user_id = Auth::id();
 
@@ -20,8 +20,8 @@ class FrontCourseStudentController extends Controller
             'course_id' => $course_id,
             'user_id' => $user_id,
         ]);
-        $success = '.ثبت نام با موفقیت انجام شد';
-        return redirect()->back()->with(['success'=>$success]);
+        $message = 'ثبت نام با موفقیت انجام شد';
+        return redirect()->back()->with(['message'=>$message]);
     }
 
 }

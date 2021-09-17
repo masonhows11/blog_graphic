@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,4 +12,9 @@ class CourseUser extends Model
 
     protected $table = 'course_user';
     protected $fillable = ['user_id','course_id'];
+
+    public function checkAddOrNot(Request $request)
+    {
+        
+    }
 }
