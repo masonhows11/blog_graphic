@@ -89,13 +89,13 @@
                     <p class="text-center mt-2"> تعداد دانشجویان : {{ $course->student_count }}</p>
                 </div>
                 <div class="col-lg-10 mt-2">
-                    <p class="text-center mt-2"> تعداد ویدئو ها : {{ $course->video_count }} </p>
+                    <p class="text-center mt-2"> تعداد ویدئو ها : {{ $lesson_count }} </p>
                 </div>
                 <div class="col-lg-10 mt-2">
                     <p class="text-center mt-2"> سطح دوره : {{ $course->level_course }}</p>
                 </div>
                 <div class="col-lg-10 mt-2">
-                    <p class="text-center mt-2"> مدت زمان دوره : {{ $course->course_duration }} </p>
+                    <p class="text-center mt-2"> مدت زمان دوره : {{ $course_time }} </p>
                 </div>
                 <div class="col-lg-10 mt-2">
                     <p class="text-center mt-2"> وضعیت دوره

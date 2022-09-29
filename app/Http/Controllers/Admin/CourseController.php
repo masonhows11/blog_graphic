@@ -154,7 +154,7 @@ class CourseController extends Controller
             ->select('lesson_duration')->get();
 
         if ($lessons->isNotEmpty()) {
-            $last_update = Lesson::latest()->first();
+            $last_update = Lesson::where('course_id',$course->id)->latest()->first();
             $last_update = date('Y:m:d', strtotime($last_update->created_at));
             $lessons_count = count($lessons);
             $seconds = null;
