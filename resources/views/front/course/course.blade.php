@@ -15,7 +15,7 @@
             <div class="card">
                 <input type="hidden" id="course_id" value="{{ $course->id }}">
                 <input type="hidden" id="token" value="{{ csrf_token() }}">
-                <img src="{{ asset($course->image) }}" class="card-img-top" alt="...">
+                <img src="{{ asset('template/images/'.$course->image) }}" class="card-img-top" alt="...">
                 <div class="card-header">
                     {{$course->title}}
                 </div>

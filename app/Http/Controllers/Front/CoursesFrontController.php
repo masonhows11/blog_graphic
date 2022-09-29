@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 
 class CoursesFrontController extends Controller
@@ -22,10 +23,27 @@ class CoursesFrontController extends Controller
     {
         $categories = Category::where('parent_id', null)->get();
 
+        // return
         $course = Course::with(['categories', 'likes', 'lessons', 'comments' => function ($query) {
             $query->where('approved', 1);
         }])->where('slug', '=', $course)->first();
-        return view('front.course.course')->with(['course' => $course, 'categories' => $categories]);
+
+        if ($course->lessons != 0) {
+            $lessons = $course->lessons;
+            $last_update = $course->lessons->latest()->first();
+            $last_update = date('Y:m:d', strtotime($last_update->created_at));
+            $lessons_count = count($course->lessons);
+            $seconds = null;
+            for ($i = 0; $i < $lessons_count; $i++) {
+
+                $time = $lessons[$i]['lesson_duration'];
+                $seconds = $seconds + strtotime($time);
+            }
+            $course_time = date("H:i:s", strtotime($seconds) + $seconds);
+        }
+
+        return view('front.course.course')
+            ->with(['course' => $course, 'categories' => $categories]);
 
 
     }

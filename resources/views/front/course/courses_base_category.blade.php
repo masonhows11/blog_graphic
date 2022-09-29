@@ -16,7 +16,7 @@
                 @foreach($courses as $course)
                     <div class="col mt-2 samples-item">
                         <div class="card">
-                            <img src="{{ asset($course->image) }}" class="card-img-top"
+                            <img src="{{ asset('template/images/'.$course->image) }}" class="card-img-top"
                                  alt="main_image_sample">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $course->title }}</h5>

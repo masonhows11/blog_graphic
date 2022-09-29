@@ -61,7 +61,7 @@ class CourseController extends Controller
         $image_path = null;
         if ($request->has('image')) {
             $image = $request->image;
-            $image_path = str_replace('http://localhost/', '', $image);
+            $image_path = str_replace('http://blog.test/template/images/', '', $image);
         }
 
         $course = Course::create([
@@ -92,7 +92,7 @@ class CourseController extends Controller
 
     public function update(Request $request)
     {
-
+      //  return $request;
         $validated = $request->validate([
             'title' => 'required|max:150',
             'name' => 'required|max:150',
@@ -118,7 +118,7 @@ class CourseController extends Controller
         $image_path = null;
         if ($request->has('image')) {
             $image = $request->image;
-            $image_path = str_replace('http://localhost/', '', $image);
+            $image_path = str_replace('http://blog.test/template/images/', '', $image);
         }
         $course = Course::findOrFail($request->id);
         $course->title = $request->title;

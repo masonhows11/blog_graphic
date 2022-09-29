@@ -38,7 +38,7 @@
                 </div>
                 <div class="course-banner-detail">
                     <label for="image">بنر دوره:</label>
-                    <img src="{{ asset($course->image) }}" id="image" class="img-rounded img-responsive"
+                    <img src="{{ asset('template/images/'.$course->image) }}" id="image" class="img-rounded img-responsive"
                          alt="course-banner">
                 </div>
 

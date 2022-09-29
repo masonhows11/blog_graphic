@@ -23,14 +23,14 @@ class AuthController extends Controller
         return view('auth.register_user');
     }
 
-    public function registerUser(Request $request): \Illuminate\Http\RedirectResponse
+    public function registerUser(Request $request)
     {
 
         $validated = $request->validate([
             'user_name' => 'required|max:30|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|max:20:min:8',
-            'g-recaptcha-response' => function($attribute,$value,$fail){
+           /* 'g-recaptcha-response' => function($attribute,$value,$fail){
                 $secret_key = config('services.recaptcha.secret');
                 $response = $value;
                 $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$response";
@@ -40,7 +40,7 @@ class AuthController extends Controller
                    Session::flash('g-recaptcha-response-error','گزینه من ربات نیستم را انتخاب کنید.');
                     $fail($attribute.'google reCaptcha failed');
                 }
-            },
+            },*/
         ], $messages = [
             'user_name.unique' => 'این نام کاربری تکراری است',
             'user_name.required' => 'نام کاربری را وارد کنید ',
@@ -71,14 +71,14 @@ class AuthController extends Controller
         return view('auth.login_user');
     }
 
-    public function login(Request $request): \Illuminate\Http\RedirectResponse
+    public function login(Request $request)
     {
 
         $validated = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|max:20:min:8',
-            'remember' => 'required',
-            'g-recaptcha-response' => function($attribute,$value,$fail){
+            'password' => 'required',
+//            'remember' => 'required',
+           /* 'g-recaptcha-response' => function($attribute,$value,$fail){
                 $secret_key = config('services.recaptcha.secret');
                 $response = $value;
                 $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$response";
@@ -88,12 +88,12 @@ class AuthController extends Controller
                     Session::flash('g-recaptcha-response-error','گزینه من ربات نیستم را انتخاب کنید.');
                     $fail($attribute.'google reCaptcha failed');
                 }
-            },
+            },*/
         ], $messages = [
             'email.required' => 'آدرس ایمیل را وارد کنید',
             'password.required' => 'رمز عبور را وارد کنید',
-            'password.max' => 'حداکثر تعداد کاراکتر رمز عبور۲۰ کاراکتر',
-            'password.min' => 'حداقل تعداد کاراکتر رمز عبور۸  کاراکتر',
+          /*  'password.max' => 'حداکثر تعداد کاراکتر رمز عبور۲۰ کاراکتر',
+            'password.min' => 'حداقل تعداد کاراکتر رمز عبور۸  کاراکتر',*/
             'remember.required' => 'توافق نامه را انتخاب کنید',
 
         ]);

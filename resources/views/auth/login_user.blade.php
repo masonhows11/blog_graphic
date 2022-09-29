@@ -55,7 +55,7 @@
                           name="password"
                           class="form-control @error('password') is-invalid @enderror"
                           id="password"
-                          placeholder="شماره موبایل خود را وارد کنید..">
+                          placeholder="رمز عبور خود را وارد کنید..">
                    @error('password')
                    <div class="alert alert-danger">{{ $message }}</div>
                    @enderror
